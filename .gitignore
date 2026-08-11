@@ -6,3 +6,6 @@ node_modules/
 # They are committed on purpose: `shopify theme push` uploads whatever is in
 # theme/assets, so the built bundle must exist in the repo for a clean deploy
 # from a fresh clone. Regenerate with `npm run build`.
+
+# macOS
+.DS_Store

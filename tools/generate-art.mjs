@@ -12,7 +12,7 @@
  *      bracketed label ([STREETWEAR CAMPAIGN]) so nobody mistakes a placeholder
  *      for a final asset.
  *
- * Replacing art later means swapping the file in theme/assets or, better,
+ * Replacing art later means swapping the file in assets/ or, better,
  * pointing the product at a real Shopify image — nothing here is load-bearing.
  */
 import { writeFileSync, mkdirSync, existsSync } from 'node:fs';
@@ -20,7 +20,7 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const out = path.join(root, 'theme', 'assets');
+const out = path.join(root, 'assets');
 if (!existsSync(out)) mkdirSync(out, { recursive: true });
 
 /* ------------------------------------------------------------------ */
@@ -637,4 +637,4 @@ for (const [slug, kind] of [
   write(`nova-${slug}.svg`, campaign(kind));
 }
 
-console.log(`[nova:art] wrote ${written.length} SVG assets to theme/assets`);
+console.log(`[nova:art] wrote ${written.length} SVG assets to assets/`);

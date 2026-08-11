@@ -1,7 +1,7 @@
 /**
  * NØVA build pipeline.
  *
- * Compiles src/ into theme/assets/ — the only directory Shopify serves.
+ * Compiles src/ into assets/ — the only directory Shopify serves.
  * Shopify's assets folder is FLAT (no subdirectories), so entry points and
  * code-split chunks are all emitted side by side. Dynamic-import chunks
  * resolve relative to the loading script URL, which on Shopify's CDN is
@@ -13,8 +13,10 @@ import { readdirSync, unlinkSync, existsSync, mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
+/* The theme lives at the repository root — that is what Shopify's GitHub
+   integration requires — so assets/ is a top-level directory, not theme/assets. */
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const outdir = path.join(root, 'theme', 'assets');
+const outdir = path.join(root, 'assets');
 const watch = process.argv.includes('--watch');
 const cssOnly = process.argv.includes('--css-only');
 

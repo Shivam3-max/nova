@@ -1,14 +1,14 @@
 /**
  * NØVA local Shopify harness.
  *
- * Renders theme/ with LiquidJS while emulating the parts of Shopify's Liquid
+ * Renders the theme with LiquidJS while emulating the parts of Shopify's Liquid
  * runtime the theme depends on: the object graph (shop/product/collection/
  * cart/routes/settings), the Shopify-only filters (money, image_url,
  * asset_url…), the Shopify-only tags (section, schema, form, paginate) and the
  * /cart *.js AJAX API.
  *
- * The goal is that nothing in theme/ is written against this harness. Push the
- * same directory to a real store with `shopify theme push` and it behaves the
+ * The goal is that no theme file is written against this harness. Push the
+ * same repository to a real store with `shopify theme push` and it behaves the
  * same — this file is dev-only and is never deployed.
  */
 import express from 'express';
@@ -31,7 +31,8 @@ import {
 } from './data/catalog.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const THEME = path.join(__dirname, '..', 'theme');
+// The theme is the repository root (Shopify's GitHub integration requires it).
+const THEME = path.join(__dirname, '..');
 const PORT = Number(process.env.PORT || 3610);
 
 /* ------------------------------------------------------------------ */

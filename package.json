@@ -12,9 +12,9 @@
     "watch": "node tools/build.mjs --watch",
     "dev": "node tools/build.mjs && node dev/server.mjs",
     "dev:watch": "node tools/build.mjs --watch & node dev/server.mjs",
-    "shopify:dev": "shopify theme dev --path theme",
-    "shopify:push": "shopify theme push --path theme",
-    "shopify:pull": "shopify theme pull --path theme"
+    "shopify:dev": "shopify theme dev --path .",
+    "shopify:push": "shopify theme push --path .",
+    "shopify:pull": "shopify theme pull --path ."
   },
   "dependencies": {
     "gsap": "^3.13.0",
