@@ -1,0 +1,50 @@
+<header class="chead">
+  <p class="t-index" data-reveal="up">{{ section.settings.index }}</p>
+  <h1 class="chead__title" data-reveal="lines" style="margin-top:1rem">{{ section.settings.heading }}</h1>
+  <p class="chead__lede t-lede" data-reveal="up">{{ section.settings.body }}</p>
+</header>
+
+<div class="section section--flush-top">
+  <div class="clist">
+    {%- for col in collections -%}
+      {%- unless col.handle == 'all' -%}
+        <article class="ctile" data-reveal="up" data-reveal-delay="{{ forloop.index0 | modulo: 2 | times: 0.08 }}">
+          {%- assign art = col.image | default: col.featured_image -%}
+          {%- if art -%}
+            <img src="{{ art | image_url: width: 1200 }}"
+                 srcset="{{ art | image_url: width: 600 }} 600w, {{ art | image_url: width: 1200 }} 1200w"
+                 sizes="(max-width: 48rem) 100vw, 46vw"
+                 alt="" width="1600" height="1000" loading="lazy" decoding="async">
+          {%- endif -%}
+          <span class="campaign__veil"></span>
+
+          <div class="ctile__body">
+            <h2 class="ctile__name">{{ col.title }}</h2>
+            <p class="t-meta" style="color:rgba(255,255,255,.7)">
+              {{ col.products_count }} pieces
+            </p>
+            <a class="ctile__link link" href="{{ col.url }}" data-cursor="enter">
+              Enter <span class="link__arrow">{% render 'icon', name: 'arrow', size: 13 %}</span>
+            </a>
+          </div>
+        </article>
+      {%- endunless -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collections list",
+  "settings": [
+    { "type": "text", "id": "index", "label": "Index", "default": "The archive" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Collections" },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body",
+      "default": "Every world in the NØVA archive, from the current drop to the pieces that stay."
+    }
+  ]
+}
+{% endschema %}

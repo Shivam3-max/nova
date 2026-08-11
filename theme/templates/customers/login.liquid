@@ -1,0 +1,37 @@
+{%- comment -%}
+  Customer login. Shopify owns authentication; the theme only supplies the form.
+{%- endcomment -%}
+
+<div class="page">
+  <h1 class="page__title">Account</h1>
+
+  <div style="max-width:26rem;display:grid;gap:2.5rem">
+    <div id="customer_login">
+      <p class="t-meta" style="margin-bottom:1.5rem">Sign in</p>
+
+      {%- form 'customer_login', id: 'customer-login-form' -%}
+        {%- if form.errors -%}
+          <p class="news__note" role="alert">{{ form.errors | default_errors }}</p>
+        {%- endif -%}
+
+        <label class="field" style="margin-bottom:1.25rem">
+          <input class="field__input" type="email" name="customer[email]" placeholder=" " autocomplete="email" required>
+          <span class="field__label">Email</span>
+          <span class="field__rule"></span>
+        </label>
+
+        <label class="field" style="margin-bottom:1.5rem">
+          <input class="field__input" type="password" name="customer[password]" placeholder=" " autocomplete="current-password" required>
+          <span class="field__label">Password</span>
+          <span class="field__rule"></span>
+        </label>
+
+        <button class="btn btn--full" type="submit">Sign in</button>
+      {%- endform -%}
+
+      <p class="t-meta" style="margin-top:1.25rem">
+        <a class="link" href="{{ routes.account_register_url }}">Create an account</a>
+      </p>
+    </div>
+  </div>
+</div>

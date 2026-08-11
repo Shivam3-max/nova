@@ -1,0 +1,109 @@
+{%- comment -%} DESIGNED WITH INTENTION — scroll-linked storytelling. {%- endcomment -%}
+
+<section class="section" aria-labelledby="story-title">
+  <div class="shell">
+    <div class="sec-head">
+      <div class="sec-head__title">
+        <p class="t-index" data-reveal="up">{{ section.settings.index }}</p>
+        <h2 class="t-h1" id="story-title" data-reveal="lines">{{ section.settings.heading }}</h2>
+      </div>
+      <p class="t-body" data-reveal="up">{{ section.settings.body }}</p>
+    </div>
+  </div>
+
+  <div class="story" data-component="story">
+    <div class="story__sticky media">
+      {%- for block in section.blocks -%}
+        {%- assign art = block.settings.image | default: section.settings.fallback_image -%}
+        {%- if art -%}
+          <img class="story__img{% if forloop.first %} is-active{% endif %}"
+               src="{{ art | image_url: width: 1200 }}"
+               alt="{{ block.settings.title | escape }}"
+               width="1600" height="1000" loading="lazy" decoding="async">
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    <div class="story__steps">
+      {%- for block in section.blocks -%}
+        <article class="story__step{% if forloop.first %} is-active{% endif %}" {{ block.shopify_attributes }}>
+          <p class="t-index" data-story-line>{{ forloop.index | prepend: '0' | slice: -2, 2 }} — {{ block.settings.title }}</p>
+          <h3 class="story__step-title" data-story-line>{{ block.settings.title }}</h3>
+          <p class="t-body" data-story-line>{{ block.settings.body }}</p>
+          {%- if block.settings.spec != blank -%}
+            <p class="t-meta" data-story-line>{{ block.settings.spec }}</p>
+          {%- endif -%}
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product storytelling",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "index", "label": "Index", "default": "Process" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Designed with intention." },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body",
+      "default": "Four decisions separate a garment that lasts a season from one that lasts a decade."
+    },
+    { "type": "image_picker", "id": "fallback_image", "label": "Fallback image" }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Fabric" },
+        { "type": "textarea", "id": "body", "label": "Body" },
+        { "type": "text", "id": "spec", "label": "Spec line" },
+        { "type": "image_picker", "id": "image", "label": "Image" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product storytelling",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "title": "Fabric",
+            "body": "Loopback cotton milled in Tiruppur, taken to 480 GSM over four attempts. Heavy enough to hold a shoulder line, soft enough to wear on the first day.",
+            "spec": "480 GSM — combed, ring-spun"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Cut",
+            "body": "The shoulder is dropped four centimetres past the natural line and the armhole lowered to match. Scale a standard block instead and the garment hangs wrong at the neck.",
+            "spec": "Drop shoulder — redrafted block"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Construction",
+            "body": "Bar-tacked at every stress point, flatlock through the body. The seams are the part nobody photographs and the first part to fail.",
+            "spec": "Flatlock — bar-tacked stress points"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Finish",
+            "body": "Garment dyed in small batches and washed twice before it ships, so the length you buy is the length you keep.",
+            "spec": "Garment dyed — pre-shrunk twice"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

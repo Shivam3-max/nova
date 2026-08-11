@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="street campaign placeholder">
+  <defs>
+  <filter id="street-grain" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/>
+  </filter></defs>
+  <rect width="1600" height="1000" fill="#0a0a0c"/>
+        <linearGradient id="street-sky" x1="0" y1="0" x2="0.4" y2="1">
+          <stop offset="0%" stop-color="#1d1f26"/><stop offset="100%" stop-color="#08080a"/>
+        </linearGradient>
+        <rect width="1600" height="1000" fill="url(#street-sky)"/>
+        <rect x="80" y="120" width="150" height="880" fill="#101116" opacity="0.9"/><rect x="300" y="166" width="168" height="834" fill="#101116" opacity="0.81"/><rect x="520" y="212" width="186" height="788" fill="#101116" opacity="0.72"/><rect x="1120" y="258" width="204" height="742" fill="#101116" opacity="0.63"/><rect x="1340" y="304" width="222" height="696" fill="#101116" opacity="0.54"/>
+        <rect x="100" y="180" width="26" height="38" fill="#cfd3dd" opacity="0.05"/><rect x="232" y="180" width="26" height="38" fill="#cfd3dd" opacity="0.12777777777777777"/><rect x="364" y="180" width="26" height="38" fill="#cfd3dd" opacity="0.10555555555555556"/><rect x="496" y="180" width="26" height="38" fill="#cfd3dd" opacity="0.08333333333333334"/><rect x="628" y="180" width="26" height="38" fill="#cfd3dd" opacity="0.061111111111111116"/><rect x="760" y="180" width="26" height="38" fill="#cfd3dd" opacity="0.1388888888888889"/><rect x="892" y="180" width="26" height="38" fill="#cfd3dd" opacity="0.11666666666666667"/><rect x="1024" y="180" width="26" height="38" fill="#cfd3dd" opacity="0.09444444444444444"/><rect x="1156" y="180" width="26" height="38" fill="#cfd3dd" opacity="0.07222222222222223"/><rect x="1288" y="180" width="26" height="38" fill="#cfd3dd" opacity="0.05"/><rect x="1420" y="180" width="26" height="38" fill="#cfd3dd" opacity="0.12777777777777777"/><rect x="100" y="330" width="26" height="38" fill="#cfd3dd" opacity="0.10555555555555556"/><rect x="232" y="330" width="26" height="38" fill="#cfd3dd" opacity="0.08333333333333334"/><rect x="364" y="330" width="26" height="38" fill="#cfd3dd" opacity="0.061111111111111116"/><rect x="496" y="330" width="26" height="38" fill="#cfd3dd" opacity="0.1388888888888889"/><rect x="628" y="330" width="26" height="38" fill="#cfd3dd" opacity="0.11666666666666667"/><rect x="760" y="330" width="26" height="38" fill="#cfd3dd" opacity="0.09444444444444444"/><rect x="892" y="330" width="26" height="38" fill="#cfd3dd" opacity="0.07222222222222223"/><rect x="1024" y="330" width="26" height="38" fill="#cfd3dd" opacity="0.05"/><rect x="1156" y="330" width="26" height="38" fill="#cfd3dd" opacity="0.12777777777777777"/><rect x="1288" y="330" width="26" height="38" fill="#cfd3dd" opacity="0.10555555555555556"/><rect x="1420" y="330" width="26" height="38" fill="#cfd3dd" opacity="0.08333333333333334"/><rect x="100" y="480" width="26" height="38" fill="#cfd3dd" opacity="0.061111111111111116"/><rect x="232" y="480" width="26" height="38" fill="#cfd3dd" opacity="0.1388888888888889"/><rect x="364" y="480" width="26" height="38" fill="#cfd3dd" opacity="0.11666666666666667"/><rect x="496" y="480" width="26" height="38" fill="#cfd3dd" opacity="0.09444444444444444"/><rect x="628" y="480" width="26" height="38" fill="#cfd3dd" opacity="0.07222222222222223"/><rect x="760" y="480" width="26" height="38" fill="#cfd3dd" opacity="0.05"/><rect x="892" y="480" width="26" height="38" fill="#cfd3dd" opacity="0.12777777777777777"/><rect x="1024" y="480" width="26" height="38" fill="#cfd3dd" opacity="0.10555555555555556"/><rect x="1156" y="480" width="26" height="38" fill="#cfd3dd" opacity="0.08333333333333334"/><rect x="1288" y="480" width="26" height="38" fill="#cfd3dd" opacity="0.061111111111111116"/><rect x="1420" y="480" width="26" height="38" fill="#cfd3dd" opacity="0.1388888888888889"/><rect x="100" y="630" width="26" height="38" fill="#cfd3dd" opacity="0.11666666666666667"/><rect x="232" y="630" width="26" height="38" fill="#cfd3dd" opacity="0.09444444444444444"/><rect x="364" y="630" width="26" height="38" fill="#cfd3dd" opacity="0.07222222222222223"/><rect x="496" y="630" width="26" height="38" fill="#cfd3dd" opacity="0.05"/><rect x="628" y="630" width="26" height="38" fill="#cfd3dd" opacity="0.12777777777777777"/><rect x="760" y="630" width="26" height="38" fill="#cfd3dd" opacity="0.10555555555555556"/><rect x="892" y="630" width="26" height="38" fill="#cfd3dd" opacity="0.08333333333333334"/><rect x="1024" y="630" width="26" height="38" fill="#cfd3dd" opacity="0.061111111111111116"/><rect x="1156" y="630" width="26" height="38" fill="#cfd3dd" opacity="0.1388888888888889"/><rect x="1288" y="630" width="26" height="38" fill="#cfd3dd" opacity="0.11666666666666667"/><rect x="1420" y="630" width="26" height="38" fill="#cfd3dd" opacity="0.09444444444444444"/>
+        <rect y="700" width="1600" height="300" fill="#000" opacity="0.55"/>
+  <g transform="translate(560,940) scale(1.25)" fill="#e8e9ee" fill-opacity="0.9">
+    <ellipse cx="0" cy="-408" rx="17" ry="23"/>
+    <path d="M-5 -388 h10 l3 20 h-16 Z"/>
+    <!-- torso: shoulder line to hip, gently tapered -->
+    <path d="M-38 -368 C -16 -376 16 -376 38 -368
+             C 44 -366 47 -360 47 -352
+             L 42 -252 C 41 -240 38 -231 34 -224
+             L 30 -206 L -30 -206 L -34 -224
+             C -38 -231 -41 -240 -42 -252
+             L -47 -352 C -47 -360 -44 -366 -38 -368 Z"/>
+    <!-- arms -->
+    <path d="M-46 -356 C -54 -352 -57 -342 -58 -330
+             L -63 -246 C -64 -236 -61 -230 -54 -229
+             C -48 -228 -44 -232 -43 -241 L -37 -330 Z"/>
+    <path d="M46 -356 C 54 -352 57 -342 58 -330
+             L 63 -246 C 64 -236 61 -230 54 -229
+             C 48 -228 44 -232 43 -241 L 37 -330 Z"/>
+    <!-- legs: long line, small gap at the centre -->
+    <path d="M-30 -200 L -4 -200 L -6 -104 L -9 -6
+             C -9 -1 -12 2 -18 2 L -30 2 C -36 2 -39 -1 -39 -7
+             L -35 -104 Z"/>
+    <path d="M4 -200 L 30 -200 L 35 -104 L 39 -7
+             C 39 -1 36 2 30 2 L 18 2 C 12 2 9 -1 9 -6
+             L 6 -104 Z"/>
+  </g>
+  <g transform="translate(880,950) scale(1.05)" fill="#b9bcc6" fill-opacity="0.5">
+    <ellipse cx="0" cy="-408" rx="17" ry="23"/>
+    <path d="M-5 -388 h10 l3 20 h-16 Z"/>
+    <!-- torso: shoulder line to hip, gently tapered -->
+    <path d="M-38 -368 C -16 -376 16 -376 38 -368
+             C 44 -366 47 -360 47 -352
+             L 42 -252 C 41 -240 38 -231 34 -224
+             L 30 -206 L -30 -206 L -34 -224
+             C -38 -231 -41 -240 -42 -252
+             L -47 -352 C -47 -360 -44 -366 -38 -368 Z"/>
+    <!-- arms -->
+    <path d="M-46 -356 C -54 -352 -57 -342 -58 -330
+             L -63 -246 C -64 -236 -61 -230 -54 -229
+             C -48 -228 -44 -232 -43 -241 L -37 -330 Z"/>
+    <path d="M46 -356 C 54 -352 57 -342 58 -330
+             L 63 -246 C 64 -236 61 -230 54 -229
+             C 48 -228 44 -232 43 -241 L 37 -330 Z"/>
+    <!-- legs: long line, small gap at the centre -->
+    <path d="M-30 -200 L -4 -200 L -6 -104 L -9 -6
+             C -9 -1 -12 2 -18 2 L -30 2 C -36 2 -39 -1 -39 -7
+             L -35 -104 Z"/>
+    <path d="M4 -200 L 30 -200 L 35 -104 L 39 -7
+             C 39 -1 36 2 30 2 L 18 2 C 12 2 9 -1 9 -6
+             L 6 -104 Z"/>
+  </g>
+        <rect x="180" y="560" width="240" height="3" fill="#fff" opacity="0.12"/><rect x="370" y="572" width="240" height="3" fill="#fff" opacity="0.12"/><rect x="560" y="584" width="240" height="3" fill="#fff" opacity="0.12"/><rect x="750" y="596" width="240" height="3" fill="#fff" opacity="0.12"/><rect x="940" y="608" width="240" height="3" fill="#fff" opacity="0.12"/><rect x="1130" y="620" width="240" height="3" fill="#fff" opacity="0.12"/><rect x="1320" y="632" width="240" height="3" fill="#fff" opacity="0.12"/>
+  <rect width="1600" height="1000" filter="url(#street-grain)" opacity="0.07" style="mix-blend-mode:overlay"/>
+  <text x="48" y="952" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15" letter-spacing="4"
+     fill="#f4f4f6" fill-opacity="0.7" font-weight="500">[ STREET — PLACEHOLDER ]</text>
+  <text x="1490" y="952" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" letter-spacing="4"
+     fill="#f4f4f6" fill-opacity="0.7" font-weight="500">NØVA</text>
+</svg>

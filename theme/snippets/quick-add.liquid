@@ -1,0 +1,15 @@
+{%- comment -%}
+  Quick add shell. The body is filled by the Section Rendering API response
+  from sections/quick-add.liquid, so the variant logic is real Liquid.
+{%- endcomment -%}
+
+<div class="quick" id="quick-add" data-component="quick-add" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Quick add">
+  <div class="quick__scrim" data-quick-close></div>
+
+  <div class="quick__panel">
+    <button class="quick__close" type="button" data-quick-close aria-label="{{ 'general.accessibility.close' | t }}">
+      {% render 'icon', name: 'close', size: 16 %}
+    </button>
+    <div data-quick-body style="display:contents"></div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="page">
+  <h1 class="page__title">Addresses</h1>
+  <div style="display:grid;gap:2rem">
+    {%- paginate customer.addresses by 6 -%}
+      {%- for address in customer.addresses -%}
+        <div style="border:1px solid var(--line);padding:1.5rem">
+          {%- if address == customer.default_address -%}
+            <p class="t-meta" style="margin-bottom:0.75rem">Default</p>
+          {%- endif -%}
+          {{ address | format_address }}
+        </div>
+      {%- else -%}
+        <p class="t-body">No addresses saved.</p>
+      {%- endfor -%}
+    {%- endpaginate -%}
+    <p class="t-meta"><a class="link" href="{{ routes.account_url }}">Back to account</a></p>
+  </div>
+</div>

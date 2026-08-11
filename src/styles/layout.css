@@ -1,0 +1,298 @@
+/* ==========================================================================
+   Layout primitives, editorial type utilities, motion base states
+   ========================================================================== */
+
+.shell {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.shell--wide {
+  max-width: none;
+}
+
+.shell--narrow {
+  max-width: 68rem;
+}
+
+.bleed {
+  width: 100%;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: var(--section);
+  position: relative;
+}
+
+.section--tight {
+  padding-block: var(--section-sm);
+}
+
+.section--flush-top {
+  padding-block-start: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--s-5) clamp(1rem, 2.2vw, 2.25rem);
+}
+
+.rule {
+  height: 1px;
+  background: var(--line);
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Editorial type
+   -------------------------------------------------------------------------- */
+
+.t-mega,
+.t-hero,
+.t-display,
+.t-h1 {
+  font-weight: 600;
+  line-height: 0.86;
+  letter-spacing: var(--track-mega);
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.t-mega { font-size: var(--t-mega); }
+.t-hero { font-size: var(--t-hero); }
+.t-display { font-size: var(--t-display); line-height: 0.9; }
+.t-h1 { font-size: var(--t-h1); line-height: 0.94; }
+
+.t-h2 {
+  font-size: var(--t-h2);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: var(--track-tight);
+  text-transform: uppercase;
+}
+
+.t-h3 {
+  font-size: var(--t-h3);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+/* Small uppercase metadata — the connective tissue of the whole layout. */
+.t-meta {
+  font-size: var(--t-meta);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.t-meta--ink { color: var(--ink); }
+
+.t-num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.t-lede {
+  font-size: clamp(1.05rem, 1.5vw, 1.4rem);
+  line-height: 1.42;
+  letter-spacing: -0.018em;
+  color: var(--ink-2);
+  max-width: var(--measure);
+  text-wrap: pretty;
+}
+
+.t-body {
+  color: var(--ink-2);
+  max-width: var(--measure);
+  text-wrap: pretty;
+}
+
+.t-thin {
+  font-weight: 300;
+}
+
+/* Index numerals used across sections (01 — FABRIC). */
+.t-index {
+  font-family: var(--font-mono);
+  font-size: var(--t-meta);
+  letter-spacing: 0.14em;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Section header: eyebrow + oversized title on one hairline. */
+.sec-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--s-5);
+  flex-wrap: wrap;
+  padding-block-end: var(--s-5);
+  border-bottom: 1px solid var(--line);
+  margin-block-end: var(--s-7);
+}
+
+.sec-head__title {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+
+/* --------------------------------------------------------------------------
+   Media
+   -------------------------------------------------------------------------- */
+
+.media {
+  position: relative;
+  overflow: hidden;
+  background: var(--paper-2);
+}
+
+.media > img,
+.media > video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.media--portrait { aspect-ratio: 4 / 5; }
+.media--square   { aspect-ratio: 1 / 1; }
+.media--wide     { aspect-ratio: 16 / 9; }
+.media--tall     { aspect-ratio: 3 / 4; }
+.media--cinema   { aspect-ratio: 21 / 9; }
+
+/* Product plates: contained, never cropped, on a warm neutral. */
+.media--plate {
+  background: var(--paper-2);
+}
+
+.media--plate > img {
+  object-fit: contain;
+  padding: 8%;
+}
+
+/* Full-bleed campaign block — the only place the palette inverts. */
+.campaign {
+  position: relative;
+  overflow: clip;
+  background: #0b0b0d;
+  isolation: isolate;
+}
+
+.campaign__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  will-change: transform;
+}
+
+.campaign__veil {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 8, 10, 0.55) 0%,
+    rgba(8, 8, 10, 0.15) 38%,
+    rgba(8, 8, 10, 0.72) 100%
+  );
+  pointer-events: none;
+}
+
+.campaign__inner {
+  position: relative;
+  z-index: 2;
+}
+
+/* Grain — one shared texture, applied sparingly to inverted blocks. */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.16;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='160' height='160' filter='url(%23n)' opacity='0.5'/></svg>");
+}
+
+/* --------------------------------------------------------------------------
+   Motion base states
+   Elements opt in with data-reveal; JS clears them once observed. If JS never
+   runs, the .no-js rule below keeps everything visible.
+   -------------------------------------------------------------------------- */
+
+[data-reveal] {
+  will-change: transform, opacity;
+}
+
+[data-reveal="up"] { opacity: 0; transform: translate3d(0, 2.2rem, 0); }
+[data-reveal="fade"] { opacity: 0; }
+[data-reveal="clip"] { clip-path: inset(0 0 100% 0); }
+[data-reveal="scale"] { opacity: 0; transform: scale(1.06); }
+
+.is-revealed[data-reveal] {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0 0 0 0);
+}
+
+/* Line-by-line heading reveals produced by animation/split.js */
+.split-line {
+  display: block;
+  overflow: hidden;
+}
+
+.split-line__inner {
+  display: block;
+  will-change: transform;
+}
+
+/* Anything that only makes sense with JS is hidden until the bundle boots. */
+html.no-js [data-requires-js] {
+  display: none !important;
+}
+
+html.no-js [data-reveal] {
+  opacity: 1 !important;
+  transform: none !important;
+  clip-path: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   Reduced motion — swap cinematic movement for plain fades.
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+
+  .marquee__track {
+    animation: none !important;
+    transform: none !important;
+  }
+}

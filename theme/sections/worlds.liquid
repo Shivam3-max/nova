@@ -1,0 +1,92 @@
+{%- comment -%} CHOOSE YOUR WORLD — four expanding collection cards. {%- endcomment -%}
+
+<section class="section" aria-labelledby="worlds-title">
+  <div class="shell">
+    <div class="sec-head">
+      <div class="sec-head__title">
+        <p class="t-index" data-reveal="up">{{ section.settings.index }}</p>
+        <h2 class="t-h1" id="worlds-title" data-reveal="lines">{{ section.settings.heading }}</h2>
+      </div>
+      <p class="t-body" data-reveal="up">{{ section.settings.body }}</p>
+    </div>
+  </div>
+
+  <div class="worlds" data-component="worlds">
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign col = block.settings.collection
+        unless col.products
+          assign col = collections[block.settings.collection]
+        endunless
+
+        comment
+          These cards are tall and narrow. A landscape collection image cropped
+          to 3:4 keeps only a slice of the composition, so unless the merchant
+          supplies a portrait override we use the portrait plate for the
+          collection's theme.
+        endcomment
+        assign theme = col.metafields.custom.collection_theme.value | default: col.handle
+        assign art_url = ''
+        if block.settings.image != blank
+          assign art_url = block.settings.image | image_url: width: 900
+        else
+          assign art_url = theme | prepend: 'nova-world-' | append: '.svg' | asset_url
+        endif
+      -%}
+      <article class="world" {{ block.shopify_attributes }}>
+        <img class="world__img" src="{{ art_url }}"
+             sizes="(max-width: 60rem) 50vw, 28vw"
+             alt="" width="1200" height="1500" loading="lazy" decoding="async">
+        <span class="world__veil"></span>
+
+        <div class="world__body">
+          <h3 class="world__name">{{ block.settings.title | default: col.title }}</h3>
+          <p class="world__note">{{ block.settings.body | default: col.description | strip_html | truncate: 90 }}</p>
+          <a class="world__link link" href="{{ col.url }}" data-cursor="enter">
+            Enter <span class="link__arrow">{% render 'icon', name: 'arrow', size: 13 %}</span>
+          </a>
+        </div>
+      </article>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Choose your world",
+  "max_blocks": 5,
+  "settings": [
+    { "type": "text", "id": "index", "label": "Index", "default": "Collections" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Choose your world" },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body",
+      "default": "Four ways into the archive. Each one is cut, finished and photographed differently."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "world",
+      "name": "World",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "text", "id": "title", "label": "Title override" },
+        { "type": "textarea", "id": "body", "label": "Note" },
+        { "type": "image_picker", "id": "image", "label": "Image override" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Choose your world",
+      "blocks": [
+        { "type": "world", "settings": { "collection": "street", "title": "Street", "body": "Volume, weight, and finishes that age." } },
+        { "type": "world", "settings": { "collection": "minimal", "title": "Minimal", "body": "The pieces everything else is built around." } },
+        { "type": "world", "settings": { "collection": "active", "title": "Active", "body": "Engineered knits. Train, run, recover." } },
+        { "type": "world", "settings": { "collection": "luxury", "title": "Luxury", "body": "Half-canvas construction and longer lines." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,28 @@
+{
+  "current": {
+    "brand_name": "NØVA",
+    "brand_tagline": "Wear what’s next.",
+    "logo": null,
+    "favicon": null,
+    "cart_drawer": true,
+    "free_shipping_threshold": 4999,
+    "show_quick_add": true,
+    "show_card_sizes": true,
+    "show_wishlist": true,
+    "grid_density": "editorial",
+    "enable_webgl": true,
+    "enable_smooth_scroll": true,
+    "enable_cursor": true,
+    "social_instagram": "https://instagram.com",
+    "social_tiktok": "https://tiktok.com",
+    "social_youtube": "https://youtube.com"
+  },
+  "presets": {
+    "NØVA": {
+      "brand_name": "NØVA",
+      "brand_tagline": "Wear what’s next.",
+      "grid_density": "editorial",
+      "enable_webgl": true
+    }
+  }
+}

@@ -1,0 +1,113 @@
+{%- comment -%}
+  Collection page. Themed header when the collection carries a campaign image,
+  sticky sort/filter rail, paginated editorial grid.
+{%- endcomment -%}
+
+{%- liquid
+  assign campaign = collection.image | default: collection.featured_image
+  assign theme = collection.metafields.custom.collection_theme.value | default: 'editorial'
+  assign inverted = false
+  if theme == 'street' or theme == 'limited' or theme == 'luxury'
+    assign inverted = true
+  endif
+
+  assign grid_class = 'pgrid'
+  if settings.grid_density == 'dense'
+    assign grid_class = 'pgrid pgrid--dense pgrid--flat'
+  endif
+-%}
+
+{%- if campaign and section.settings.show_campaign -%}
+  <header class="chead chead--campaign campaign grain"
+          {% if inverted %}data-inv{% endif %}
+          data-component="parallax">
+    <img class="campaign__bg" src="{{ campaign | image_url: width: 1800 }}" alt=""
+         width="1600" height="1000" fetchpriority="high" decoding="async" data-parallax="0.14">
+    <span class="campaign__veil"></span>
+
+    <div class="campaign__inner" style="width:100%">
+      <p class="t-index" data-reveal="up">{{ collection.products_count }} pieces</p>
+      <h1 class="chead__title" data-reveal="lines" style="margin-top:1rem">{{ collection.title }}</h1>
+      {%- if collection.description != blank -%}
+        <p class="chead__lede t-lede" data-reveal="up">{{ collection.description | strip_html }}</p>
+      {%- endif -%}
+    </div>
+  </header>
+{%- else -%}
+  <header class="chead">
+    <p class="t-index" data-reveal="up">{{ collection.products_count }} pieces</p>
+    <h1 class="chead__title" data-reveal="lines" style="margin-top:1rem">{{ collection.title }}</h1>
+    {%- if collection.description != blank -%}
+      <p class="chead__lede t-lede" data-reveal="up">{{ collection.description | strip_html }}</p>
+    {%- endif -%}
+  </header>
+{%- endif -%}
+
+<div class="ctools" data-component="collection-tools">
+  <div class="ctools__filters">
+    <a class="chip{% unless current_tags %} is-active{% endunless %}" href="{{ collection.url }}">
+      {{ 'collections.general.all' | t }}
+    </a>
+    {%- for tag in collection.all_tags limit: 6 -%}
+      <a class="chip{% if current_tags contains tag %} is-active{% endif %}"
+         href="{{ collection.url }}/{{ tag | handleize }}">{{ tag }}</a>
+    {%- endfor -%}
+  </div>
+
+  <label class="select-wrap">
+    <span class="visually-hidden">{{ 'collections.general.sort_by' | t }}</span>
+    <select class="select" data-sort>
+      {%- assign options = 'manual|Featured,price-ascending|Price: low to high,price-descending|Price: high to low,title-ascending|A–Z,created-descending|Newest' | split: ',' -%}
+      {%- for option in options -%}
+        {%- assign parts = option | split: '|' -%}
+        <option value="{{ parts[0] }}" {% if collection.sort_by == parts[0] %}selected{% endif %}>{{ parts[1] }}</option>
+      {%- endfor -%}
+    </select>
+  </label>
+</div>
+
+<div class="shell">
+  {%- paginate collection.products by 12 -%}
+    {%- if collection.products.size > 0 -%}
+      <div class="{{ grid_class }}">
+        {%- for product in collection.products -%}
+          <div data-reveal="up" data-reveal-delay="{{ forloop.index0 | modulo: 2 | times: 0.07 }}">
+            {% render 'product-card', product: product, lazy: 'lazy' %}
+          </div>
+        {%- endfor -%}
+      </div>
+
+      {%- if paginate.pages > 1 -%}
+        <nav class="pager" aria-label="{{ 'general.pagination.label' | t }}">
+          {%- if paginate.previous -%}
+            <a href="{{ paginate.previous.url }}" rel="prev">Prev</a>
+          {%- endif -%}
+          {%- for part in paginate.parts -%}
+            {%- if part.is_link -%}
+              <a href="{{ part.url }}">{{ part.title }}</a>
+            {%- else -%}
+              <span class="is-current" aria-current="page">{{ part.title }}</span>
+            {%- endif -%}
+          {%- endfor -%}
+          {%- if paginate.next -%}
+            <a href="{{ paginate.next.url }}" rel="next">Next</a>
+          {%- endif -%}
+        </nav>
+      {%- endif -%}
+    {%- else -%}
+      <div class="cempty">
+        <p class="t-h2">{{ 'collections.general.empty' | t }}</p>
+        <a class="btn" href="{{ routes.all_products_collection_url }}">Shop everything</a>
+      </div>
+    {%- endif -%}
+  {%- endpaginate -%}
+</div>
+
+{% schema %}
+{
+  "name": "Collection",
+  "settings": [
+    { "type": "checkbox", "id": "show_campaign", "label": "Show the campaign header", "default": true }
+  ]
+}
+{% endschema %}

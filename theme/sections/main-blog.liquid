@@ -1,0 +1,48 @@
+<header class="chead">
+  <p class="t-index" data-reveal="up">Editorial</p>
+  <h1 class="chead__title" data-reveal="lines" style="margin-top:1rem">{{ blog.title }}</h1>
+  <p class="chead__lede t-lede" data-reveal="up">{{ section.settings.body }}</p>
+</header>
+
+<div class="section section--flush-top">
+  <div class="journal">
+    {%- for article in blog.articles -%}
+      <article class="post{% if forloop.first %} post--lead{% endif %}" data-reveal="up">
+        <a class="post__media media" href="{{ article.url }}" tabindex="-1" aria-hidden="true" data-cursor="view">
+          {%- if article.image -%}
+            <img src="{{ article.image | image_url: width: 1400 }}" alt=""
+                 width="1600" height="1000"
+                 loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" decoding="async">
+          {%- endif -%}
+        </a>
+
+        <div style="display:grid;gap:0.85rem;align-content:start">
+          <div class="post__meta">
+            <span class="t-meta">{{ article.tags.first | default: 'Journal' }}</span>
+            <span class="t-meta">{{ article.published_at | date: '%d.%m.%y' }}</span>
+          </div>
+          <h2 class="post__title"><a href="{{ article.url }}">{{ article.title }}</a></h2>
+          <p class="t-body" style="font-size:var(--t-small)">{{ article.excerpt | strip_html | truncate: 180 }}</p>
+          <span class="link" aria-hidden="true">
+            {{ 'blogs.article.read_more' | t }}
+            <span class="link__arrow">{% render 'icon', name: 'arrow', size: 13 %}</span>
+          </span>
+        </div>
+      </article>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Blog",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body",
+      "default": "Notes on construction, culture and the decisions behind each drop."
+    }
+  ]
+}
+{% endschema %}

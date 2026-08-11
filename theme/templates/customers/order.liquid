@@ -1,0 +1,26 @@
+<div class="page">
+  <h1 class="page__title">{{ order.name }}</h1>
+  <div>
+    <p class="t-meta">Placed {{ order.created_at | date: '%d %B %Y' }} — {{ order.financial_status_label }}</p>
+
+    <table style="margin-top:2rem">
+      <tbody>
+        {%- for line in order.line_items -%}
+          <tr style="border-top:1px solid var(--line)">
+            <td style="padding:1rem 0">
+              <p class="t-h3">{{ line.title }}</p>
+              <p class="t-meta">{{ line.variant.title }} — Qty {{ line.quantity }}</p>
+            </td>
+            <td style="padding:1rem 0;text-align:right">{{ line.final_line_price | money }}</td>
+          </tr>
+        {%- endfor -%}
+      </tbody>
+      <tfoot>
+        <tr style="border-top:1px solid var(--ink)">
+          <td style="padding:1rem 0" class="t-meta t-meta--ink">Total</td>
+          <td style="padding:1rem 0;text-align:right" class="t-h3">{{ order.total_price | money }}</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

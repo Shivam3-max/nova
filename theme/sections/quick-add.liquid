@@ -1,0 +1,97 @@
+{%- comment -%}
+  Quick add panel, fetched via the Section Rendering API
+  (/products/<handle>?section_id=quick-add).
+
+  It is a cut-down product form: same variant model, same add-to-cart path,
+  no gallery or storytelling.
+{%- endcomment -%}
+
+{%- liquid
+  assign variant = product.selected_or_first_available_variant
+  assign colours = product.metafields.custom.color_data.value | parse_json
+-%}
+
+<div class="quick__media">
+  <img src="{{ product.featured_image | image_url: width: 700 }}"
+       alt="{{ product.title | escape }}" width="1000" height="1250" decoding="async">
+</div>
+
+<div class="quick__body" data-component="variant-picker" data-update-url="false">
+  <script type="application/json" data-product-json>{{ product | json }}</script>
+
+  <div>
+    <p class="t-meta">{{ product.type }}</p>
+    <h2 class="t-h3" style="margin-top:0.5rem">{{ product.title }}</h2>
+  </div>
+
+  <p class="pdp__price" data-variant-price>{{ variant.price | money }}</p>
+  <s class="pdp__compare" data-variant-compare hidden></s>
+
+  {%- form 'product', product, id: 'quick-add-form' -%}
+    <input type="hidden" name="id" value="{{ variant.id }}" data-variant-id>
+    <input type="hidden" name="quantity" value="1" data-quantity-input>
+
+    {%- if product.options_with_values[0] and product.options_with_values[0].values.size > 1 -%}
+      <div class="pdp__option" style="margin-bottom:1rem">
+        <div class="pdp__option-head">
+          <span class="t-meta t-meta--ink">{{ product.options_with_values[0].name }}</span>
+          <span class="pdp__option-value" data-option-readout="1">{{ variant.option1 }}</span>
+        </div>
+        <div class="swatches" role="radiogroup" aria-label="{{ product.options_with_values[0].name }}">
+          {%- for value in product.options_with_values[0].values -%}
+            {%- liquid
+              assign swatch_hex = '#cccccc'
+              if colours
+                for colour in colours
+                  if colour.name == value.name
+                    assign swatch_hex = colour.swatch
+                    break
+                  endif
+                endfor
+              endif
+            -%}
+            <button class="swatch" type="button" role="radio"
+                    data-option-input data-option-position="1"
+                    data-option-value="{{ value.name }}" value="{{ value.name }}"
+                    aria-checked="{% if value.name == variant.option1 %}true{% else %}false{% endif %}"
+                    aria-label="{{ value.name }}"
+                    style="--swatch-color: {{ swatch_hex }}"></button>
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- if product.options_with_values[1] -%}
+      <div class="pdp__option" style="margin-bottom:1.25rem">
+        <div class="pdp__option-head">
+          <span class="t-meta t-meta--ink">{{ product.options_with_values[1].name }}</span>
+        </div>
+        <div class="sizes" role="radiogroup" aria-label="{{ product.options_with_values[1].name }}">
+          {%- for value in product.options_with_values[1].values -%}
+            <button class="size" type="button" role="radio"
+                    data-option-input data-option-position="2"
+                    data-option-value="{{ value.name }}" value="{{ value.name }}"
+                    aria-checked="{% if value.name == variant.option2 %}true{% else %}false{% endif %}">
+              {{ value.name }}
+            </button>
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+
+    <button class="btn btn--full" type="submit" data-add-button data-cursor="add">
+      <span data-add-label>{{ 'products.product.add_to_bag' | t }}</span>
+    </button>
+  {%- endform -%}
+
+  <a class="link" href="{{ product.url }}">
+    {{ 'products.product.view_product' | t }}
+    <span class="link__arrow">{% render 'icon', name: 'arrow', size: 13 %}</span>
+  </a>
+</div>
+
+{% schema %}
+{
+  "name": "Quick add"
+}
+{% endschema %}

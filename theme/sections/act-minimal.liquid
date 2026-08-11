@@ -1,0 +1,68 @@
+{%- comment -%} Act 03 — MINIMAL. Pure white, oversized type, one garment. {%- endcomment -%}
+
+{%- liquid
+  assign collection = section.settings.collection
+  unless collection.products
+    assign collection = collections[section.settings.collection]
+  endunless
+
+  assign product = section.settings.product
+  if product == blank
+    assign product = collection.products.first
+  endif
+-%}
+
+<section class="act-minimal" aria-labelledby="act-minimal-title">
+  <p class="t-index" data-reveal="up">{{ section.settings.index }}</p>
+
+  <h2 class="act-minimal__title" id="act-minimal-title" style="margin-top:1.5rem">
+    <span data-reveal="up">{{ section.settings.heading_a }}</span>
+    <span data-reveal="up" data-reveal-delay="0.12">{{ section.settings.heading_b }}</span>
+  </h2>
+
+  {%- if product -%}
+    <div class="act-minimal__stage" data-reveal="scale" data-reveal-delay="0.1">
+      <img src="{{ product.featured_image | image_url: width: 900 }}"
+           srcset="{{ product.featured_image | image_url: width: 500 }} 500w,
+                   {{ product.featured_image | image_url: width: 900 }} 900w"
+           sizes="(max-width: 48rem) 78vw, 34rem"
+           alt="{{ product.title | escape }}"
+           width="1000" height="1250" loading="lazy" decoding="async">
+    </div>
+
+    <div class="act-minimal__meta" data-reveal="up">
+      <span class="t-meta t-meta--ink">{{ product.title }}</span>
+      <span class="t-meta">{{ product.price | money }}</span>
+      <a class="link" href="{{ product.url }}" data-cursor="view">View piece</a>
+    </div>
+  {%- endif -%}
+
+  <a class="btn btn--ghost" href="{{ collection.url | default: routes.all_products_collection_url }}"
+     data-magnetic="0.24" data-cursor="enter">
+    {{ section.settings.cta_label }}
+  </a>
+
+  {%- if collection.products.size > 1 -%}
+    <div class="act-minimal__row" data-reveal="fade" data-reveal-children=".pcard">
+      {%- for item in collection.products limit: section.settings.count -%}
+        {% render 'product-card', product: item, show_quick: false, sizes: '(max-width: 48rem) 46vw, 15rem' %}
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Act 03 — Minimal",
+  "settings": [
+    { "type": "text", "id": "index", "label": "Index", "default": "03 — Essentials" },
+    { "type": "text", "id": "heading_a", "label": "Heading line 1", "default": "Less." },
+    { "type": "text", "id": "heading_b", "label": "Heading line 2", "default": "Better." },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Explore essentials" },
+    { "type": "collection", "id": "collection", "label": "Collection", "default": "minimal" },
+    { "type": "product", "id": "product", "label": "Feature product" },
+    { "type": "range", "id": "count", "label": "Supporting products", "min": 2, "max": 6, "step": 1, "default": 4 }
+  ],
+  "presets": [{ "name": "Act 03 — Minimal" }]
+}
+{% endschema %}

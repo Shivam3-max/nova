@@ -1,0 +1,30 @@
+<div class="page">
+  <h1 class="page__title">Create account</h1>
+  <div style="max-width:26rem">
+    {%- form 'create_customer', id: 'customer-register-form' -%}
+      {%- if form.errors -%}
+        <p class="news__note" role="alert">{{ form.errors | default_errors }}</p>
+      {%- endif -%}
+      <label class="field" style="margin-bottom:1.25rem">
+        <input class="field__input" type="text" name="customer[first_name]" placeholder=" " autocomplete="given-name">
+        <span class="field__label">First name</span><span class="field__rule"></span>
+      </label>
+      <label class="field" style="margin-bottom:1.25rem">
+        <input class="field__input" type="text" name="customer[last_name]" placeholder=" " autocomplete="family-name">
+        <span class="field__label">Last name</span><span class="field__rule"></span>
+      </label>
+      <label class="field" style="margin-bottom:1.25rem">
+        <input class="field__input" type="email" name="customer[email]" placeholder=" " autocomplete="email" required>
+        <span class="field__label">Email</span><span class="field__rule"></span>
+      </label>
+      <label class="field" style="margin-bottom:1.5rem">
+        <input class="field__input" type="password" name="customer[password]" placeholder=" " autocomplete="new-password" required>
+        <span class="field__label">Password</span><span class="field__rule"></span>
+      </label>
+      <button class="btn btn--full" type="submit">Create account</button>
+    {%- endform -%}
+    <p class="t-meta" style="margin-top:1.25rem">
+      <a class="link" href="{{ routes.account_login_url }}">Already have an account?</a>
+    </p>
+  </div>
+</div>

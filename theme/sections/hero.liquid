@@ -1,0 +1,99 @@
+{%- comment -%}
+  WebGL hero.
+
+  The static plate is rendered first and is the real content: it is what search
+  engines, no-JS visitors, phones, low-power devices and reduced-motion users
+  see. The canvas is layered over it and only takes over once Three.js has
+  loaded and the scene is running.
+{%- endcomment -%}
+
+{%- liquid
+  assign featured = section.settings.product
+  if featured == blank
+    assign featured = collections['the-new-drop'].products.first
+  endif
+  assign plate = featured.featured_image | default: section.settings.image
+-%}
+
+<section class="hero" data-component="hero" data-hero-sentinel aria-label="{{ section.settings.heading | escape }}">
+  <div class="hero__stage">
+    <div class="hero__fallback" data-hero-fallback>
+      {%- if plate -%}
+        <img src="{{ plate | image_url: width: 900 }}"
+             srcset="{{ plate | image_url: width: 600 }} 600w, {{ plate | image_url: width: 1000 }} 1000w"
+             sizes="(max-width: 48rem) 74vw, 40vw"
+             alt="{{ featured.title | default: 'NØVA garment' | escape }}"
+             width="1000" height="1250"
+             fetchpriority="high" decoding="async">
+      {%- endif -%}
+    </div>
+
+    {%- if settings.enable_webgl -%}
+      <canvas class="hero__canvas"
+              data-hero-canvas
+              data-texture="{{ plate | image_url: width: 1000 }}"
+              aria-hidden="true"></canvas>
+    {%- endif -%}
+  </div>
+
+  <div class="hero__content">
+    <p class="hero__eyebrow t-meta" data-hero-fade>{{ section.settings.eyebrow }}</p>
+
+    <h1 class="hero__title" data-hero-title>{{ section.settings.heading }}</h1>
+
+    <p class="hero__sub" data-hero-fade>{{ section.settings.subheading }}</p>
+
+    <div class="hero__cta" data-hero-fade>
+      <a class="btn btn--lg" href="{{ section.settings.cta_url | default: routes.all_products_collection_url }}"
+         data-magnetic="0.28" data-cursor="enter">
+        {{ section.settings.cta_label }}
+        <span class="link__arrow">{% render 'icon', name: 'arrow', size: 14 %}</span>
+      </a>
+    </div>
+  </div>
+
+  {%- if featured -%}
+    <span class="hero__pin hero__pin--a">{{ featured.type }}</span>
+    <span class="hero__pin hero__pin--b">{{ featured.price | money }}</span>
+  {%- endif -%}
+
+  <div class="hero__foot">
+    <div class="hero__scroll">
+      <span class="hero__scroll-line" aria-hidden="true"></span>
+      <span class="t-meta">Scroll</span>
+    </div>
+    <p class="t-meta">{{ section.settings.footnote }}</p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Drop 01 — Live now" },
+    { "type": "text", "id": "heading", "label": "Headline", "default": "Wear what’s next." },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "The new language of modern fashion."
+    },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Explore the collection" },
+    { "type": "url", "id": "cta_url", "label": "Button link" },
+    { "type": "text", "id": "footnote", "label": "Footnote", "default": "Made once. Not restocked." },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Hero product",
+      "info": "Its featured image becomes the garment in the 3D scene."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Fallback image",
+      "info": "Used only if no hero product is set."
+    }
+  ],
+  "presets": [{ "name": "Hero" }]
+}
+{% endschema %}

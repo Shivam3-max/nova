@@ -1,0 +1,76 @@
+{%- comment -%}
+  Fullscreen mega menu.
+
+  Categories come from the `mega-categories` link list and visual cards from the
+  four themed collections, so merchandising changes in Shopify admin without a
+  code edit. Preview imagery falls back to the collection image.
+{%- endcomment -%}
+
+{%- liquid
+  assign card_handles = 'street,minimal,luxury,limited-edition' | split: ','
+-%}
+
+<div class="mega" id="mega-menu" data-component="mega-menu" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Shop menu">
+  <div class="mega__sheet"></div>
+
+  <div class="mega__inner" data-scroll-native>
+    <div class="mega__col">
+      <p class="mega__group-label" id="mega-categories-label">Shop by category</p>
+
+      <div class="mega__list" role="list" aria-labelledby="mega-categories-label">
+        {%- for link in linklists.mega-categories.links -%}
+          {%- liquid
+            assign handle = link.url | split: '/' | last
+            assign linked = collections[handle]
+            assign preview = linked.image | default: linked.featured_image
+          -%}
+          <a class="mega__link" href="{{ link.url }}" role="listitem"
+             data-preview="{{ handle }}" data-cursor="enter">
+            <span class="mega__idx">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+            <span>{{ link.title }}</span>
+          </a>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <div class="mega__col">
+      <div class="mega__preview" aria-hidden="true">
+        {%- for link in linklists.mega-categories.links -%}
+          {%- liquid
+            assign handle = link.url | split: '/' | last
+            assign linked = collections[handle]
+            assign preview = linked.image | default: linked.featured_image
+          -%}
+          {%- if preview -%}
+            <img src="{{ preview | image_url: width: 900 }}" alt="" width="1600" height="1000"
+                 loading="lazy" decoding="async" data-preview="{{ handle }}">
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <div class="mega__cards">
+        {%- for handle in card_handles -%}
+          {%- assign col = collections[handle] -%}
+          {%- if col -%}
+            <a class="mega__card" href="{{ col.url }}" data-cursor="view">
+              <img src="{{ col.image | image_url: width: 800 }}" alt="{{ col.title | escape }}"
+                   width="1600" height="1000" loading="lazy" decoding="async">
+              <span class="mega__card__label">{{ col.title }}</span>
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+
+  <div class="mega__foot">
+    <p class="t-meta">{{ settings.brand_tagline }}</p>
+    <div style="display:flex;gap:1.5rem;align-items:center">
+      <a class="link" href="{{ routes.all_products_collection_url }}">Shop everything</a>
+      <button class="header__action" type="button" data-mega-close aria-label="Close menu">
+        {% render 'icon', name: 'close', size: 16 %}
+        <span>Close</span>
+      </button>
+    </div>
+  </div>
+</div>

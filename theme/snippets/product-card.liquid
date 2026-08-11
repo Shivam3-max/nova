@@ -1,0 +1,160 @@
+{%- comment -%}
+  Product card.
+
+  Accepts:
+    product        (required)
+    lazy           'lazy' | 'eager'      default 'lazy'
+    sizes          sizes attribute       default a 2-column editorial grid
+    show_quick     override settings.show_quick_add
+    index          for load priority
+
+  Everything commercial on this card — price, availability, the variant ids
+  behind the one-tap sizes — comes from the Shopify product object. Nothing is
+  hardcoded, so swapping the demo catalogue for a real one changes nothing here.
+{%- endcomment -%}
+
+{%- liquid
+  assign lazy = lazy | default: 'lazy'
+  assign sizes = sizes | default: '(max-width: 40rem) 100vw, (max-width: 60rem) 50vw, 40vw'
+
+  if show_quick == nil
+    assign show_quick = settings.show_quick_add
+  endif
+
+  assign first_image = product.featured_image
+  assign second_image = product.images[1]
+
+  assign on_sale = false
+  if product.compare_at_price > product.price
+    assign on_sale = true
+  endif
+
+  assign badge = product.metafields.custom.badge.value
+  assign colour_json = product.metafields.custom.color_data.value
+
+  comment
+    Size buttons need a variant id per size, resolved against the first
+    available colourway so a tap always adds something that exists.
+  endcomment
+  assign default_colour = product.options_with_values[0].values[0].name
+  if product.selected_or_first_available_variant
+    assign default_colour = product.selected_or_first_available_variant.option1
+  endif
+-%}
+
+<article class="pcard{% unless second_image %} pcard--single{% endunless %}" data-product-handle="{{ product.handle }}">
+  <div class="pcard__media" data-cursor="view">
+    <a href="{{ product.url }}" tabindex="-1" aria-hidden="true">
+      <img
+        class="pcard__img pcard__img--main"
+        src="{{ first_image | image_url: width: 800 }}"
+        srcset="{{ first_image | image_url: width: 400 }} 400w,
+                {{ first_image | image_url: width: 800 }} 800w,
+                {{ first_image | image_url: width: 1200 }} 1200w"
+        sizes="{{ sizes }}"
+        alt="{{ first_image.alt | default: product.title | escape }}"
+        width="1000" height="1250"
+        loading="{{ lazy }}"
+        {% if lazy == 'eager' %}fetchpriority="high"{% endif %}
+        decoding="async">
+
+      {%- if second_image -%}
+        <img
+          class="pcard__img pcard__img--alt"
+          src="{{ second_image | image_url: width: 800 }}"
+          srcset="{{ second_image | image_url: width: 400 }} 400w,
+                  {{ second_image | image_url: width: 800 }} 800w"
+          sizes="{{ sizes }}"
+          alt=""
+          width="1000" height="1250"
+          loading="lazy"
+          decoding="async"
+          aria-hidden="true">
+      {%- endif -%}
+    </a>
+
+    <div class="pcard__flags">
+      {%- if badge != blank -%}<span class="badge badge--solid">{{ badge }}</span>{%- endif -%}
+      {%- if on_sale -%}<span class="badge badge--sale">{{ 'products.product.on_sale' | t }}</span>{%- endif -%}
+    </div>
+
+    {%- if settings.show_wishlist -%}
+      <button class="pcard__wish" type="button"
+              data-wishlist="{{ product.id }}"
+              aria-pressed="false"
+              aria-label="{{ 'products.product.save_to_wishlist' | t }}">
+        {% render 'icon', name: 'heart', size: 15 %}
+      </button>
+    {%- endif -%}
+
+    {%- unless product.available -%}
+      <div class="pcard__sold">{{ 'products.product.sold_out' | t }}</div>
+    {%- endunless -%}
+
+    {%- if product.available -%}
+      <div class="pcard__tray" data-requires-js>
+        {%- if settings.show_card_sizes and product.options.size > 1 -%}
+          <div class="pcard__sizes" role="group" aria-label="{{ 'products.product.size' | t }} — {{ product.title | escape }}">
+            {%- for value in product.options_with_values[1].values -%}
+              {%- liquid
+                assign target = null
+                for variant in product.variants
+                  if variant.option1 == default_colour and variant.option2 == value.name
+                    assign target = variant
+                    break
+                  endif
+                endfor
+              -%}
+              <button class="pcard__size" type="button"
+                      data-quick-size
+                      data-variant-id="{{ target.id }}"
+                      data-cursor="add"
+                      {% unless target.available %}disabled aria-label="{{ value.name }} — {{ 'products.product.sold_out' | t }}"{% endunless %}>
+                {{ value.name }}
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        {%- if show_quick -%}
+          <button class="pcard__quick" type="button"
+                  data-quick-add="{{ product.handle }}"
+                  data-cursor="add"
+                  aria-label="{{ 'products.product.quick_add' | t }} — {{ product.title | escape }}">
+            {% render 'icon', name: 'plus', size: 12 %}
+            {{ 'products.product.quick_add' | t }}
+          </button>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="pcard__body">
+    <h3 class="pcard__title">
+      <a href="{{ product.url }}">{{ product.title }}</a>
+    </h3>
+
+    <div class="pcard__price">
+      {%- if on_sale -%}
+        <del>{{ product.compare_at_price | money }}</del>
+      {%- endif -%}
+      <span>{{ product.price | money }}</span>
+    </div>
+
+    <div class="pcard__meta">
+      <span>{{ product.type }}</span>
+      {%- if colour_json != blank -%}
+        {%- assign colours = colour_json | parse_json -%}
+        <span class="pcard__colors" aria-label="{{ 'products.product.colors_available' | t: count: colours.size }}">
+          {%- for colour in colours -%}
+            <span class="pcard__dot" style="--swatch-color: {{ colour.swatch }}" title="{{ colour.name }}"></span>
+          {%- endfor -%}
+        </span>
+      {%- endif -%}
+    </div>
+
+    <div class="pcard__reveal">
+      <p class="t-meta">{{ product.vendor }} — {{ product.options_with_values[1].values.size }} sizes</p>
+    </div>
+  </div>
+</article>

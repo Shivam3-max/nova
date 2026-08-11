@@ -1,0 +1,551 @@
+/* ==========================================================================
+   Product card, editorial product grid, quick-add sheet, add-to-bag toast
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Grid — 2-column editorial by default, deliberately not a 4-up template grid.
+   Every third row offsets one card to break the ledger rhythm.
+   -------------------------------------------------------------------------- */
+
+.pgrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2rem, 5vw, 5.5rem) clamp(1rem, 3vw, 3.5rem);
+}
+
+.pgrid--dense {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.6rem, 3vw, 3rem) clamp(1rem, 2vw, 2rem);
+}
+
+/* Editorial offset: nudge every 4th card down so the grid reads as a spread. */
+.pgrid > :nth-child(4n + 2) {
+  transform: translateY(clamp(1rem, 4vw, 4.5rem));
+}
+
+.pgrid--flat > * {
+  transform: none;
+}
+
+/* --------------------------------------------------------------------------
+   Card
+   -------------------------------------------------------------------------- */
+
+.pcard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.pcard__media {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: var(--paper-2);
+  aspect-ratio: 4 / 5;
+}
+
+.pcard__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 7%;
+  transition: opacity 0.6s var(--ease-out), transform 1.1s var(--ease-out);
+  will-change: transform, opacity;
+}
+
+/* Second image sits underneath and cross-fades on hover. */
+.pcard__img--alt {
+  opacity: 0;
+  transform: scale(1.04);
+}
+
+.pcard:hover .pcard__img--main { opacity: 0; transform: scale(1.03); }
+.pcard:hover .pcard__img--alt  { opacity: 1; transform: scale(1); }
+
+/* When a product has only one image, scale it gently instead of swapping. */
+.pcard--single:hover .pcard__img--main {
+  opacity: 1;
+  transform: scale(1.045);
+}
+
+.pcard__flags {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: flex-start;
+}
+
+.pcard__wish {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  z-index: 3;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: grid;
+  place-items: center;
+  color: var(--ink);
+  opacity: 0;
+  transform: translateY(-0.35rem);
+  transition: opacity var(--dur) var(--ease-out), transform var(--dur) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+
+.pcard:hover .pcard__wish,
+.pcard__wish:focus-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.pcard__wish[aria-pressed="true"] {
+  opacity: 1;
+  color: var(--signal);
+}
+
+.pcard__wish[aria-pressed="true"] svg {
+  fill: currentColor;
+}
+
+/* Hover tray: quick add + sizes rise from the bottom edge of the plate. */
+.pcard__tray {
+  position: absolute;
+  inset-inline: 0.65rem;
+  bottom: 0.65rem;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  transform: translate3d(0, calc(100% + 0.65rem), 0);
+  opacity: 0;
+  transition: transform 0.55s var(--ease-soft), opacity 0.35s var(--ease-out);
+}
+
+.pcard:hover .pcard__tray,
+.pcard:focus-within .pcard__tray {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+
+.pcard__sizes {
+  display: flex;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+}
+
+.pcard__size {
+  flex: 1 1 0;
+  min-width: 2.1rem;
+  height: 2.1rem;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid var(--line);
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+
+.pcard__size:hover:not(:disabled) {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.pcard__size:disabled {
+  color: var(--ink-4);
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+.pcard__quick {
+  width: 100%;
+  height: 2.7rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: var(--t-meta);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.pcard__quick:hover {
+  background: color-mix(in srgb, var(--ink) 82%, var(--paper));
+}
+
+/* Card body */
+.pcard__body {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.35rem 1rem;
+  align-items: baseline;
+  padding-top: 1.05rem;
+}
+
+.pcard__title {
+  font-size: var(--t-small);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.pcard__title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.pcard__price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-size: var(--t-small);
+  font-variant-numeric: tabular-nums;
+}
+
+.pcard__price del {
+  color: var(--ink-4);
+  font-size: 0.75rem;
+}
+
+.pcard__meta {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: var(--t-meta);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* Colour dots in the card footer. */
+.pcard__colors {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.pcard__dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--swatch-color, #ccc);
+  box-shadow: inset 0 0 0 1px var(--line-strong);
+}
+
+/* Details that slide in under the title on hover. */
+.pcard__reveal {
+  grid-column: 1 / -1;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.5s var(--ease-soft), opacity 0.35s var(--ease-out);
+}
+
+.pcard:hover .pcard__reveal,
+.pcard:focus-within .pcard__reveal {
+  max-height: 3rem;
+  opacity: 1;
+}
+
+.pcard__sold {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--paper) 62%, transparent);
+  font-size: var(--t-meta);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------------------
+   Horizontal product rail (drag to explore)
+   -------------------------------------------------------------------------- */
+
+.rail {
+  position: relative;
+}
+
+.rail__viewport {
+  overflow: hidden;
+  cursor: grab;
+}
+
+.rail__viewport.is-dragging {
+  cursor: grabbing;
+}
+
+.rail__track {
+  display: flex;
+  gap: clamp(1rem, 2.4vw, 2.4rem);
+  will-change: transform;
+  padding-inline: var(--gutter);
+}
+
+.rail__item {
+  flex: 0 0 clamp(15rem, 27vw, 24rem);
+  user-select: none;
+}
+
+.rail__item img {
+  pointer-events: none;
+}
+
+.rail__progress {
+  margin-top: var(--s-6);
+  height: 1px;
+  background: var(--line);
+  position: relative;
+  margin-inline: var(--gutter);
+}
+
+.rail__bar {
+  position: absolute;
+  inset-block: -1px;
+  left: 0;
+  height: 3px;
+  background: var(--ink);
+  transform-origin: left;
+  transform: scaleX(0.2);
+}
+
+/* Native scroll-snap fallback used on touch, where drag physics are worse
+   than the platform's own momentum scrolling. */
+@media (hover: none), (pointer: coarse) {
+  .rail__viewport {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .rail__viewport::-webkit-scrollbar { display: none; }
+
+  .rail__track {
+    transform: none !important;
+  }
+
+  .rail__item {
+    scroll-snap-align: start;
+    flex-basis: 72vw;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Quick add sheet
+   -------------------------------------------------------------------------- */
+
+.quick {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-drawer);
+  display: grid;
+  place-items: center;
+  padding: var(--gutter);
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.quick.is-open {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.quick__scrim {
+  position: absolute;
+  inset: 0;
+  background: var(--scrim);
+  opacity: 0;
+}
+
+.quick__panel {
+  position: relative;
+  width: min(44rem, 100%);
+  max-height: min(38rem, 88vh);
+  overflow: auto;
+  background: var(--paper);
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+  opacity: 0;
+  transform: translateY(1.5rem);
+}
+
+/* The Section Rendering API returns the section wrapped in its own div.
+   Flattening both wrappers lets the section's two halves become grid items of
+   the panel rather than nesting inside an anonymous box. */
+.quick__panel .shopify-section,
+.quick__panel [data-quick-body] {
+  display: contents;
+}
+
+.quick__media {
+  background: var(--paper-2);
+  aspect-ratio: 4 / 5;
+}
+
+.quick__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 8%;
+}
+
+.quick__body {
+  padding: clamp(1.4rem, 3vw, 2.4rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.quick__close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 2;
+  width: 2.4rem;
+  height: 2.4rem;
+  display: grid;
+  place-items: center;
+}
+
+@media (max-width: 44rem) {
+  .quick__panel {
+    grid-template-columns: 1fr;
+    align-content: start;
+  }
+
+  .quick__media {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Add-to-bag confirmation toast
+   -------------------------------------------------------------------------- */
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 2rem;
+  z-index: calc(var(--z-drawer) + 5);
+  transform: translate(-50%, 1.5rem);
+  opacity: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.8rem 0.85rem 0.8rem 0.8rem;
+  background: var(--ink);
+  color: var(--paper);
+  max-width: min(26rem, calc(100vw - 2rem));
+}
+
+.toast.is-open {
+  pointer-events: auto;
+}
+
+.toast__thumb {
+  width: 3rem;
+  height: 3.5rem;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.2rem;
+  flex: none;
+}
+
+.toast__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.toast__label {
+  font-size: var(--t-meta);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.toast__title {
+  font-size: var(--t-small);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.toast__cta {
+  margin-left: auto;
+  font-size: var(--t-meta);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+  flex: none;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 60rem) {
+  .pgrid--dense {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 40rem) {
+  /* Single column on phones: the plate gets the full width, and the hover
+     tray becomes a persistent quick-add since there is no hover. */
+  .pgrid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .pgrid > :nth-child(4n + 2) {
+    transform: none;
+  }
+
+  .pgrid--dense {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem 0.75rem;
+  }
+
+  .pcard__tray {
+    position: static;
+    transform: none;
+    opacity: 1;
+    padding-top: 0.75rem;
+    inset: auto;
+  }
+
+  .pcard__sizes {
+    display: none;
+  }
+
+  .pcard__wish {
+    opacity: 1;
+    transform: none;
+  }
+
+  .pcard__reveal {
+    max-height: 3rem;
+    opacity: 1;
+  }
+}

@@ -1,0 +1,89 @@
+{%- comment -%} Act 04 — ACTIVE. Motion rules, three modes, products reveal on scroll. {%- endcomment -%}
+
+{%- liquid
+  assign collection = section.settings.collection
+  unless collection.products
+    assign collection = collections[section.settings.collection]
+  endunless
+-%}
+
+<section class="act-active" aria-labelledby="act-active-title">
+  <div class="act-active__streaks" aria-hidden="true">
+    {%- for i in (1..7) -%}
+      <span class="act-active__streak" style="top: {{ i | times: 13 }}%"></span>
+    {%- endfor -%}
+  </div>
+
+  <div class="act-active__head">
+    <p class="t-index" data-reveal="up">{{ section.settings.index }}</p>
+    <h2 class="act-active__title" id="act-active-title" data-reveal="lines" style="margin-block:1rem 1.25rem">
+      {{ section.settings.heading }}
+    </h2>
+    <p class="t-lede" data-reveal="up">{{ section.settings.body }}</p>
+  </div>
+
+  <div class="act-active__modes">
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign mode_product = block.settings.product
+        if mode_product == blank
+          assign mode_product = collection.products[forloop.index0]
+        endif
+      -%}
+      <article class="mode" data-reveal="up" data-reveal-delay="{{ forloop.index0 | times: 0.08 }}" {{ block.shopify_attributes }}>
+        <p class="mode__idx">{{ forloop.index | prepend: '0' | slice: -2, 2 }} / {{ block.settings.label }}</p>
+        <h3 class="mode__name">{{ block.settings.label }}</h3>
+
+        {%- if mode_product -%}
+          <a class="mode__media" href="{{ mode_product.url }}" data-cursor="view">
+            <img src="{{ mode_product.featured_image | image_url: width: 700 }}"
+                 alt="{{ mode_product.title | escape }}"
+                 width="1000" height="1250" loading="lazy" decoding="async">
+          </a>
+          <p class="t-meta">{{ mode_product.title }} — {{ mode_product.price | money }}</p>
+        {%- endif -%}
+
+        <p class="t-body" style="font-size:var(--t-small)">{{ block.settings.body }}</p>
+      </article>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Act 04 — Active",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "index", "label": "Index", "default": "04 — Active" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Move different." },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body",
+      "default": "Four-way stretch, flatlock seams, and fabric that stays where you put it."
+    },
+    { "type": "collection", "id": "collection", "label": "Collection", "default": "active" }
+  ],
+  "blocks": [
+    {
+      "type": "mode",
+      "name": "Mode",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Train" },
+        { "type": "textarea", "id": "body", "label": "Body", "default": "Built for load." },
+        { "type": "product", "id": "product", "label": "Product" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Act 04 — Active",
+      "blocks": [
+        { "type": "mode", "settings": { "label": "Train", "body": "Compression where it counts, room where it does not." } },
+        { "type": "mode", "settings": { "label": "Run", "body": "Twenty-eight grams. Nothing to think about." } },
+        { "type": "mode", "settings": { "label": "Recover", "body": "Brushed inside. For the hours after." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

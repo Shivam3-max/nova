@@ -1,0 +1,276 @@
+{%- comment -%}
+  Product page.
+
+  Every commercial element is bound to the Shopify product object: the variant
+  matrix drives availability, the form posts real variant ids, and the 3D viewer
+  payload is built from the same colour metafield the swatches use, so the
+  viewer and the buy button can never disagree.
+{%- endcomment -%}
+
+{%- liquid
+  assign variant = product.selected_or_first_available_variant
+  assign on_sale = false
+  if variant.compare_at_price > variant.price
+    assign on_sale = true
+  endif
+
+  assign colours = product.metafields.custom.color_data.value | parse_json
+  assign rating = product.metafields.reviews.rating.value
+  assign rating_count = product.metafields.reviews.rating_count.value
+  assign story = product.metafields.custom.product_story.value
+  assign model_url = product.metafields.custom.product_3d_model.value
+
+  comment
+    Shopify exposes uploaded 3D models as product media. If one exists it wins;
+    the metafield is the manual override, and the plate viewer is the fallback.
+  endcomment
+  assign model_media = null
+  for media in product.media
+    if media.media_type == 'model'
+      assign model_media = media
+      break
+    endif
+  endfor
+-%}
+
+<div class="pdp section--tight" style="padding-block:clamp(1.5rem,4vw,3rem)">
+  <div class="pdp__gallery">
+    {%- for image in product.images limit: 6 -%}
+      <div class="pdp__shot">
+        <img src="{{ image | image_url: width: 1200 }}"
+             srcset="{{ image | image_url: width: 600 }} 600w,
+                     {{ image | image_url: width: 1200 }} 1200w"
+             sizes="(max-width: 60rem) 78vw, 44vw"
+             alt="{{ image.alt | default: product.title | escape }}"
+             width="1000" height="1250"
+             loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+             {% if forloop.first %}fetchpriority="high"{% endif %}
+             decoding="async">
+      </div>
+    {%- endfor -%}
+  </div>
+
+  <div class="pdp__info" data-component="variant-picker">
+    {%- comment -%} The full product JSON — the single source the picker reads. {%- endcomment -%}
+    <script type="application/json" data-product-json>{{ product | json }}</script>
+
+    <nav class="pdp__crumbs" aria-label="Breadcrumb">
+      <a href="{{ routes.all_products_collection_url }}">Shop</a>
+      <span aria-hidden="true">/</span>
+      <span>{{ product.type }}</span>
+    </nav>
+
+    <h1 class="pdp__title">{{ product.title }}</h1>
+
+    <div class="pdp__pricing">
+      <span class="pdp__price" data-variant-price>{{ variant.price | money }}</span>
+      <s class="pdp__compare" data-variant-compare {% unless on_sale %}hidden{% endunless %}>
+        {{ variant.compare_at_price | money }}
+      </s>
+      {%- if on_sale -%}<span class="badge badge--sale">{{ 'products.product.on_sale' | t }}</span>{%- endif -%}
+    </div>
+
+    {%- if rating -%}
+      <div class="pdp__rating">
+        <span class="stars" aria-hidden="true">
+          {%- assign filled = rating.rating | round -%}
+          {%- for i in (1..5) -%}
+            <span class="{% if i > filled %}is-empty{% endif %}">{% render 'icon', name: 'star', size: 13 %}</span>
+          {%- endfor -%}
+        </span>
+        <span>{{ rating.rating }} — {{ rating_count }} reviews</span>
+      </div>
+    {%- endif -%}
+
+    {%- form 'product', product, id: 'product-form', class: 'pdp__form', novalidate: 'novalidate' -%}
+      <input type="hidden" name="id" value="{{ variant.id }}" data-variant-id>
+
+      {%- comment -%}
+        Option groups use div + role="radiogroup" rather than fieldset/legend.
+        A <legend> is taken out of normal flow inside a grid fieldset, which
+        makes the next group's heading overlap the swatches.
+      {%- endcomment -%}
+
+      {%- if product.options_with_values[0] -%}
+        <div class="pdp__option">
+          <div class="pdp__option-head">
+            <span class="t-meta t-meta--ink" id="opt-color-label">{{ product.options_with_values[0].name }}</span>
+            <span class="pdp__option-value" data-option-readout="1">{{ variant.option1 }}</span>
+          </div>
+          <div class="swatches" role="radiogroup" aria-labelledby="opt-color-label">
+            {%- for value in product.options_with_values[0].values -%}
+              {%- liquid
+                assign swatch_hex = '#cccccc'
+                if colours
+                  for colour in colours
+                    if colour.name == value.name
+                      assign swatch_hex = colour.swatch
+                      break
+                    endif
+                  endfor
+                endif
+              -%}
+              <button class="swatch" type="button"
+                      role="radio"
+                      data-option-input
+                      data-option-position="1"
+                      data-option-value="{{ value.name }}"
+                      value="{{ value.name }}"
+                      aria-checked="{% if value.name == variant.option1 %}true{% else %}false{% endif %}"
+                      aria-label="{{ value.name }}"
+                      style="--swatch-color: {{ swatch_hex }}"></button>
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- if product.options_with_values[1] -%}
+        <div class="pdp__option">
+          <div class="pdp__option-head">
+            <span class="t-meta t-meta--ink" id="opt-size-label">{{ product.options_with_values[1].name }}</span>
+            <a class="pdp__option-value" href="#pdp-fit">{{ 'products.product.size_guide' | t }}</a>
+          </div>
+          <div class="sizes" role="radiogroup" aria-labelledby="opt-size-label">
+            {%- for value in product.options_with_values[1].values -%}
+              <button class="size" type="button"
+                      role="radio"
+                      data-option-input
+                      data-option-position="2"
+                      data-option-value="{{ value.name }}"
+                      value="{{ value.name }}"
+                      aria-checked="{% if value.name == variant.option2 %}true{% else %}false{% endif %}">
+                {{ value.name }}
+              </button>
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+
+      <div class="pdp__buy" data-component="quantity">
+        <div class="pdp__buy-row">
+          <div class="qty">
+            <button class="qty__btn" type="button" data-quantity-minus aria-label="Decrease quantity">−</button>
+            <input class="qty__input" type="number" name="quantity" value="1" min="1"
+                   data-quantity-input aria-label="{{ 'products.product.quantity' | t }}">
+            <button class="qty__btn" type="button" data-quantity-plus aria-label="Increase quantity">+</button>
+          </div>
+
+          <button class="btn btn--full" type="submit" data-add-button data-cursor="add">
+            <span data-add-label>{{ 'products.product.add_to_bag' | t }}</span>
+          </button>
+        </div>
+
+        <button class="btn btn--ghost btn--full" type="button" data-buy-now data-cursor="enter">
+          {{ 'products.product.buy_now' | t }}
+        </button>
+      </div>
+    {%- endform -%}
+
+    {%- comment -%} VIEW IN 3D — payload built from the same colour data. {%- endcomment -%}
+    {%- if colours -%}
+      {%- capture viewer_payload -%}
+        {
+          "title": {{ product.title | json }},
+          "modelUrl": {%- if model_media -%}{{ model_media.sources[0].url | json }}{%- elsif model_url != blank and model_url contains '.glb' -%}{{ model_url | json }}{%- else -%}null{%- endif -%},
+          "colors": [
+            {%- for colour in colours -%}
+              {%- liquid
+                assign match_id = null
+                for v in product.variants
+                  if v.option1 == colour.name
+                    assign match_id = v.id
+                    break
+                  endif
+                endfor
+              -%}
+              {
+                "name": {{ colour.name | json }},
+                "swatch": {{ colour.swatch | json }},
+                "art": {{ colour.art | append: '.svg' | asset_url | json }},
+                "variantId": {{ match_id | json }}
+              }{%- unless forloop.last -%},{%- endunless -%}
+            {%- endfor -%}
+          ]
+        }
+      {%- endcapture -%}
+
+      <button class="view3d-btn" type="button"
+              data-view3d='{{ viewer_payload | strip_newlines | escape }}'
+              data-selected-color="{{ variant.option1 }}"
+              data-cursor="explore">
+        <span class="view3d-btn__cube" aria-hidden="true"></span>
+        {{ 'products.product.view_in_3d' | t }}
+      </button>
+    {%- endif -%}
+
+    {%- comment -%}
+      Compute the money string first: Liquid applies filters left to right, so
+      chaining `| times: 100 | money` after `| t:` would format the translated
+      sentence, not the amount.
+    {%- endcomment -%}
+    {%- assign free_ship_amount = settings.free_shipping_threshold | times: 100 | money -%}
+
+    <ul class="pdp__assurance">
+      <li>{{ 'products.product.free_shipping_over' | t: amount: free_ship_amount }}</li>
+      <li>{{ 'products.product.returns_window' | t }}</li>
+      <li>{{ 'products.product.dispatch' | t }}</li>
+    </ul>
+
+    <div class="acc" data-component="accordion" data-accordion-single="true">
+      {%- render 'accordion-item',
+        id: 'pdp-details',
+        title: 'Details',
+        open: true,
+        body: product.description
+      -%}
+
+      {%- if story != blank -%}
+        {%- render 'accordion-item', id: 'pdp-fabric', title: 'Fabric', body: story -%}
+      {%- endif -%}
+
+      {%- capture fit_body -%}
+        <dl class="acc__spec">
+          <dt>Fit</dt><dd>{{ section.settings.fit_note }}</dd>
+          <dt>Model</dt><dd>{{ section.settings.model_note }}</dd>
+          <dt>SKU</dt><dd data-variant-sku>{{ variant.sku }}</dd>
+        </dl>
+      {%- endcapture -%}
+      {%- render 'accordion-item', id: 'pdp-fit', title: 'Fit', body: fit_body -%}
+
+      {%- render 'accordion-item', id: 'pdp-shipping', title: 'Shipping', body: section.settings.shipping_note -%}
+      {%- render 'accordion-item', id: 'pdp-returns', title: 'Returns', body: section.settings.returns_note -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product",
+  "settings": [
+    {
+      "type": "text",
+      "id": "fit_note",
+      "label": "Fit note",
+      "default": "Oversized. Take your usual size for the intended fit, one down for a regular fit."
+    },
+    {
+      "type": "text",
+      "id": "model_note",
+      "label": "Model note",
+      "default": "Model is 6'1\" and wears a size M."
+    },
+    {
+      "type": "textarea",
+      "id": "shipping_note",
+      "label": "Shipping",
+      "default": "<p>Free shipping over ₹4,999. Metro delivery in 2–4 working days, rest of India in 4–7. Every order ships with tracking.</p>"
+    },
+    {
+      "type": "textarea",
+      "id": "returns_note",
+      "label": "Returns",
+      "default": "<p>Fourteen days from delivery, unworn with tags attached. Limited edition pieces are final sale.</p>"
+    }
+  ]
+}
+{% endschema %}

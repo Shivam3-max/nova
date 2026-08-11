@@ -1,0 +1,58 @@
+{%- comment -%}
+  Cart drawer.
+
+  Rendered empty and hydrated from /cart.js by components/cart-drawer.js, so it
+  is always consistent with Shopify's cart rather than with a stale server
+  render. The checkout button posts to Shopify's real checkout.
+{%- endcomment -%}
+
+<div class="drawer" id="cart-drawer" data-component="cart-drawer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="{{ 'cart.general.title' | t }}">
+  <div class="drawer__scrim" data-cart-close></div>
+
+  <div class="drawer__panel">
+    <header class="drawer__head">
+      <div>
+        <h2 class="t-h3">{{ 'cart.general.title' | t }}</h2>
+        <p class="t-meta" data-cart-count>0 items</p>
+      </div>
+      <button class="drawer__close" type="button" data-cart-close aria-label="{{ 'general.accessibility.close' | t }}">
+        {% render 'icon', name: 'close', size: 16 %}
+      </button>
+    </header>
+
+    {%- if settings.free_shipping_threshold > 0 -%}
+      <div class="ship" data-ship hidden>
+        <p class="ship__label" data-ship-label aria-live="polite"></p>
+        <div class="ship__bar">
+          <span class="ship__fill" data-ship-fill style="--progress: 0"></span>
+        </div>
+      </div>
+    {%- endif -%}
+
+    <ul class="drawer__items" data-cart-lines data-scroll-native hidden></ul>
+
+    <div class="drawer__empty" data-cart-empty>
+      <p class="t-h3">{{ 'cart.general.empty' | t }}</p>
+      <p class="t-body" style="text-align:center">{{ 'cart.general.empty_body' | t }}</p>
+      <a class="btn" href="{{ collections['the-new-drop'].url | default: routes.all_products_collection_url }}" data-cart-close>
+        Shop the drop
+      </a>
+    </div>
+
+    <footer class="drawer__foot" data-cart-foot hidden>
+      <div class="drawer__row">
+        <span class="t-meta t-meta--ink">{{ 'cart.general.subtotal' | t }}</span>
+        <span class="drawer__total" data-cart-total>{{ 0 | money }}</span>
+      </div>
+
+      <form action="{{ routes.cart_url }}" method="post">
+        <button class="btn btn--full" type="submit" name="checkout" data-cursor="enter">
+          {{ 'cart.general.checkout' | t }}
+        </button>
+      </form>
+
+      <a class="btn btn--ghost btn--full" href="{{ routes.cart_url }}">{{ 'cart.general.view_bag' | t }}</a>
+      <p class="drawer__note">{{ 'cart.general.taxes_note' | t }}</p>
+    </footer>
+  </div>
+</div>

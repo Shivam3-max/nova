@@ -1,0 +1,121 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "NØVA",
+    "theme_version": "1.0.0",
+    "theme_author": "NØVA Studio",
+    "theme_documentation_url": "https://nova.example/docs",
+    "theme_support_url": "https://nova.example/support"
+  },
+  {
+    "name": "Brand",
+    "settings": [
+      {
+        "type": "text",
+        "id": "brand_name",
+        "label": "Wordmark",
+        "default": "NØVA"
+      },
+      {
+        "type": "text",
+        "id": "brand_tagline",
+        "label": "Tagline",
+        "default": "Wear what’s next."
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image",
+        "info": "Optional. Replaces the wordmark when set."
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon"
+      }
+    ]
+  },
+  {
+    "name": "Commerce",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "cart_drawer",
+        "label": "Open the cart drawer on add",
+        "default": true
+      },
+      {
+        "type": "number",
+        "id": "free_shipping_threshold",
+        "label": "Free shipping threshold",
+        "info": "In rupees. Set to 0 to hide the progress meter.",
+        "default": 4999
+      },
+      {
+        "type": "checkbox",
+        "id": "show_quick_add",
+        "label": "Show quick add on product cards",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_card_sizes",
+        "label": "Show one-tap size buttons on product cards",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_wishlist",
+        "label": "Show wishlist button",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "grid_density",
+        "label": "Product grid density",
+        "options": [
+          { "value": "editorial", "label": "Editorial (2 columns)" },
+          { "value": "dense", "label": "Dense (3 columns)" }
+        ],
+        "default": "editorial"
+      }
+    ]
+  },
+  {
+    "name": "Motion",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Customers with “reduce motion” enabled in their operating system always receive the simplified version, whatever is set here."
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_webgl",
+        "label": "Enable the WebGL hero",
+        "default": true,
+        "info": "Automatically disabled on phones, low-power devices and data-saver connections."
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_smooth_scroll",
+        "label": "Enable damped scrolling",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_cursor",
+        "label": "Enable the custom cursor",
+        "default": true,
+        "info": "Desktop pointer devices only."
+      }
+    ]
+  },
+  {
+    "name": "Social",
+    "settings": [
+      { "type": "url", "id": "social_instagram", "label": "Instagram" },
+      { "type": "url", "id": "social_tiktok", "label": "TikTok" },
+      { "type": "url", "id": "social_youtube", "label": "YouTube" }
+    ]
+  }
+]

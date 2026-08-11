@@ -1,0 +1,17 @@
+<section class="notfound">
+  <div class="notfound__inner">
+    <p class="notfound__code" aria-hidden="true">404</p>
+    <h1 class="t-h1">This piece is not in the archive.</h1>
+    <p class="t-body" style="text-align:center">
+      The page you were looking for has been moved, retired, or never existed.
+    </p>
+    <div style="display:flex;gap:0.75rem;flex-wrap:wrap;justify-content:center">
+      <a class="btn" href="{{ routes.all_products_collection_url }}">Shop everything</a>
+      <button class="btn btn--ghost" type="button" data-search-open>Search</button>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "404" }
+{% endschema %}

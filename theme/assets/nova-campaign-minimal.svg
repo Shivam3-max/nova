@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="minimal campaign placeholder">
+  <defs>
+  <filter id="minimal-grain" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/>
+  </filter></defs>
+  <rect width="1600" height="1000" fill="#f4f2ee"/>
+        <radialGradient id="minimal-r" cx="0.42" cy="0.34" r="0.72">
+          <stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#e4e1da"/>
+        </radialGradient>
+        <rect width="1600" height="1000" fill="url(#minimal-r)"/>
+  <ellipse cx="800" cy="960" rx="300" ry="26" fill="#8d8877" opacity="0.18"/>
+  <g transform="translate(800,930) scale(1.32)" fill="#22242a" fill-opacity="0.86">
+    <ellipse cx="0" cy="-408" rx="17" ry="23"/>
+    <path d="M-5 -388 h10 l3 20 h-16 Z"/>
+    <!-- torso: shoulder line to hip, gently tapered -->
+    <path d="M-38 -368 C -16 -376 16 -376 38 -368
+             C 44 -366 47 -360 47 -352
+             L 42 -252 C 41 -240 38 -231 34 -224
+             L 30 -206 L -30 -206 L -34 -224
+             C -38 -231 -41 -240 -42 -252
+             L -47 -352 C -47 -360 -44 -366 -38 -368 Z"/>
+    <!-- arms -->
+    <path d="M-46 -356 C -54 -352 -57 -342 -58 -330
+             L -63 -246 C -64 -236 -61 -230 -54 -229
+             C -48 -228 -44 -232 -43 -241 L -37 -330 Z"/>
+    <path d="M46 -356 C 54 -352 57 -342 58 -330
+             L 63 -246 C 64 -236 61 -230 54 -229
+             C 48 -228 44 -232 43 -241 L 37 -330 Z"/>
+    <!-- legs: long line, small gap at the centre -->
+    <path d="M-30 -200 L -4 -200 L -6 -104 L -9 -6
+             C -9 -1 -12 2 -18 2 L -30 2 C -36 2 -39 -1 -39 -7
+             L -35 -104 Z"/>
+    <path d="M4 -200 L 30 -200 L 35 -104 L 39 -7
+             C 39 -1 36 2 30 2 L 18 2 C 12 2 9 -1 9 -6
+             L 6 -104 Z"/>
+  </g>
+        <rect x="150" y="150" width="1300" height="700" fill="none" stroke="#22242a" stroke-opacity="0.1"/>
+  <rect width="1600" height="1000" filter="url(#minimal-grain)" opacity="0.07" style="mix-blend-mode:overlay"/>
+  <text x="48" y="952" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15" letter-spacing="4"
+     fill="#22242a" fill-opacity="0.7" font-weight="500">[ MINIMAL — PLACEHOLDER ]</text>
+  <text x="1490" y="952" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" letter-spacing="4"
+     fill="#22242a" fill-opacity="0.7" font-weight="500">NØVA</text>
+</svg>

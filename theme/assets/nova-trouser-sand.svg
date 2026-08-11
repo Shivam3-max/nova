@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1250" width="1000" height="1250" role="img" aria-label="trouser in sand">
+  <defs>
+  <linearGradient id="trousersand-fill" x1="0.15" y1="0" x2="0.85" y2="1">
+    <stop offset="0%" stop-color="#ded6c9"/>
+    <stop offset="42%" stop-color="#c6bcab"/>
+    <stop offset="100%" stop-color="#a89d8a"/>
+  </linearGradient>
+  <linearGradient id="trousersand-sleeve" x1="0" y1="0" x2="1" y2="0.6">
+    <stop offset="0%" stop-color="#c6bcab"/>
+    <stop offset="100%" stop-color="#a89d8a"/>
+  </linearGradient>
+  <linearGradient id="trousersand-rib" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#a89d8a"/>
+    <stop offset="100%" stop-color="#c6bcab"/>
+  </linearGradient>
+  <filter id="trousersand-grain" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="3" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/>
+  </filter>
+  <filter id="trousersand-shadow" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur stdDeviation="26"/>
+  </filter>
+  </defs>
+  <ellipse cx="500" cy="1105" rx="250" ry="34" fill="#000" opacity="0.22" filter="url(#trousersand-shadow)"/>
+  <g filter="none">
+      <path d="M336 262 L 664 262 C 674 262 682 270 682 280 L 690 396
+               L 706 1104 C 706 1118 698 1126 684 1126 L 588 1126
+               C 576 1126 568 1118 566 1106 L 522 660 L 478 660 L 434 1106
+               C 432 1118 424 1126 412 1126 L 316 1126 C 302 1126 294 1118 294 1104
+               L 310 396 L 318 280 C 318 270 326 262 336 262 Z" fill="url(#trousersand-fill)"/>
+  </g>
+  <g stroke="none">
+      <path d="M318 262 L 682 262 L 684 330 L 316 330 Z" fill="url(#trousersand-rib)" fill-opacity="0.85"/>
+      <path d="M500 330 L 500 660" fill="none" stroke="#a89d8a" stroke-opacity="0.42" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M400 340 L 372 1100" fill="none" stroke="#a89d8a" stroke-opacity="0.22" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M600 340 L 628 1100" fill="none" stroke="#a89d8a" stroke-opacity="0.22" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M330 340 C 360 380 372 410 372 452" fill="none" stroke="#a89d8a" stroke-opacity="0.35" stroke-width="3"/>
+      <path d="M670 340 C 640 380 628 410 628 452" fill="none" stroke="#a89d8a" stroke-opacity="0.35" stroke-width="3"/>
+      <circle cx="500" cy="296" r="9" fill="#a89d8a" fill-opacity="0.6"/></g>
+  <g fill="none" stroke="#4c4638" stroke-opacity="0.24" stroke-width="2">
+      <path d="M336 262 L 664 262 C 674 262 682 270 682 280 L 690 396
+               L 706 1104 C 706 1118 698 1126 684 1126 L 588 1126
+               C 576 1126 568 1118 566 1106 L 522 660 L 478 660 L 434 1106
+               C 432 1118 424 1126 412 1126 L 316 1126 C 302 1126 294 1118 294 1104
+               L 310 396 L 318 280 C 318 270 326 262 336 262 Z" fill="none"/>
+  </g>
+</svg>

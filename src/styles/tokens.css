@@ -1,0 +1,231 @@
+/* ==========================================================================
+   NØVA — design tokens + reset
+   The storefront runs on a plain white canvas. Contrast comes from type scale,
+   whitespace and full-bleed campaign blocks that invert locally via [data-inv].
+   ========================================================================== */
+
+:root {
+  /* --- Surface ---------------------------------------------------------- */
+  --paper: #ffffff;
+  --paper-2: #f7f6f4;   /* cards, product plates */
+  --paper-3: #efedE8;   /* recessed panels, rails */
+  --paper-4: #e6e3dc;   /* hairline fills */
+
+  --ink: #0d0d0f;
+  --ink-2: #56565c;
+  --ink-3: #8e8e95;
+  --ink-4: #b8b8bd;
+
+  --line: rgba(13, 13, 15, 0.12);
+  --line-soft: rgba(13, 13, 15, 0.07);
+  --line-strong: rgba(13, 13, 15, 0.26);
+
+  /* The only non-neutral in the system, used for scarcity signals only. */
+  --signal: #9c3b26;
+
+  --overlay: rgba(255, 255, 255, 0.86);
+  --scrim: rgba(13, 13, 15, 0.5);
+
+  /* --- Type ------------------------------------------------------------- */
+  --font-display: "Helvetica Neue", "HelveticaNeue", Helvetica, "Inter",
+    "Archivo", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-body: var(--font-display);
+  --font-mono: "SF Mono", ui-monospace, "JetBrains Mono", Menlo, monospace;
+
+  --t-mega: clamp(3.4rem, 15vw, 17rem);
+  --t-hero: clamp(2.9rem, 11vw, 12rem);
+  --t-display: clamp(2.3rem, 7.2vw, 7rem);
+  --t-h1: clamp(1.9rem, 4.6vw, 4rem);
+  --t-h2: clamp(1.45rem, 2.9vw, 2.6rem);
+  --t-h3: clamp(1.1rem, 1.7vw, 1.5rem);
+  --t-body: clamp(0.95rem, 0.4vw + 0.86rem, 1.0625rem);
+  --t-small: 0.8125rem;
+  --t-meta: 0.6875rem;
+
+  --track-mega: -0.045em;
+  --track-tight: -0.03em;
+  --track-meta: 0.2em;
+
+  /* --- Space ------------------------------------------------------------ */
+  --gutter: clamp(1.15rem, 4vw, 4.5rem);
+  --section: clamp(4.5rem, 11vw, 10.5rem);
+  --section-sm: clamp(3rem, 6vw, 6rem);
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4rem;
+  --s-9: 6rem;
+
+  --maxw: 96rem;
+  --measure: 34rem;
+
+  /* --- Motion ----------------------------------------------------------- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-soft: cubic-bezier(0.32, 0.72, 0, 1);
+  --dur-fast: 0.22s;
+  --dur: 0.42s;
+  --dur-slow: 0.8s;
+
+  --z-cursor: 900;
+  --z-drawer: 800;
+  /* The header sits ABOVE the mega menu and search sheets: the wordmark stays
+     put and the burger turns into the close control, rather than the panel
+     swallowing the brand. */
+  --z-header: 760;
+  --z-overlay: 750;
+
+  --header-h: 4.75rem;
+}
+
+/* Locally inverted regions — full-bleed campaign blocks, the limited drop,
+   the 3D viewer. Nothing sets these globally; the page stays white. */
+[data-inv] {
+  --paper: #0b0b0d;
+  --paper-2: #141417;
+  --paper-3: #1c1c20;
+  --paper-4: #26262b;
+  --ink: #f5f4f1;
+  --ink-2: #a9a9b0;
+  --ink-3: #7c7c84;
+  --ink-4: #55555c;
+  --line: rgba(245, 244, 241, 0.16);
+  --line-soft: rgba(245, 244, 241, 0.09);
+  --line-strong: rgba(245, 244, 241, 0.34);
+  --overlay: rgba(11, 11, 13, 0.86);
+  --signal: #e0714f;
+  color: var(--ink);
+}
+
+/* ==========================================================================
+   Reset
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: auto; /* smooth scrolling is JS-driven; see core/scroll.js */
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--t-body);
+  line-height: 1.55;
+  letter-spacing: -0.006em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+body.is-locked {
+  overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd {
+  margin: 0;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img, svg, video, canvas {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+input, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 0;
+}
+
+/* Keyboard focus only — never a mouse ring, always a visible keyboard ring. */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 0.9rem 1.4rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: var(--t-meta);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  transform: translateY(-120%);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}

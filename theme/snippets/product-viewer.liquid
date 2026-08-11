@@ -1,0 +1,35 @@
+{%- comment -%}
+  Fullscreen 3D viewer shell.
+
+  Product data is passed in by whichever card or PDP opened it via the
+  data-view3d payload, so this markup is product-agnostic and rendered once.
+{%- endcomment -%}
+
+<div class="viewer" id="product-viewer" data-component="product-viewer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="3D product viewer">
+  <canvas class="viewer__canvas" data-viewer-canvas></canvas>
+
+  <div class="viewer__loading" data-viewer-loading hidden>Loading viewer</div>
+
+  <div class="viewer__fallback">
+    <img data-viewer-fallback-img src="" alt="">
+  </div>
+
+  <div class="viewer__chrome">
+    <div class="viewer__top">
+      <div>
+        <p class="t-meta" style="color:rgba(245,244,241,.55)">Inspect</p>
+        <h2 class="viewer__title" data-viewer-title></h2>
+      </div>
+      <button class="viewer__close" type="button" data-viewer-close aria-label="{{ 'general.accessibility.close' | t }}">
+        {% render 'icon', name: 'close', size: 16 %}
+      </button>
+    </div>
+
+    <div></div>
+
+    <div class="viewer__bottom">
+      <p class="viewer__hint">Drag to rotate — scroll to zoom</p>
+      <div class="viewer__colors" data-viewer-colors role="radiogroup" aria-label="{{ 'products.product.color' | t }}"></div>
+    </div>
+  </div>
+</div>

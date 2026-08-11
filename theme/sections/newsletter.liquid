@@ -1,0 +1,66 @@
+{%- comment -%}
+  Newsletter. Uses Shopify's real customer form, so submissions land in the
+  store's customer list with the `newsletter` tag — no third-party script.
+{%- endcomment -%}
+
+<section class="section section--tight" data-component="newsletter" aria-labelledby="news-title">
+  <div class="news">
+    <div>
+      <p class="t-index" data-reveal="up">{{ section.settings.index }}</p>
+      <h2 class="t-h1" id="news-title" data-reveal="lines" style="margin-block:1.1rem 1.25rem">
+        {{ section.settings.heading }}
+      </h2>
+      <p class="t-lede" data-reveal="up">{{ section.settings.body }}</p>
+    </div>
+
+    <div class="news__form" data-reveal="up" data-reveal-delay="0.1">
+      {%- form 'customer', id: 'newsletter-form' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+
+        {%- if form.posted_successfully? -%}
+          <p class="news__success" role="status">{{ 'general.newsletter.success' | t }}</p>
+        {%- else -%}
+          <label class="field">
+            <input class="field__input"
+                   type="email"
+                   name="contact[email]"
+                   id="newsletter-email"
+                   placeholder=" "
+                   autocomplete="email"
+                   required>
+            <span class="field__label">{{ 'general.newsletter.placeholder' | t }}</span>
+            <span class="field__rule"></span>
+          </label>
+
+          {%- if form.errors -%}
+            <p class="news__note" role="alert">{{ form.errors.messages.email }}</p>
+          {%- endif -%}
+
+          <button class="btn btn--lg" type="submit" data-magnetic="0.24" data-cursor="enter">
+            {{ 'general.newsletter.submit' | t }}
+            <span class="link__arrow">{% render 'icon', name: 'arrow', size: 14 %}</span>
+          </button>
+        {%- endif -%}
+
+        <p class="news__note" data-news-note>{{ 'general.newsletter.note' | t }}</p>
+      {%- endform -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    { "type": "text", "id": "index", "label": "Index", "default": "Access" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Enter the NØVA world." },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body",
+      "default": "Get early access to limited drops, new collections and exclusive releases."
+    }
+  ],
+  "presets": [{ "name": "Newsletter" }]
+}
+{% endschema %}

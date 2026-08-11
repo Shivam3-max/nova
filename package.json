@@ -1,0 +1,28 @@
+{
+  "name": "nova-shopify-storefront",
+  "version": "1.0.0",
+  "private": true,
+  "description": "NØVA — premium custom Shopify fashion storefront (Liquid theme + WebGL/GSAP frontend)",
+  "type": "module",
+  "scripts": {
+    "art": "node tools/generate-art.mjs",
+    "build:js": "node tools/build.mjs",
+    "build:css": "node tools/build.mjs --css-only",
+    "build": "npm run art && node tools/build.mjs",
+    "watch": "node tools/build.mjs --watch",
+    "dev": "node tools/build.mjs && node dev/server.mjs",
+    "dev:watch": "node tools/build.mjs --watch & node dev/server.mjs",
+    "shopify:dev": "shopify theme dev --path theme",
+    "shopify:push": "shopify theme push --path theme",
+    "shopify:pull": "shopify theme pull --path theme"
+  },
+  "dependencies": {
+    "gsap": "^3.13.0",
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "express": "^4.21.2",
+    "liquidjs": "^10.21.0"
+  }
+}

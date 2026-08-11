@@ -1,0 +1,75 @@
+<footer class="footer" role="contentinfo">
+  <div class="shell">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <p class="footer__brand-mark">{{ settings.brand_name | default: shop.name }}</p>
+        <p class="footer__tag t-meta">{{ settings.brand_tagline }}</p>
+      </div>
+
+      {%- for block in section.blocks -%}
+        <div {{ block.shopify_attributes }}>
+          <p class="footer__col-title">{{ block.settings.title }}</p>
+          <nav class="footer__links" aria-label="{{ block.settings.title | escape }}">
+            {%- for link in linklists[block.settings.menu].links -%}
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            {%- endfor -%}
+          </nav>
+        </div>
+      {%- endfor -%}
+
+      <div>
+        <p class="footer__col-title">Social</p>
+        <nav class="footer__links" aria-label="Social">
+          {%- if settings.social_instagram != blank -%}
+            <a href="{{ settings.social_instagram }}" rel="noopener" target="_blank">Instagram</a>
+          {%- endif -%}
+          {%- if settings.social_tiktok != blank -%}
+            <a href="{{ settings.social_tiktok }}" rel="noopener" target="_blank">TikTok</a>
+          {%- endif -%}
+          {%- if settings.social_youtube != blank -%}
+            <a href="{{ settings.social_youtube }}" rel="noopener" target="_blank">YouTube</a>
+          {%- endif -%}
+        </nav>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p class="t-meta">
+        &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. {{ 'sections.footer.rights' | t }}
+      </p>
+
+      <div class="footer__pay" role="list" aria-label="Accepted payment methods">
+        {%- for type in shop.enabled_payment_types -%}
+          <span class="pay-mark" role="listitem">{{ type | replace: '_', ' ' | slice: 0, 4 }}</span>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "max_blocks": 3,
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "Menu column",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Heading", "default": "Shop" },
+        { "type": "link_list", "id": "menu", "label": "Menu", "default": "footer-shop" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer",
+      "blocks": [
+        { "type": "menu", "settings": { "title": "Shop", "menu": "footer-shop" } },
+        { "type": "menu", "settings": { "title": "Customer", "menu": "footer-customer" } },
+        { "type": "menu", "settings": { "title": "Legal", "menu": "footer-legal" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

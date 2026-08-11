@@ -1,0 +1,109 @@
+{
+  "general": {
+    "accessibility": {
+      "skip_to_content": "Skip to content",
+      "close": "Close",
+      "menu": "Menu",
+      "search": "Search",
+      "account": "Account",
+      "bag": "Bag",
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "search": {
+      "title": "Search",
+      "placeholder": "What are you looking for?",
+      "submit": "Search",
+      "recent": "Recent searches",
+      "popular": "Popular searches",
+      "results_for": "Results for",
+      "no_results": "No pieces match that search.",
+      "collections": "Collections"
+    },
+    "newsletter": {
+      "heading": "Enter the NØVA world.",
+      "body": "Get early access to limited drops, new collections and exclusive releases.",
+      "placeholder": "Email address",
+      "submit": "Join NØVA",
+      "success": "You’re in. Watch your inbox for the next drop.",
+      "note": "One email per drop. Unsubscribe any time."
+    },
+    "pagination": {
+      "label": "Pagination"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_bag": "Add to bag",
+      "buy_now": "Buy it now",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "quick_add": "Quick add",
+      "view_product": "View product",
+      "view_in_3d": "View in 3D",
+      "quantity": "Quantity",
+      "color": "Color",
+      "size": "Size",
+      "size_guide": "Size guide",
+      "sku": "SKU",
+      "on_sale": "Sale",
+      "save_to_wishlist": "Save to wishlist",
+      "colors_available": "{{ count }} colours",
+      "only_left": "Only {{ count }} left",
+      "free_shipping_over": "Free shipping over {{ amount }}",
+      "returns_window": "14-day returns",
+      "dispatch": "Dispatched in 48 hours"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Your bag",
+      "empty": "Your bag is empty",
+      "empty_body": "Nothing here yet. The current drop is a good place to start.",
+      "continue": "Continue shopping",
+      "subtotal": "Subtotal",
+      "checkout": "Checkout",
+      "view_bag": "View bag",
+      "remove": "Remove",
+      "taxes_note": "Taxes and shipping calculated at checkout",
+      "free_shipping_remaining": "away from free shipping",
+      "free_shipping_earned": "You have unlocked free shipping",
+      "item_count": {
+        "one": "{{ count }} item",
+        "other": "{{ count }} items"
+      }
+    }
+  },
+  "collections": {
+    "general": {
+      "sort_by": "Sort by",
+      "filter": "Filter",
+      "all": "All",
+      "empty": "No pieces in this collection yet.",
+      "product_count": "{{ count }} pieces"
+    },
+    "sorting": {
+      "featured": "Featured",
+      "price_ascending": "Price: low to high",
+      "price_descending": "Price: high to low",
+      "newest": "Newest",
+      "title_ascending": "A–Z"
+    }
+  },
+  "blogs": {
+    "article": {
+      "read_more": "Read the story",
+      "back": "Back to the journal",
+      "by": "By"
+    }
+  },
+  "sections": {
+    "header": {
+      "announcement": "Free shipping over ₹4,999",
+      "menu": "Menu"
+    },
+    "footer": {
+      "rights": "All rights reserved."
+    }
+  }
+}

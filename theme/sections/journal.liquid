@@ -1,0 +1,63 @@
+{%- comment -%} NØVA JOURNAL — editorial stories from a Shopify blog. {%- endcomment -%}
+
+{%- liquid
+  assign source = blogs[section.settings.blog]
+  assign posts = source.articles
+-%}
+
+<section class="section" aria-labelledby="journal-title">
+  <div class="shell">
+    <div class="sec-head">
+      <div class="sec-head__title">
+        <p class="t-index" data-reveal="up">{{ section.settings.index }}</p>
+        <h2 class="t-h1" id="journal-title" data-reveal="lines">{{ section.settings.heading }}</h2>
+      </div>
+      <a class="link" href="{{ source.url | default: '/blogs/journal' }}" data-cursor="enter">
+        All stories <span class="link__arrow">{% render 'icon', name: 'arrow', size: 13 %}</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="journal">
+    {%- for article in posts limit: section.settings.count -%}
+      <article class="post{% if forloop.first and section.settings.lead %} post--lead{% endif %}"
+               data-reveal="up" data-reveal-delay="{{ forloop.index0 | times: 0.07 }}">
+        <a class="post__media media" href="{{ article.url }}" tabindex="-1" aria-hidden="true" data-cursor="view">
+          {%- if article.image -%}
+            <img src="{{ article.image | image_url: width: 1200 }}"
+                 srcset="{{ article.image | image_url: width: 600 }} 600w, {{ article.image | image_url: width: 1200 }} 1200w"
+                 sizes="(max-width: 60rem) 100vw, 33vw"
+                 alt="" width="1600" height="1000" loading="lazy" decoding="async">
+          {%- endif -%}
+        </a>
+
+        <div style="display:grid;gap:0.85rem;align-content:start">
+          <div class="post__meta">
+            <span class="t-meta">{{ article.tags.first | default: 'Journal' }}</span>
+            <span class="t-meta">{{ article.published_at | date: '%d.%m.%y' }}</span>
+          </div>
+
+          <h3 class="post__title"><a href="{{ article.url }}">{{ article.title }}</a></h3>
+          <p class="t-body" style="font-size:var(--t-small)">{{ article.excerpt | strip_html | truncate: 140 }}</p>
+          <span class="link" aria-hidden="true">
+            Read <span class="link__arrow">{% render 'icon', name: 'arrow', size: 13 %}</span>
+          </span>
+        </div>
+      </article>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Journal",
+  "settings": [
+    { "type": "text", "id": "index", "label": "Index", "default": "Editorial" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "NØVA Journal" },
+    { "type": "blog", "id": "blog", "label": "Blog", "default": "journal" },
+    { "type": "range", "id": "count", "label": "Stories", "min": 2, "max": 6, "step": 1, "default": 3 },
+    { "type": "checkbox", "id": "lead", "label": "Make the first story a lead spread", "default": false }
+  ],
+  "presets": [{ "name": "Journal" }]
+}
+{% endschema %}

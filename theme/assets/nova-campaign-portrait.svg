@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500" role="img" aria-label="portrait campaign placeholder">
+  <defs>
+  <filter id="portrait-grain" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/>
+  </filter></defs>
+  <rect width="1200" height="1500" fill="#111216"/>
+        <radialGradient id="portrait-p" cx="0.45" cy="0.3" r="0.8">
+          <stop offset="0%" stop-color="#2b2d34"/><stop offset="100%" stop-color="#0b0c0f"/></radialGradient>
+        <rect width="1200" height="1500" fill="url(#portrait-p)"/>
+  <g fill="#e7e8ec" fill-opacity="0.86">
+          <ellipse cx="600" cy="600" rx="192" ry="238"/>
+          <path d="M600 880 C 380 880 250 1000 226 1180 L 200 1500 L 1000 1500 L 974 1180 C 950 1000 820 880 600 880 Z"/>
+        </g>
+        <path d="M600 362 C 470 362 400 452 404 560 L 408 640 C 380 560 386 420 470 356 C 540 302 690 306 744 380 C 800 456 792 570 776 640 L 782 546 C 792 440 726 362 600 362 Z" fill="#0e0f12" fill-opacity="0.9"/>
+        <ellipse cx="600" cy="1500" rx="520" ry="120" fill="#000" opacity="0.4"/>
+  <rect width="1200" height="1500" filter="url(#portrait-grain)" opacity="0.07" style="mix-blend-mode:overlay"/>
+  <text x="48" y="1452" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15" letter-spacing="4"
+     fill="#e7e8ec" fill-opacity="0.7" font-weight="500">[ PORTRAIT — PLACEHOLDER ]</text>
+  <text x="1090" y="1452" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" letter-spacing="4"
+     fill="#e7e8ec" fill-opacity="0.7" font-weight="500">NØVA</text>
+</svg>

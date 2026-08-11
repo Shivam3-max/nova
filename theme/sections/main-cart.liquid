@@ -1,0 +1,71 @@
+{%- comment -%}
+  Cart page. Progressive-enhancement counterpart to the drawer: it posts to
+  Shopify's real /cart endpoints and works with JavaScript disabled.
+{%- endcomment -%}
+
+<header class="chead">
+  <p class="t-index">{{ cart.item_count }} {% if cart.item_count == 1 %}item{% else %}items{% endif %}</p>
+  <h1 class="chead__title" style="margin-top:1rem">{{ 'cart.general.title' | t }}</h1>
+</header>
+
+<div class="shell section section--flush-top">
+  {%- if cart.item_count > 0 -%}
+    <form action="{{ routes.cart_url }}" method="post" class="cartpage">
+      <div class="cartpage__lines">
+        {%- for item in cart.items -%}
+          <div class="cartline">
+            <a class="cartline__media" href="{{ item.url }}" tabindex="-1" aria-hidden="true">
+              <img src="{{ item.image | image_url: width: 300 }}" alt="" width="200" height="250" loading="lazy">
+            </a>
+
+            <div style="display:grid;gap:0.5rem;align-content:start">
+              <a class="t-h3" href="{{ item.url }}">{{ item.product_title }}</a>
+              <p class="line__variant">{{ item.variant_title }}</p>
+              <p class="t-meta">{{ item.sku }}</p>
+
+              <div style="display:flex;gap:1rem;align-items:center;margin-top:0.4rem">
+                <div class="qty">
+                  <input class="qty__input" type="number" min="0" name="updates[]" value="{{ item.quantity }}"
+                         aria-label="Quantity for {{ item.product_title | escape }}" style="width:3.4rem">
+                </div>
+                <a class="line__remove" href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0">
+                  {{ 'cart.general.remove' | t }}
+                </a>
+              </div>
+            </div>
+
+            <p class="cartline__price t-h3">{{ item.final_line_price | money }}</p>
+          </div>
+        {%- endfor -%}
+
+        <button class="btn btn--ghost" type="submit" style="margin-top:1.5rem;justify-self:start">Update bag</button>
+      </div>
+
+      <aside class="cartpage__summary">
+        <div class="drawer__row">
+          <span class="t-meta t-meta--ink">{{ 'cart.general.subtotal' | t }}</span>
+          <span class="drawer__total">{{ cart.total_price | money }}</span>
+        </div>
+        <p class="t-meta">{{ 'cart.general.taxes_note' | t }}</p>
+        <button class="btn btn--full" type="submit" name="checkout" data-cursor="enter">
+          {{ 'cart.general.checkout' | t }}
+        </button>
+        <a class="link" href="{{ routes.all_products_collection_url }}" style="justify-self:center">
+          {{ 'cart.general.continue' | t }}
+        </a>
+      </aside>
+    </form>
+  {%- else -%}
+    <div class="cempty">
+      <p class="t-h2">{{ 'cart.general.empty' | t }}</p>
+      <p class="t-body">{{ 'cart.general.empty_body' | t }}</p>
+      <a class="btn" href="{{ collections['the-new-drop'].url | default: routes.all_products_collection_url }}">
+        Shop the drop
+      </a>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{ "name": "Cart" }
+{% endschema %}

@@ -1,0 +1,31 @@
+<article class="article">
+  <header class="article__head">
+    <div class="post__meta">
+      <span class="t-meta">{{ article.tags.first | default: 'Journal' }}</span>
+      <span class="t-meta">{{ article.published_at | date: '%d.%m.%y' }}</span>
+    </div>
+    <h1 class="article__title" data-reveal="lines">{{ article.title }}</h1>
+    <p class="t-meta">{{ 'blogs.article.by' | t }} {{ article.author }}</p>
+  </header>
+
+  {%- if article.image -%}
+    <div class="article__hero" data-reveal="scale">
+      <img src="{{ article.image | image_url: width: 1800 }}"
+           srcset="{{ article.image | image_url: width: 900 }} 900w, {{ article.image | image_url: width: 1800 }} 1800w"
+           sizes="100vw" alt="{{ article.title | escape }}"
+           width="1600" height="1000" fetchpriority="high" decoding="async">
+    </div>
+  {%- endif -%}
+
+  <div class="prose" data-reveal="up">
+    {{ article.content }}
+  </div>
+
+  <div class="shell" style="margin-top:var(--section-sm);text-align:center">
+    <a class="link" href="{{ blog.url }}">{{ 'blogs.article.back' | t }}</a>
+  </div>
+</article>
+
+{% schema %}
+{ "name": "Article" }
+{% endschema %}

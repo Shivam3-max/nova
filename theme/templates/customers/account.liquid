@@ -1,0 +1,50 @@
+<div class="page">
+  <h1 class="page__title">Account</h1>
+  <div style="display:grid;gap:2.5rem">
+    <div>
+      <p class="t-meta">Signed in as</p>
+      <p class="t-h3" style="margin-top:0.5rem">{{ customer.name | default: customer.email }}</p>
+      <p class="t-meta" style="margin-top:1rem">
+        <a class="link" href="{{ routes.account_logout_url }}">Sign out</a>
+      </p>
+    </div>
+
+    <div>
+      <p class="footer__col-title">Orders</p>
+      {%- paginate customer.orders by 12 -%}
+        {%- if customer.orders.size > 0 -%}
+          <table>
+            <thead>
+              <tr>
+                <th style="text-align:left" class="t-meta">Order</th>
+                <th style="text-align:left" class="t-meta">Date</th>
+                <th style="text-align:left" class="t-meta">Status</th>
+                <th style="text-align:right" class="t-meta">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {%- for order in customer.orders -%}
+                <tr style="border-top:1px solid var(--line)">
+                  <td style="padding:0.9rem 0"><a class="link" href="{{ order.customer_url }}">{{ order.name }}</a></td>
+                  <td style="padding:0.9rem 0">{{ order.created_at | date: '%d.%m.%y' }}</td>
+                  <td style="padding:0.9rem 0">{{ order.fulfillment_status_label }}</td>
+                  <td style="padding:0.9rem 0;text-align:right">{{ order.total_price | money }}</td>
+                </tr>
+              {%- endfor -%}
+            </tbody>
+          </table>
+        {%- else -%}
+          <p class="t-body">No orders yet.</p>
+        {%- endif -%}
+      {%- endpaginate -%}
+    </div>
+
+    <div>
+      <p class="footer__col-title">Address</p>
+      {{ customer.default_address | format_address }}
+      <p class="t-meta" style="margin-top:0.75rem">
+        <a class="link" href="{{ routes.account_addresses_url }}">Manage addresses</a>
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="luxury campaign placeholder">
+  <defs>
+  <filter id="luxury-grain" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/>
+  </filter></defs>
+  <rect width="1600" height="1000" fill="#101014"/>
+        <linearGradient id="luxury-l" x1="0.2" y1="0" x2="0.9" y2="1">
+          <stop offset="0%" stop-color="#2a2b31"/><stop offset="55%" stop-color="#131418"/><stop offset="100%" stop-color="#0a0a0d"/>
+        </linearGradient>
+        <rect width="1600" height="1000" fill="url(#luxury-l)"/>
+        <path d="M180 0 C 230 320 120 640 200 1000 L 260 1000 C 190 640 300 320 250 0 Z" fill="#f0eee9" opacity="0.028"/><path d="M330 0 C 380 320 270 640 350 1000 L 410 1000 C 340 640 450 320 400 0 Z" fill="#f0eee9" opacity="0.044"/><path d="M480 0 C 530 320 420 640 500 1000 L 560 1000 C 490 640 600 320 550 0 Z" fill="#f0eee9" opacity="0.06"/><path d="M630 0 C 680 320 570 640 650 1000 L 710 1000 C 640 640 750 320 700 0 Z" fill="#f0eee9" opacity="0.028"/><path d="M780 0 C 830 320 720 640 800 1000 L 860 1000 C 790 640 900 320 850 0 Z" fill="#f0eee9" opacity="0.044"/><path d="M930 0 C 980 320 870 640 950 1000 L 1010 1000 C 940 640 1050 320 1000 0 Z" fill="#f0eee9" opacity="0.06"/><path d="M1080 0 C 1130 320 1020 640 1100 1000 L 1160 1000 C 1090 640 1200 320 1150 0 Z" fill="#f0eee9" opacity="0.028"/><path d="M1230 0 C 1280 320 1170 640 1250 1000 L 1310 1000 C 1240 640 1350 320 1300 0 Z" fill="#f0eee9" opacity="0.044"/><path d="M1380 0 C 1430 320 1320 640 1400 1000 L 1460 1000 C 1390 640 1500 320 1450 0 Z" fill="#f0eee9" opacity="0.06"/>
+  <g transform="translate(800,940) scale(1.36)" fill="#e9e6df" fill-opacity="0.42">
+    <ellipse cx="0" cy="-408" rx="17" ry="23"/>
+    <path d="M-5 -388 h10 l3 20 h-16 Z"/>
+    <!-- torso: shoulder line to hip, gently tapered -->
+    <path d="M-38 -368 C -16 -376 16 -376 38 -368
+             C 44 -366 47 -360 47 -352
+             L 42 -252 C 41 -240 38 -231 34 -224
+             L 30 -206 L -30 -206 L -34 -224
+             C -38 -231 -41 -240 -42 -252
+             L -47 -352 C -47 -360 -44 -366 -38 -368 Z"/>
+    <!-- arms -->
+    <path d="M-46 -356 C -54 -352 -57 -342 -58 -330
+             L -63 -246 C -64 -236 -61 -230 -54 -229
+             C -48 -228 -44 -232 -43 -241 L -37 -330 Z"/>
+    <path d="M46 -356 C 54 -352 57 -342 58 -330
+             L 63 -246 C 64 -236 61 -230 54 -229
+             C 48 -228 44 -232 43 -241 L 37 -330 Z"/>
+    <!-- legs: long line, small gap at the centre -->
+    <path d="M-30 -200 L -4 -200 L -6 -104 L -9 -6
+             C -9 -1 -12 2 -18 2 L -30 2 C -36 2 -39 -1 -39 -7
+             L -35 -104 Z"/>
+    <path d="M4 -200 L 30 -200 L 35 -104 L 39 -7
+             C 39 -1 36 2 30 2 L 18 2 C 12 2 9 -1 9 -6
+             L 6 -104 Z"/>
+  </g>
+        <rect x="120" y="120" width="1360" height="760" fill="none" stroke="#e9e6df" stroke-opacity="0.14"/>
+  <rect width="1600" height="1000" filter="url(#luxury-grain)" opacity="0.07" style="mix-blend-mode:overlay"/>
+  <text x="48" y="952" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15" letter-spacing="4"
+     fill="#e9e6df" fill-opacity="0.7" font-weight="500">[ LUXURY — PLACEHOLDER ]</text>
+  <text x="1490" y="952" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" letter-spacing="4"
+     fill="#e9e6df" fill-opacity="0.7" font-weight="500">NØVA</text>
+</svg>

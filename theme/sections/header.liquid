@@ -1,0 +1,75 @@
+{%- comment -%}
+  Floating header. Transparent over the hero, solid after it, compacts on
+  scroll. The nav labels are duplicated inside .nav-item__stack so the hover
+  can roll one out and the copy in — CSS does the movement, no JS per item.
+{%- endcomment -%}
+
+<header class="header" data-component="header" role="banner">
+  <div class="header__inner">
+    <div class="header__brand">
+      <button class="header__burger" type="button" data-mega-open
+              aria-controls="mega-menu" aria-label="{{ 'sections.header.menu' | t }}">
+        <span></span><span></span><span></span>
+      </button>
+
+      <a class="header__wordmark" href="{{ routes.root_url }}" aria-label="{{ shop.name }} — home">
+        {%- if settings.logo != blank -%}
+          <img src="{{ settings.logo | image_url: width: 240 }}" alt="{{ shop.name | escape }}" height="22" width="120">
+        {%- else -%}
+          {{ settings.brand_name | default: shop.name }}
+        {%- endif -%}
+      </a>
+    </div>
+
+    <nav class="header__nav" aria-label="Primary">
+      <a class="nav-item" href="#" data-mega-open aria-controls="mega-menu" data-magnetic="0.22">
+        <span class="nav-item__stack"><span>Shop</span><span>Shop</span></span>
+      </a>
+      {%- for link in linklists.main-menu.links offset: 1 -%}
+        <a class="nav-item{% if link.active %} is-active{% endif %}" href="{{ link.url }}" data-magnetic="0.22">
+          <span class="nav-item__stack"><span>{{ link.title }}</span><span>{{ link.title }}</span></span>
+        </a>
+      {%- endfor -%}
+    </nav>
+
+    <div class="header__actions">
+      <button class="header__action" type="button" data-search-open
+              aria-controls="search-overlay" data-magnetic="0.2">
+        {% render 'icon', name: 'search', size: 15 %}
+        <span class="header__action-label">{{ 'general.accessibility.search' | t }}</span>
+      </button>
+
+      <a class="header__action header__action--account" href="{{ routes.account_url }}" data-magnetic="0.2">
+        {% render 'icon', name: 'account', size: 15 %}
+        <span class="header__action-label">{{ 'general.accessibility.account' | t }}</span>
+      </a>
+
+      <button class="header__action" type="button" data-cart-open
+              aria-controls="cart-drawer" data-magnetic="0.2"
+              aria-label="{{ 'general.accessibility.bag' | t }}">
+        {% render 'icon', name: 'bag', size: 15 %}
+        <span class="header__count">
+          Bag (<span class="bag-count" data-bag-count>{{ cart.item_count }}</span>)
+        </span>
+      </button>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Navigation links come from the ‘Main menu’ and ‘Mega categories’ link lists in Navigation."
+    },
+    {
+      "type": "checkbox",
+      "id": "transparent_over_hero",
+      "label": "Float over the hero on the homepage",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

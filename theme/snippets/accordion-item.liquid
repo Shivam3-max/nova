@@ -1,0 +1,19 @@
+{%- comment -%}
+  Accordion item.
+  Params: id, title, body (html), open (boolean)
+{%- endcomment -%}
+
+<div class="acc__item" data-open="{% if open %}true{% else %}false{% endif %}" id="{{ id }}">
+  <h3 style="margin:0">
+    <button class="acc__trigger" type="button"
+            aria-expanded="{% if open %}true{% else %}false{% endif %}"
+            aria-controls="{{ id }}-panel">
+      <span>{{ title }}</span>
+      <span class="acc__icon" aria-hidden="true"></span>
+    </button>
+  </h3>
+
+  <div class="acc__panel" id="{{ id }}-panel" role="region" aria-labelledby="{{ id }}">
+    <div class="acc__body">{{ body }}</div>
+  </div>
+</div>

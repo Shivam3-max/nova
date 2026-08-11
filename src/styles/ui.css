@@ -1,0 +1,594 @@
+/* ==========================================================================
+   Buttons, links, form controls, badges, swatches, accordions, marquee, cursor
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Buttons
+   -------------------------------------------------------------------------- */
+
+.btn {
+  --btn-bg: var(--ink);
+  --btn-fg: var(--paper);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7em;
+  padding: 1.05rem 2rem;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-size: var(--t-meta);
+  font-weight: 500;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  line-height: 1;
+  border: 1px solid var(--btn-bg);
+  overflow: hidden;
+  isolation: isolate;
+  transition: color var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out);
+}
+
+/* Wipe fill: a block slides up behind the label rather than a colour fade. */
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--btn-fg);
+  transform: translate3d(0, 101%, 0);
+  transition: transform var(--dur) var(--ease-soft);
+}
+
+.btn:hover::before,
+.btn:focus-visible::before {
+  transform: translate3d(0, 0, 0);
+}
+
+.btn:hover,
+.btn:focus-visible {
+  color: var(--btn-bg);
+}
+
+.btn[disabled],
+.btn[aria-disabled="true"] {
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.btn--ghost {
+  --btn-bg: transparent;
+  --btn-fg: var(--ink);
+  border-color: var(--line-strong);
+  color: var(--ink);
+}
+
+.btn--ghost::before {
+  background: var(--ink);
+}
+
+.btn--ghost:hover,
+.btn--ghost:focus-visible {
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.btn--full {
+  width: 100%;
+}
+
+.btn--lg {
+  padding: 1.35rem 2.6rem;
+  font-size: 0.75rem;
+}
+
+.btn--sm {
+  padding: 0.75rem 1.25rem;
+}
+
+/* Text link with a rule that wipes in from the left. */
+.link {
+  position: relative;
+  display: inline-block;
+  font-size: var(--t-meta);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  padding-block-end: 0.4em;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(var(--sx, 1));
+  transform-origin: right;
+  transition: transform var(--dur) var(--ease-soft);
+}
+
+.link:hover::after,
+.link:focus-visible::after {
+  animation: link-wipe var(--dur) var(--ease-soft);
+}
+
+@keyframes link-wipe {
+  0%   { transform: scaleX(1); transform-origin: right; }
+  49%  { transform: scaleX(0); transform-origin: right; }
+  50%  { transform: scaleX(0); transform-origin: left; }
+  100% { transform: scaleX(1); transform-origin: left; }
+}
+
+/* Arrow that steps forward on hover. */
+.link__arrow {
+  display: inline-block;
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.link:hover .link__arrow,
+.btn:hover .link__arrow {
+  transform: translateX(0.35em);
+}
+
+/* Magnetic wrapper — JS writes --mx/--my; CSS owns the easing. */
+[data-magnetic] {
+  transform: translate3d(var(--mx, 0px), var(--my, 0px), 0);
+  transition: transform 0.5s var(--ease-out);
+}
+
+[data-magnetic].is-magnet-active {
+  transition: transform 0.12s linear;
+}
+
+/* --------------------------------------------------------------------------
+   Badges + meta chips
+   -------------------------------------------------------------------------- */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  height: 1.65rem;
+  padding-inline: 0.65rem;
+  border: 1px solid var(--line-strong);
+  font-size: var(--t-meta);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+.badge--solid {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.badge--signal {
+  color: var(--signal);
+  border-color: color-mix(in srgb, var(--signal) 45%, transparent);
+}
+
+.badge--sale {
+  background: var(--signal);
+  border-color: var(--signal);
+  color: #fff;
+}
+
+/* --------------------------------------------------------------------------
+   Colour swatches + size selector
+   -------------------------------------------------------------------------- */
+
+.swatches {
+  display: flex;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.swatch {
+  --sw: 1.65rem;
+  position: relative;
+  width: var(--sw);
+  height: var(--sw);
+  border-radius: 50%;
+  background: var(--swatch-color, #ccc);
+  box-shadow: inset 0 0 0 1px var(--line-strong);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.swatch::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid var(--ink);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+}
+
+.swatch:hover {
+  transform: scale(1.08);
+}
+
+.swatch[aria-checked="true"]::after,
+.swatch.is-active::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Size pills. The animated marker is a single element that flips between
+   pills with the Flip technique in components/variant-picker.js. */
+.sizes {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.size {
+  position: relative;
+  min-width: 3.1rem;
+  height: 2.9rem;
+  padding-inline: 0.7rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  font-size: var(--t-meta);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: transparent;
+  transition: border-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+
+.size:hover:not([disabled]) {
+  border-color: var(--line-strong);
+}
+
+.size[aria-checked="true"] {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.size[disabled],
+.size.is-unavailable {
+  color: var(--ink-4);
+  border-color: var(--line-soft);
+  cursor: not-allowed;
+}
+
+/* Diagonal strike for a sold-out size — legible without relying on colour. */
+.size.is-unavailable::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top left,
+    transparent calc(50% - 0.5px),
+    var(--line) calc(50% - 0.5px),
+    var(--line) calc(50% + 0.5px),
+    transparent calc(50% + 0.5px)
+  );
+}
+
+/* --------------------------------------------------------------------------
+   Quantity stepper
+   -------------------------------------------------------------------------- */
+
+.qty {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  height: 2.9rem;
+}
+
+.qty__btn {
+  width: 2.6rem;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  font-size: 1rem;
+  color: var(--ink-2);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.qty__btn:hover { color: var(--ink); }
+
+.qty__input {
+  width: 2.6rem;
+  height: 100%;
+  border: 0;
+  background: none;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: var(--t-small);
+  -moz-appearance: textfield;
+}
+
+.qty__input::-webkit-outer-spin-button,
+.qty__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Fields
+   -------------------------------------------------------------------------- */
+
+.field {
+  position: relative;
+  display: block;
+}
+
+.field__input {
+  width: 100%;
+  padding: 1.15rem 0 0.75rem;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  font-size: var(--t-body);
+  letter-spacing: -0.01em;
+  transition: border-color var(--dur) var(--ease-out);
+}
+
+.field__input:focus {
+  outline: none;
+  border-color: var(--ink);
+}
+
+.field__label {
+  position: absolute;
+  left: 0;
+  top: 1.15rem;
+  font-size: var(--t-meta);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--ink-3);
+  pointer-events: none;
+  transform-origin: left top;
+  transition: transform var(--dur) var(--ease-out), color var(--dur) var(--ease-out);
+}
+
+.field__input:focus + .field__label,
+.field__input:not(:placeholder-shown) + .field__label {
+  transform: translateY(-1.1rem) scale(0.85);
+  color: var(--ink);
+}
+
+/* Underline that draws in from the left on focus. */
+.field__rule {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  width: 100%;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur) var(--ease-soft);
+}
+
+.field__input:focus ~ .field__rule {
+  transform: scaleX(1);
+}
+
+.select {
+  appearance: none;
+  background: none;
+  border: 1px solid var(--line);
+  padding: 0.8rem 2.4rem 0.8rem 1rem;
+  font-size: var(--t-meta);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  border-radius: 0;
+}
+
+.select-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.select-wrap::after {
+  content: "";
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-right: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Accordion
+   -------------------------------------------------------------------------- */
+
+.acc {
+  border-top: 1px solid var(--line);
+}
+
+.acc__item {
+  border-bottom: 1px solid var(--line);
+}
+
+.acc__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding-block: 1.35rem;
+  text-align: left;
+  font-size: var(--t-meta);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.acc__icon {
+  position: relative;
+  width: 0.75rem;
+  height: 0.75rem;
+  flex: none;
+}
+
+.acc__icon::before,
+.acc__icon::after {
+  content: "";
+  position: absolute;
+  inset: 50% 0 auto 0;
+  height: 1px;
+  background: currentColor;
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.acc__icon::after {
+  transform: rotate(90deg);
+}
+
+.acc__item.is-open .acc__icon::after {
+  transform: rotate(0deg);
+}
+
+/* Height is animated by GSAP; overflow keeps content clipped mid-tween. */
+.acc__panel {
+  overflow: hidden;
+  height: 0;
+}
+
+.acc__body {
+  padding-block: 0 1.6rem;
+  color: var(--ink-2);
+  font-size: var(--t-small);
+  line-height: 1.65;
+  max-width: 40rem;
+}
+
+.acc__body p + p {
+  margin-top: 0.85em;
+}
+
+.acc__spec {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.4rem 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.acc__spec dt { color: var(--ink-3); }
+
+/* --------------------------------------------------------------------------
+   Marquee
+   -------------------------------------------------------------------------- */
+
+.marquee {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: 0;
+  border-block: 1px solid var(--line);
+  padding-block: 1.1rem;
+}
+
+.marquee__track {
+  display: flex;
+  flex: none;
+  gap: 3rem;
+  padding-right: 3rem;
+  min-width: 100%;
+  animation: marquee 34s linear infinite;
+}
+
+.marquee__track span {
+  font-size: var(--t-meta);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+
+@keyframes marquee {
+  to { transform: translateX(-100%); }
+}
+
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}
+
+/* --------------------------------------------------------------------------
+   Custom cursor — desktop pointer devices only.
+   -------------------------------------------------------------------------- */
+
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-cursor);
+  pointer-events: none;
+  mix-blend-mode: difference;
+  opacity: 0;
+  will-change: transform;
+}
+
+.cursor__dot {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  margin: -3.5px 0 0 -3.5px;
+  border-radius: 50%;
+  background: #fff;
+  transition: opacity var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+}
+
+.cursor__ring {
+  position: absolute;
+  width: 3.4rem;
+  height: 3.4rem;
+  margin: -1.7rem 0 0 -1.7rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  display: grid;
+  place-items: center;
+  transform: scale(0.34);
+  transition: transform 0.45s var(--ease-out), border-color 0.3s var(--ease-out),
+    background-color 0.3s var(--ease-out);
+}
+
+.cursor__label {
+  font-size: 0.5625rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fff;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.24s var(--ease-out), transform 0.24s var(--ease-out);
+  white-space: nowrap;
+}
+
+/* States driven by data-cursor attributes in the markup. */
+.cursor.is-active .cursor__ring { transform: scale(1); }
+.cursor.is-active .cursor__label { opacity: 1; transform: scale(1); }
+.cursor.is-active .cursor__dot { opacity: 0; }
+
+.cursor.is-drag .cursor__ring {
+  transform: scale(1.16);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.cursor.is-down .cursor__ring { transform: scale(0.86); }
+
+@media (hover: none), (pointer: coarse) {
+  .cursor { display: none; }
+}
+
+html.has-custom-cursor,
+html.has-custom-cursor a,
+html.has-custom-cursor button {
+  cursor: none;
+}

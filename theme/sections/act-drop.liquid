@@ -1,0 +1,72 @@
+{%- comment -%} Act 01 — THE DROP {%- endcomment -%}
+
+{%- liquid
+  assign product = section.settings.product
+  if product == blank
+    assign product = collections['the-new-drop'].products.first
+  endif
+-%}
+
+<section class="act-drop" aria-labelledby="act-drop-title">
+  <div class="act-drop__type">
+    <p class="t-index" data-reveal="up">{{ section.settings.index }}</p>
+    <h2 class="t-display" id="act-drop-title" data-reveal="lines" style="margin-block:1.25rem 1.5rem">
+      {{ section.settings.heading }}
+    </h2>
+    <p class="t-lede" data-reveal="up" data-reveal-delay="0.1">{{ section.settings.body }}</p>
+
+    <div style="margin-top:2.25rem" data-reveal="up" data-reveal-delay="0.16">
+      <a class="btn" href="{{ product.url | default: routes.all_products_collection_url }}"
+         data-magnetic="0.25" data-cursor="enter">
+        {{ section.settings.cta_label }}
+        <span class="link__arrow">{% render 'icon', name: 'arrow', size: 14 %}</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="act-drop__media" data-reveal="scale">
+    {%- if product.featured_image -%}
+      <img src="{{ product.featured_image | image_url: width: 1000 }}"
+           srcset="{{ product.featured_image | image_url: width: 600 }} 600w,
+                   {{ product.featured_image | image_url: width: 1000 }} 1000w"
+           sizes="(max-width: 60rem) 100vw, 55vw"
+           alt="{{ product.title | escape }}"
+           width="1000" height="1250" loading="lazy" decoding="async">
+    {%- endif -%}
+
+    {%- if product -%}
+      <div class="act-drop__panel" data-reveal="up" data-reveal-delay="0.2">
+        <div class="act-drop__panel-flags">
+          {%- if product.metafields.custom.badge.value != blank -%}
+            <span class="badge">{{ product.metafields.custom.badge.value }}</span>
+          {%- endif -%}
+          {%- if product.tags contains 'limited' -%}
+            <span class="badge badge--signal">Limited</span>
+          {%- endif -%}
+        </div>
+        <p class="t-meta t-meta--ink">{{ product.title }}</p>
+        <p class="act-drop__panel-price">{{ product.price | money }}</p>
+        <a class="link" href="{{ product.url }}" data-cursor="view">View piece</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Act 01 — The drop",
+  "settings": [
+    { "type": "text", "id": "index", "label": "Index", "default": "01 — The drop" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The new drop" },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body",
+      "default": "Engineered for the next version of you. Twelve pieces, produced once, then retired."
+    },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Shop the drop" },
+    { "type": "product", "id": "product", "label": "Featured product" }
+  ],
+  "presets": [{ "name": "Act 01 — The drop" }]
+}
+{% endschema %}

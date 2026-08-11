@@ -1,0 +1,22 @@
+{%- if section.settings.show -%}
+  <div class="announce">
+    <div class="announce__inner">
+      <span>{{ section.settings.text }}</span>
+      {%- if section.settings.text_2 != blank -%}
+        <span class="announce__dot" aria-hidden="true"></span>
+        <span>{{ section.settings.text_2 }}</span>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Announcement",
+  "settings": [
+    { "type": "checkbox", "id": "show", "label": "Show announcement bar", "default": true },
+    { "type": "text", "id": "text", "label": "Message", "default": "Free shipping over ₹4,999" },
+    { "type": "text", "id": "text_2", "label": "Second message", "default": "Drop 01 shipping now" }
+  ]
+}
+{% endschema %}

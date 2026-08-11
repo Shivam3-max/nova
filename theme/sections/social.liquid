@@ -1,0 +1,94 @@
+{%- comment -%}
+  FOLLOW THE MOVEMENT.
+
+  Tiles are theme blocks so the merchant can point each one at a real post.
+  On a live store this is usually replaced by an Instagram app block — the
+  markup and grid stay the same.
+{%- endcomment -%}
+
+<section class="section section--tight" aria-labelledby="social-title">
+  <div class="shell">
+    <div class="sec-head">
+      <div class="sec-head__title">
+        <p class="t-index" data-reveal="up">{{ section.settings.index }}</p>
+        <h2 class="t-h1" id="social-title" data-reveal="lines">{{ section.settings.heading }}</h2>
+      </div>
+      {%- if settings.social_instagram != blank -%}
+        <a class="link" href="{{ settings.social_instagram }}" target="_blank" rel="noopener" data-cursor="enter">
+          {{ section.settings.handle }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <div class="social">
+    {%- liquid
+      comment
+        Until the merchant attaches real posts, tiles cycle through the campaign
+        plates in assets/ so the grid reads as a considered wall rather than
+        eight empty boxes.
+      endcomment
+      assign fallbacks = 'nova-campaign-street.svg,nova-campaign-editorial.svg,nova-campaign-portrait.svg,nova-campaign-fabric.svg,nova-campaign-active.svg,nova-campaign-luxury.svg,nova-campaign-minimal.svg,nova-journal-drop.svg' | split: ','
+    -%}
+
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign art = block.settings.image
+        assign art_url = ''
+        if art != blank
+          assign art_url = art | image_url: width: 600
+        else
+          assign index = forloop.index0 | modulo: fallbacks.size
+          assign art_url = fallbacks[index] | asset_url
+        endif
+      -%}
+      <a class="social__tile"
+         href="{{ block.settings.link | default: settings.social_instagram | default: '#' }}"
+         {% if block.settings.link != blank or settings.social_instagram != blank %}target="_blank" rel="noopener"{% endif %}
+         data-cursor="view"
+         aria-label="{{ block.settings.caption | default: 'View on Instagram' | escape }}"
+         {{ block.shopify_attributes }}>
+        <img src="{{ art_url }}" alt="" width="800" height="800" loading="lazy" decoding="async">
+        <span class="social__tag">{{ block.settings.caption }}</span>
+      </a>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Social",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "text", "id": "index", "label": "Index", "default": "Community" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Follow the movement." },
+    { "type": "text", "id": "handle", "label": "Handle", "default": "@wearnova" }
+  ],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Tile",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "caption", "label": "Caption" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Social",
+      "blocks": [
+        { "type": "tile", "settings": { "caption": "Drop 01" } },
+        { "type": "tile", "settings": { "caption": "Street" } },
+        { "type": "tile", "settings": { "caption": "Studio" } },
+        { "type": "tile", "settings": { "caption": "Process" } },
+        { "type": "tile", "settings": { "caption": "Active" } },
+        { "type": "tile", "settings": { "caption": "Archive" } },
+        { "type": "tile", "settings": { "caption": "Fabric" } },
+        { "type": "tile", "settings": { "caption": "Campaign" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

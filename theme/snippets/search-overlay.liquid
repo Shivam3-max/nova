@@ -1,0 +1,64 @@
+{%- comment -%}
+  Fullscreen search.
+
+  Submits to Shopify's real /search route (so results are shareable and work
+  without JS) while the overlay itself renders predictive results inline.
+{%- endcomment -%}
+
+<div class="search" id="search-overlay" data-component="search" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Search">
+  <div class="search__sheet"></div>
+
+  <div class="search__inner">
+    <div class="search__bar">
+      <span class="t-meta">{{ 'general.search.title' | t }}</span>
+      <button class="header__action" type="button" data-search-close aria-label="Close search">
+        {% render 'icon', name: 'close', size: 16 %}
+        <span>Close</span>
+      </button>
+    </div>
+
+    <form class="search__form" action="{{ routes.search_url }}" method="get" role="search">
+      <label class="visually-hidden" for="search-input">{{ 'general.search.placeholder' | t }}</label>
+      <input
+        class="search__input"
+        id="search-input"
+        type="search"
+        name="q"
+        placeholder="{{ 'general.search.placeholder' | t }}"
+        autocomplete="off"
+        autocorrect="off"
+        spellcheck="false"
+        data-search-input>
+      <input type="hidden" name="options[prefix]" value="last">
+      <p class="search__status" data-search-status aria-live="polite"></p>
+    </form>
+
+    <div class="search__results" data-scroll-native>
+      <aside class="search__aside" data-search-default>
+        <div>
+          <p class="search__group-title">{{ 'general.search.popular' | t }}</p>
+          <div class="search__terms">
+            {%- assign popular = 'Hoodie,Cargo,Tee,Bomber,Shirt,Trouser' | split: ',' -%}
+            {%- for term in popular -%}
+              <a class="search__term" href="{{ routes.search_url }}?q={{ term | url_encode }}">{{ term }}</a>
+            {%- endfor -%}
+          </div>
+        </div>
+
+        <div>
+          <p class="search__group-title">{{ 'general.search.collections' | t }}</p>
+          <div class="search__terms">
+            {%- for handle in 'the-new-drop,street,minimal,active,luxury,accessories' | split: ',' -%}
+              {%- assign col = collections[handle] -%}
+              {%- if col -%}
+                <a class="search__term" href="{{ col.url }}">{{ col.title }}</a>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      </aside>
+
+      <div data-search-results></div>
+    </div>
+  </div>
+</div>

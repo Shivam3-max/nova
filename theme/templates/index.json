@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "hero": { "type": "hero", "settings": {} },
+    "act-drop": { "type": "act-drop", "settings": {} },
+    "act-street": { "type": "act-street", "settings": { "collection": "street", "count": 6 } },
+    "act-minimal": { "type": "act-minimal", "settings": { "collection": "minimal" } },
+    "act-active": { "type": "act-active", "settings": { "collection": "active" } },
+    "act-limited": { "type": "act-limited", "settings": { "collection": "limited-edition" } },
+    "worlds": { "type": "worlds", "settings": {} },
+    "product-grid": { "type": "product-grid", "settings": { "collection": "all", "count": 8 } },
+    "story": { "type": "story", "settings": {} },
+    "journal": { "type": "journal", "settings": { "blog": "journal", "count": 3 } },
+    "social": { "type": "social", "settings": {} },
+    "newsletter": { "type": "newsletter", "settings": {} },
+    "finale": { "type": "finale", "settings": {} }
+  },
+  "order": [
+    "hero", "act-drop", "act-street", "act-minimal", "act-active", "act-limited",
+    "worlds", "product-grid", "story", "journal", "social", "newsletter", "finale"
+  ]
+}

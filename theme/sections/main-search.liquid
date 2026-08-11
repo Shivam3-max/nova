@@ -1,0 +1,48 @@
+<header class="chead">
+  <p class="t-index">{{ 'general.search.title' | t }}</p>
+  <h1 class="chead__title" style="margin-top:1rem">
+    {%- if search.performed -%}
+      {{ search.results_count }} result{% unless search.results_count == 1 %}s{% endunless %}
+    {%- else -%}
+      Search
+    {%- endif -%}
+  </h1>
+  {%- if search.performed -%}
+    <p class="chead__lede t-lede">{{ 'general.search.results_for' | t }} “{{ search.terms }}”</p>
+  {%- endif -%}
+</header>
+
+<div class="shell section section--flush-top">
+  <form action="{{ routes.search_url }}" method="get" role="search" style="max-width:34rem;margin-bottom:3rem">
+    <label class="field">
+      <input class="field__input" type="search" name="q" value="{{ search.terms | escape }}" placeholder=" ">
+      <span class="field__label">{{ 'general.search.placeholder' | t }}</span>
+      <span class="field__rule"></span>
+    </label>
+  </form>
+
+  {%- if search.performed and search.results_count > 0 -%}
+    <div class="pgrid pgrid--dense pgrid--flat">
+      {%- for item in search.results -%}
+        <div data-reveal="up">
+          {% render 'product-card', product: item %}
+        </div>
+      {%- endfor -%}
+    </div>
+  {%- elsif search.performed -%}
+    <div class="cempty">
+      <p class="t-h2">{{ 'general.search.no_results' | t }}</p>
+      <p class="t-body">Try a category — hoodie, cargo, shirt, bomber.</p>
+      <a class="btn" href="{{ routes.all_products_collection_url }}">Shop everything</a>
+    </div>
+  {%- else -%}
+    <div class="cempty">
+      <p class="t-h2">What are you looking for?</p>
+      <a class="btn" href="{{ routes.all_products_collection_url }}">Browse the archive</a>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{ "name": "Search results" }
+{% endschema %}
