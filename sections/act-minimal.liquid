@@ -39,12 +39,14 @@
 
   {%- if product -%}
     <div class="act-minimal__stage" data-reveal="scale" data-reveal-delay="0.1">
+      {%- if product.featured_image != blank -%}
       <img src="{{ product.featured_image | image_url: width: 900 }}"
            srcset="{{ product.featured_image | image_url: width: 500 }} 500w,
                    {{ product.featured_image | image_url: width: 900 }} 900w"
            sizes="(max-width: 48rem) 78vw, 34rem"
            alt="{{ product.title | escape }}"
            width="1000" height="1250" loading="lazy" decoding="async">
+      {%- endif -%}
     </div>
 
     <div class="act-minimal__meta" data-reveal="up">

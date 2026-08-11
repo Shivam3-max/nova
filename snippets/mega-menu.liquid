@@ -53,8 +53,10 @@
           {%- assign col = collections[handle] -%}
           {%- if col -%}
             <a class="mega__card" href="{{ col.url }}" data-cursor="view">
-              <img src="{{ col.image | image_url: width: 800 }}" alt="{{ col.title | escape }}"
-                   width="1600" height="1000" loading="lazy" decoding="async">
+              {%- if col.image != blank -%}
+                <img src="{{ col.image | image_url: width: 800 }}" alt="{{ col.title | escape }}"
+                     width="1600" height="1000" loading="lazy" decoding="async">
+              {%- endif -%}
               <span class="mega__card__label">{{ col.title }}</span>
             </a>
           {%- endif -%}

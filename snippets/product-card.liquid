@@ -67,6 +67,11 @@
 <article class="pcard{% unless second_image %} pcard--single{% endunless %}" data-product-handle="{{ product.handle }}">
   <div class="pcard__media" data-cursor="view">
     <a href="{{ product.url }}" tabindex="-1" aria-hidden="true">
+      {%- comment -%}
+        image_url raises "invalid url input" on a nil image, and a product
+        without media has none — so guard the image itself, never its container.
+      {%- endcomment -%}
+      {%- if first_image != blank -%}
       <img
         class="pcard__img pcard__img--main {{ main_fit }}"
         src="{{ first_image | image_url: width: 800 }}"
@@ -79,8 +84,9 @@
         loading="{{ lazy }}"
         {% if lazy == 'eager' %}fetchpriority="high"{% endif %}
         decoding="async">
+      {%- endif -%}
 
-      {%- if second_image -%}
+      {%- if second_image != blank -%}
         <img
           class="pcard__img pcard__img--alt {{ alt_fit }}"
           src="{{ second_image | image_url: width: 800 }}"

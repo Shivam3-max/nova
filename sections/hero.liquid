@@ -62,7 +62,7 @@
     {%- if settings.enable_webgl -%}
       <canvas class="hero__canvas"
               data-hero-canvas
-              data-texture="{{ plate | image_url: width: 1000 }}"
+              data-texture="{% if plate != blank %}{{ plate | image_url: width: 1000 }}{% endif %}"
               aria-hidden="true"></canvas>
     {%- endif -%}
 

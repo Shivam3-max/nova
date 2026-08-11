@@ -15,7 +15,7 @@
         {%- for item in cart.items -%}
           <div class="cartline">
             <a class="cartline__media" href="{{ item.url }}" tabindex="-1" aria-hidden="true">
-              <img src="{{ item.image | image_url: width: 300 }}" alt="" width="200" height="250" loading="lazy">
+              {%- if item.image != blank -%}<img src="{{ item.image | image_url: width: 300 }}" alt="" width="200" height="250" loading="lazy">{%- endif -%}
             </a>
 
             <div style="display:grid;gap:0.5rem;align-content:start">

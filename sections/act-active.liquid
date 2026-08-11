@@ -46,6 +46,13 @@
         if mode_product == blank
           assign mode_product = collection.products[forloop.index0]
         endif
+        comment
+          A narrow collection can have fewer products than there are modes,
+          which would leave cards with no image. Top up from all products.
+        endcomment
+        if mode_product == blank
+          assign mode_product = collections.all.products[forloop.index0]
+        endif
       -%}
       <article class="mode" data-reveal="up" data-reveal-delay="{{ forloop.index0 | times: 0.08 }}" {{ block.shopify_attributes }}>
         <p class="mode__idx">{{ forloop.index | prepend: '0' | slice: -2, 2 }} / {{ block.settings.label }}</p>
@@ -53,9 +60,11 @@
 
         {%- if mode_product -%}
           <a class="mode__media" href="{{ mode_product.url }}" data-cursor="view">
-            <img src="{{ mode_product.featured_image | image_url: width: 700 }}"
-                 alt="{{ mode_product.title | escape }}"
-                 width="1000" height="1250" loading="lazy" decoding="async">
+            {%- if mode_product.featured_image != blank -%}
+              <img src="{{ mode_product.featured_image | image_url: width: 700 }}"
+                   alt="{{ mode_product.title | escape }}"
+                   width="1000" height="1250" loading="lazy" decoding="async">
+            {%- endif -%}
           </a>
           <p class="t-meta">{{ mode_product.title }} — {{ mode_product.price | money }}</p>
         {%- endif -%}

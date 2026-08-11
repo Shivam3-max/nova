@@ -12,8 +12,10 @@
 -%}
 
 <div class="quick__media">
-  <img src="{{ product.featured_image | image_url: width: 700 }}"
-       alt="{{ product.title | escape }}" width="1000" height="1250" decoding="async">
+  {%- if product.featured_image != blank -%}
+    <img src="{{ product.featured_image | image_url: width: 700 }}"
+         alt="{{ product.title | escape }}" width="1000" height="1250" decoding="async">
+  {%- endif -%}
 </div>
 
 <div class="quick__body" data-component="variant-picker" data-update-url="false">
