@@ -91,14 +91,22 @@
 .hero__fallback {
   position: absolute;
   inset: 0;
-  display: grid;
-  place-items: center;
   z-index: 0;
 }
 
+/* The image is positioned absolutely rather than centred as a grid item.
+   A percentage height on a grid item does not resolve against a minmax(0,1fr)
+   row — the garment kept overflowing into the CTA on short viewports. On an
+   absolutely positioned element the percentage resolves against the
+   containing block, which is definite, so object-fit can letterbox properly. */
 .hero__fallback img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: var(--garment-w);
-  max-height: 100%;
+  height: 100%;
   object-fit: contain;
   filter: drop-shadow(0 2.5rem 3.5rem rgba(13, 13, 15, 0.18));
 }
