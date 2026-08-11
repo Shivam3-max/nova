@@ -11,7 +11,14 @@
   <div class="viewer__loading" data-viewer-loading hidden>Loading viewer</div>
 
   <div class="viewer__fallback">
-    <img data-viewer-fallback-img src="" alt="">
+    {%- comment -%}
+      src is populated by product-viewer.js from the payload of whichever card
+      or PDP opened the viewer, so there is nothing to resolve through
+      asset_url at render time.
+    {%- endcomment -%}
+    {% # theme-check-disable RemoteAsset %}
+    <img data-viewer-fallback-img src="" alt="" width="1000" height="1250" decoding="async">
+    {% # theme-check-enable RemoteAsset %}
   </div>
 
   <div class="viewer__chrome">

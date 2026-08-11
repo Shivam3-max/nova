@@ -128,10 +128,12 @@ function makeProduct({
         editorial_image: { value: editorial, type: 'file_reference' },
         product_3d_model: { value: garment, type: 'single_line_text_field' },
         featured_product: { value: featured, type: 'boolean' },
+        /* A `json` metafield's `.value` is already parsed by Shopify — it hands
+           back the array, not a string. Storing a string here (and calling a
+           non-existent `parse_json` filter in Liquid) worked locally but would
+           have failed on a real store. */
         color_data: {
-          value: JSON.stringify(
-            colorNames.map((name) => ({ name, swatch: SWATCH[name] || '#888', art: colors[name] }))
-          ),
+          value: colorNames.map((name) => ({ name, swatch: SWATCH[name] || '#888', art: colors[name] })),
           type: 'json',
         },
       },

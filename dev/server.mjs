@@ -103,7 +103,18 @@ function imageUrl(src) {
 engine.registerFilter('image_url', imageUrl);
 engine.registerFilter('img_url', imageUrl);
 
-engine.registerFilter('stylesheet_tag', (url) => `<link rel="stylesheet" href="${url}">`);
+engine.registerFilter('stylesheet_tag', (url, ...rest) => {
+  // Shopify supports `| stylesheet_tag: preload: true`. LiquidJS hands named
+  // arguments over as either an object or [key, value] pairs depending on call
+  // shape, so normalise both.
+  const opts = {};
+  for (const arg of rest) {
+    if (Array.isArray(arg) && arg.length === 2) opts[arg[0]] = arg[1];
+    else if (arg && typeof arg === 'object') Object.assign(opts, arg);
+  }
+  const preload = opts.preload ? `<link rel="preload" href="${url}" as="style">` : '';
+  return `${preload}<link rel="stylesheet" href="${url}">`;
+});
 engine.registerFilter('script_tag', (url) => `<script src="${url}" defer></script>`);
 engine.registerFilter('handleize', (s) =>
   String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
@@ -130,15 +141,9 @@ engine.registerFilter('highlight', (s, q) =>
 );
 engine.registerFilter('format_address', (a) => `${a?.address1 || ''} ${a?.city || ''}`.trim());
 engine.registerFilter('metafield_text', (m) => (m && m.value != null ? String(m.value) : ''));
-engine.registerFilter('parse_json', (v) => {
-  if (v == null || v === '') return null;
-  if (typeof v !== 'string') return v;
-  try {
-    return JSON.parse(v);
-  } catch {
-    return null;
-  }
-});
+/* Note: there is deliberately no `parse_json` filter. Shopify has no such
+   filter — a `json` metafield's `.value` arrives already parsed. Registering one
+   here would let templates use it locally and break in production. */
 engine.registerFilter('camelize', (s) => String(s || '').replace(/[-_ ](.)/g, (_, c) => c.toUpperCase()));
 engine.registerFilter('hex_to_rgba', (hex, a = 1) => {
   const h = String(hex || '#000').replace('#', '');

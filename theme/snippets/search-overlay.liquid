@@ -48,7 +48,12 @@
         <div>
           <p class="search__group-title">{{ 'general.search.collections' | t }}</p>
           <div class="search__terms">
-            {%- for handle in 'the-new-drop,street,minimal,active,luxury,accessories' | split: ',' -%}
+            {%- comment -%}
+              Shopify's Liquid does not accept a filter inside `for … in` —
+              the array has to be assigned first.
+            {%- endcomment -%}
+            {%- assign shortcut_handles = 'the-new-drop,street,minimal,active,luxury,accessories' | split: ',' -%}
+            {%- for handle in shortcut_handles -%}
               {%- assign col = collections[handle] -%}
               {%- if col -%}
                 <a class="search__term" href="{{ col.url }}">{{ col.title }}</a>

@@ -29,8 +29,7 @@
       page is typography-led, so a flash of unstyled oversized type is worse
       than the extra round trip.
     {%- endcomment -%}
-    <link rel="preload" as="style" href="{{ 'nova.css' | asset_url }}">
-    <link rel="stylesheet" href="{{ 'nova.css' | asset_url }}">
+    {{ 'nova.css' | asset_url | stylesheet_tag: preload: true }}
 
     {%- comment -%} Swap the no-js class before first paint, not on DOMContentLoaded. {%- endcomment -%}
     <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
@@ -63,7 +62,12 @@
     {{ content_for_header }}
   </head>
 
-  <body class="{{ body_class }}">
+  {%- comment -%}
+    Derived from `template`, not from a variable the layout is handed. Shopify
+    does not pass a `body_class` object, so the previous version rendered an
+    empty class attribute on a real store.
+  {%- endcomment -%}
+  <body class="template-{{ template.name }}{% if template.suffix != blank %} template-{{ template.name }}--{{ template.suffix }}{% endif %}">
     <a class="skip-link" href="#main">{{ 'general.accessibility.skip_to_content' | t }}</a>
 
     {% section 'announcement' %}

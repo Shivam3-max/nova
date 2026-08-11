@@ -1,0 +1,52 @@
+{%- comment -%}
+  Gift card template. Shopify requires this file in every theme, and renders it
+  standalone (no theme layout) when a customer opens a gift card link.
+{%- endcomment -%}
+
+{% layout none %}
+
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ 'gift_cards.issued.title' | t: value: gift_card.balance | money }} — {{ shop.name }}</title>
+    <link rel="stylesheet" href="{{ 'nova.css' | asset_url }}">
+  </head>
+
+  <body class="template-gift-card">
+    <main class="notfound" role="main">
+      <div class="notfound__inner">
+        <p class="t-meta">{{ shop.name }}</p>
+        <h1 class="t-h1">Gift card</h1>
+
+        <p class="t-display" style="font-family: var(--font-mono); letter-spacing: -0.03em">
+          {{ gift_card.balance | money }}
+        </p>
+
+        {%- if gift_card.balance != gift_card.initial_value -%}
+          <p class="t-meta">Originally {{ gift_card.initial_value | money }}</p>
+        {%- endif -%}
+
+        {%- if gift_card.expired -%}
+          <p class="badge badge--signal">Expired {{ gift_card.expires_on | date: '%d.%m.%y' }}</p>
+        {%- elsif gift_card.expires_on -%}
+          <p class="t-meta">Expires {{ gift_card.expires_on | date: '%d %B %Y' }}</p>
+        {%- endif -%}
+
+        <div style="display:grid;gap:0.6rem;justify-items:center;margin-top:1rem">
+          <p class="t-meta">Code</p>
+          <p class="t-num" style="font-size:1.25rem;letter-spacing:0.12em">
+            {{ gift_card.code | format_code }}
+          </p>
+        </div>
+
+        {%- if gift_card.qr_identifier -%}
+          <img src="{{ gift_card.qr_identifier }}" alt="Gift card QR code" width="160" height="160">
+        {%- endif -%}
+
+        <a class="btn" href="{{ shop.url }}">Shop NØVA</a>
+      </div>
+    </main>
+  </body>
+</html>

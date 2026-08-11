@@ -14,7 +14,7 @@
     assign on_sale = true
   endif
 
-  assign colours = product.metafields.custom.color_data.value | parse_json
+  assign colours = product.metafields.custom.color_data.value
   assign rating = product.metafields.reviews.rating.value
   assign rating_count = product.metafields.reviews.rating_count.value
   assign story = product.metafields.custom.product_story.value

@@ -97,6 +97,18 @@
       "by": "By"
     }
   },
+  "gift_cards": {
+    "issued": {
+      "title": "Here is your {{ value }} gift card",
+      "subtext": "Your gift card",
+      "expired": "Expired",
+      "expiration_date": "Expires on {{ expires_on }}",
+      "redeem": "Use this code at checkout to redeem your gift card",
+      "shop_link": "Start shopping",
+      "print": "Print this gift card",
+      "add_to_apple_wallet": "Add to Apple Wallet"
+    }
+  },
   "sections": {
     "header": {
       "announcement": "Free shipping over ₹4,999",

@@ -166,7 +166,7 @@
     <div class="pcard__meta">
       <span>{{ product.type }}</span>
       {%- if colour_json != blank -%}
-        {%- assign colours = colour_json | parse_json -%}
+        {%- assign colours = colour_json -%}
         <span class="pcard__colors" aria-label="{{ 'products.product.colors_available' | t: count: colours.size }}">
           {%- for colour in colours -%}
             <span class="pcard__dot" style="--swatch-color: {{ colour.swatch }}" title="{{ colour.name }}"></span>
