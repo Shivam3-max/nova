@@ -22,6 +22,12 @@ export async function mountHeroScene(canvas, { textureUrl, section }) {
   const pointer = new THREE.Vector2(0, 0);
   const smoothed = new THREE.Vector2(0, 0);
 
+  /* Declared before createStage: createStage performs an initial resize before
+     it returns, which calls onResize synchronously. Anything that handler
+     touches must already exist or it hits the temporal dead zone. */
+  const state = { cameraZ: 6.4, scrollTurn: 0, floatY: 0 };
+  const group = new THREE.Group();
+
   const stage = createStage(canvas, {
     maxPixelRatio: 1.6,
     onRender(delta, elapsed) {
@@ -47,9 +53,6 @@ export async function mountHeroScene(canvas, { textureUrl, section }) {
     },
   });
 
-  const state = { cameraZ: 6.4, scrollTurn: 0, floatY: 0 };
-
-  const group = new THREE.Group();
   stage.scene.add(group);
 
   const garment = createGarment(texture, { amplitude: 1, curve: 1.2, sheen: 0.045 });

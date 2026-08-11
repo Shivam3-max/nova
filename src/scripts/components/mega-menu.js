@@ -33,25 +33,31 @@ export function megaMenu(root) {
         return;
       }
 
-      timeline = gsap
-        .timeline({ defaults: { ease: 'power4.out' } })
-        .fromTo(
-          sheet,
-          { clipPath: 'inset(0 0 100% 0)' },
-          { clipPath: 'inset(0 0 0% 0)', duration: 0.85 }
-        )
-        .fromTo(
+      timeline = gsap.timeline({ defaults: { ease: 'power4.out' } });
+
+      timeline.fromTo(
+        sheet,
+        { clipPath: 'inset(0 0 100% 0)' },
+        { clipPath: 'inset(0 0 0% 0)', duration: 0.85 }
+      );
+
+      if (links.length) {
+        timeline.fromTo(
           links,
           { yPercent: 110, opacity: 0 },
           { yPercent: 0, opacity: 1, duration: 0.75, stagger: 0.055 },
           '-=0.5'
-        )
-        .fromTo(
+        );
+      }
+
+      if (cards.length) {
+        timeline.fromTo(
           cards,
           { y: 34, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.7, stagger: 0.06 },
           '-=0.55'
         );
+      }
     },
     onClose(finish) {
       triggers.forEach((t) => t.setAttribute('aria-expanded', 'false'));

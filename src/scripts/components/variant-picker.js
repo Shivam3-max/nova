@@ -165,6 +165,31 @@ export function variantPicker(root) {
     }
   });
 
+  /**
+   * Choosing a colourway inside the 3D viewer must move the buy button too —
+   * otherwise the customer inspects Bone and adds Black to the bag.
+   */
+  cleanups.push(
+    on(document, 'nova:viewer:color', (event) => {
+      const { name } = event.detail || {};
+      if (!name) return;
+
+      const match = $$('[data-option-position="1"]', root).find(
+        (input) => (input.value ?? input.dataset.optionValue) === name
+      );
+      if (!match) return;
+
+      $$('[data-option-position="1"]', root).forEach((sibling) =>
+        setChecked(sibling, sibling === match)
+      );
+
+      const readout = $('[data-option-readout="1"]', root);
+      if (readout) readout.textContent = name;
+
+      onSelect();
+    })
+  );
+
   onSelect();
 
   return () => cleanups.forEach((fn) => fn());

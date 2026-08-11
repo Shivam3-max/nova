@@ -20,24 +20,30 @@ function revealElement(el) {
   const stagger = parseFloat(el.dataset.revealStagger || 0.06);
 
   // Headline treatment: split into lines and roll them up.
+  // Empty target lists are checked before every tween — GSAP only warns and
+  // carries on, which turns a real markup problem into console noise.
   if (el.dataset.reveal === 'lines') {
     const { lines } = splitLines(el);
-    gsap.fromTo(
-      lines,
-      { yPercent: 108 },
-      { yPercent: 0, duration: 1.05, ease: 'power4.out', stagger, delay }
-    );
+    if (lines.length) {
+      gsap.fromTo(
+        lines,
+        { yPercent: 108 },
+        { yPercent: 0, duration: 1.05, ease: 'power4.out', stagger, delay }
+      );
+    }
     return;
   }
 
   // Children stagger: the element is a container, its children animate.
   if (el.dataset.revealChildren) {
     const children = el.querySelectorAll(el.dataset.revealChildren);
-    gsap.fromTo(
-      children,
-      { y: 28, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.85, stagger, delay, ease: 'power3.out' }
-    );
+    if (children.length) {
+      gsap.fromTo(
+        children,
+        { y: 28, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.85, stagger, delay, ease: 'power3.out' }
+      );
+    }
   }
 }
 

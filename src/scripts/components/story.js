@@ -38,8 +38,11 @@ export function story(root) {
         onEnterBack: () => activate(index),
       });
 
+      const lines = step.querySelectorAll('[data-story-line]');
+      if (!lines.length) return;
+
       gsap.fromTo(
-        step.querySelectorAll('[data-story-line]'),
+        lines,
         { y: 26, opacity: 0 },
         {
           y: 0,
@@ -53,8 +56,7 @@ export function story(root) {
     });
 
     // Slow drift on the sticky plate so it is never completely static.
-    const sticky = root.querySelector('.story__sticky');
-    if (sticky) {
+    if (images.length) {
       gsap.fromTo(
         images,
         { scale: 1.08 },

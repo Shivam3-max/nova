@@ -24,46 +24,58 @@ export function hero(root) {
   /* ------------------------- typography ------------------------- */
 
   const intro = gsap.timeline({ delay: 0.15 });
-
-  if (title && allowMotion()) {
-    const { lines } = splitLines(title);
-    intro.fromTo(
-      lines,
-      { yPercent: 112 },
-      { yPercent: 0, duration: 1.25, ease: 'expo.out', stagger: 0.08 },
-      0
-    );
-  }
+  const fades = $$('[data-hero-fade]', root);
 
   if (allowMotion()) {
-    intro
-      .fromTo(
-        $$('[data-hero-fade]', root),
+    if (title) {
+      const { lines } = splitLines(title);
+      if (lines.length) {
+        intro.fromTo(
+          lines,
+          { yPercent: 112 },
+          { yPercent: 0, duration: 1.25, ease: 'expo.out', stagger: 0.08 },
+          0
+        );
+      }
+    }
+
+    if (fades.length) {
+      intro.fromTo(
+        fades,
         { y: 22, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.9, stagger: 0.09, ease: 'power3.out' },
         0.35
-      )
-      .fromTo(pins, { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.8, stagger: 0.12 }, 0.9);
-  } else {
-    gsap.set([...$$('[data-hero-fade]', root), ...pins], { opacity: 1, y: 0, x: 0 });
+      );
+    }
+
+    if (pins.length) {
+      intro.fromTo(pins, { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.8, stagger: 0.12 }, 0.9);
+    }
+  } else if (fades.length || pins.length) {
+    gsap.set([...fades, ...pins], { opacity: 1, y: 0, x: 0 });
   }
 
   /* Scroll: headline leaves before the garment does. */
   const scrollScene = createScene(root, () => {
     if (!allowMotion()) return;
 
-    gsap.to($('.hero__content', root), {
-      yPercent: -26,
-      opacity: 0,
-      ease: 'none',
-      scrollTrigger: { trigger: root, start: 'top top', end: '62% top', scrub: 0.5 },
-    });
+    const content = $('.hero__content', root);
+    if (content) {
+      gsap.to(content, {
+        yPercent: -26,
+        opacity: 0,
+        ease: 'none',
+        scrollTrigger: { trigger: root, start: 'top top', end: '62% top', scrub: 0.5 },
+      });
+    }
 
-    gsap.to(pins, {
-      opacity: 0,
-      ease: 'none',
-      scrollTrigger: { trigger: root, start: 'top top', end: '30% top', scrub: true },
-    });
+    if (pins.length) {
+      gsap.to(pins, {
+        opacity: 0,
+        ease: 'none',
+        scrollTrigger: { trigger: root, start: 'top top', end: '30% top', scrub: true },
+      });
+    }
 
     // The static plate gets its own push so the fallback still feels directed.
     if (fallback) {

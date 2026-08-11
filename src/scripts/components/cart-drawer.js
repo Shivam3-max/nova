@@ -38,18 +38,17 @@ export function cartDrawer(root) {
       timeline = gsap
         .timeline()
         .to(scrim, { opacity: 1, duration: 0.4, ease: 'power2.out' }, 0)
-        .fromTo(
-          panel,
-          { xPercent: 100 },
-          { xPercent: 0, duration: 0.7, ease: 'expo.out' },
-          0
-        )
-        .fromTo(
-          $$('.line, .drawer__foot > *', root),
+        .fromTo(panel, { xPercent: 100 }, { xPercent: 0, duration: 0.7, ease: 'expo.out' }, 0);
+
+      const rows = $$('.line, .drawer__foot > *', root);
+      if (rows.length) {
+        timeline.fromTo(
+          rows,
           { x: 26, opacity: 0 },
           { x: 0, opacity: 1, duration: 0.5, stagger: 0.045, ease: 'power3.out' },
           0.16
         );
+      }
     },
     onClose(finish) {
       timeline?.kill();
