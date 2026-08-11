@@ -7,10 +7,21 @@
       </div>
 
       {%- for block in section.blocks -%}
+        {%- liquid
+          comment
+            A `link_list` setting hands back a linklist object on Shopify, not a
+            handle — indexing `linklists[…]` with it returns nothing. The harness
+            passes a handle, so resolve both.
+          endcomment
+          assign menu = block.settings.menu
+          unless menu.links
+            assign menu = linklists[block.settings.menu]
+          endunless
+        -%}
         <div {{ block.shopify_attributes }}>
           <p class="footer__col-title">{{ block.settings.title }}</p>
           <nav class="footer__links" aria-label="{{ block.settings.title | escape }}">
-            {%- for link in linklists[block.settings.menu].links -%}
+            {%- for link in menu.links -%}
               <a href="{{ link.url }}">{{ link.title }}</a>
             {%- endfor -%}
           </nav>
@@ -57,7 +68,13 @@
       "name": "Menu column",
       "settings": [
         { "type": "text", "id": "title", "label": "Heading", "default": "Shop" },
-        { "type": "link_list", "id": "menu", "label": "Menu", "default": "footer-shop" }
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu",
+          "info": "Create footer-shop / footer-customer / footer-legal menus in Navigation and select them here.",
+          "default": "footer"
+        }
       ]
     }
   ],
@@ -65,9 +82,9 @@
     {
       "name": "Footer",
       "blocks": [
-        { "type": "menu", "settings": { "title": "Shop", "menu": "footer-shop" } },
-        { "type": "menu", "settings": { "title": "Customer", "menu": "footer-customer" } },
-        { "type": "menu", "settings": { "title": "Legal", "menu": "footer-legal" } }
+        { "type": "menu", "settings": { "title": "Shop" } },
+        { "type": "menu", "settings": { "title": "Customer" } },
+        { "type": "menu", "settings": { "title": "Legal" } }
       ]
     }
   ]

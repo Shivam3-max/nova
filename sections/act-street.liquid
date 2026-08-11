@@ -11,9 +11,18 @@
     A `collection` setting returns a collection object on Shopify but a handle
     in the local harness. Resolving both keeps one source of truth.
   endcomment
+  comment
+    Resolve in three steps. On Shopify a `collection` setting is already a
+    collection object; in the local harness it is a handle string; and the
+    schema is not allowed to declare a default for this setting type, so the
+    demo fallback handle lives here rather than in the schema.
+  endcomment
   assign collection = section.settings.collection
   unless collection.products
     assign collection = collections[section.settings.collection]
+  endunless
+  unless collection.products
+    assign collection = collections['street']
   endunless
 
   assign campaign = collection.image | default: collection.featured_image
@@ -71,7 +80,7 @@
       "label": "Body",
       "default": "Heavyweight cotton, utility volume, and finishes that improve with wear."
     },
-    { "type": "collection", "id": "collection", "label": "Collection", "default": "street" },
+    { "type": "collection", "id": "collection", "label": "Collection" },
     { "type": "range", "id": "count", "label": "Products", "min": 3, "max": 12, "step": 1, "default": 6 }
   ],
   "presets": [{ "name": "Act 02 — Street" }]

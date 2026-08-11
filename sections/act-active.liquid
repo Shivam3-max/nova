@@ -1,9 +1,18 @@
 {%- comment -%} Act 04 — ACTIVE. Motion rules, three modes, products reveal on scroll. {%- endcomment -%}
 
 {%- liquid
+  comment
+    Resolve in three steps. On Shopify a `collection` setting is already a
+    collection object; in the local harness it is a handle string; and the
+    schema is not allowed to declare a default for this setting type, so the
+    demo fallback handle lives here rather than in the schema.
+  endcomment
   assign collection = section.settings.collection
   unless collection.products
     assign collection = collections[section.settings.collection]
+  endunless
+  unless collection.products
+    assign collection = collections['active']
   endunless
 -%}
 
@@ -62,7 +71,7 @@
       "label": "Body",
       "default": "Four-way stretch, flatlock seams, and fabric that stays where you put it."
     },
-    { "type": "collection", "id": "collection", "label": "Collection", "default": "active" }
+    { "type": "collection", "id": "collection", "label": "Collection" }
   ],
   "blocks": [
     {

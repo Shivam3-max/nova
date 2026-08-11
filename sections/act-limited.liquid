@@ -7,9 +7,18 @@
 {%- endcomment -%}
 
 {%- liquid
+  comment
+    Resolve in three steps. On Shopify a `collection` setting is already a
+    collection object; in the local harness it is a handle string; and the
+    schema is not allowed to declare a default for this setting type, so the
+    demo fallback handle lives here rather than in the schema.
+  endcomment
   assign collection = section.settings.collection
   unless collection.products
     assign collection = collections[section.settings.collection]
+  endunless
+  unless collection.products
+    assign collection = collections['limited-edition']
   endunless
 
   assign product = section.settings.product
@@ -97,7 +106,7 @@
       "info": "ISO 8601, e.g. 2026-09-01T23:59:00+05:30. Leave blank for a rolling demo countdown.",
       "default": ""
     },
-    { "type": "collection", "id": "collection", "label": "Collection", "default": "limited-edition" },
+    { "type": "collection", "id": "collection", "label": "Collection" },
     { "type": "product", "id": "product", "label": "Featured product" },
     { "type": "image_picker", "id": "image", "label": "Campaign image" },
     {

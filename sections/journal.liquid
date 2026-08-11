@@ -1,7 +1,19 @@
 {%- comment -%} NØVA JOURNAL — editorial stories from a Shopify blog. {%- endcomment -%}
 
 {%- liquid
-  assign source = blogs[section.settings.blog]
+  comment
+    A `blog` setting returns a blog object on Shopify and a handle string in the
+    local harness, and the setting type accepts no schema default — so resolve
+    all three cases here.
+  endcomment
+  assign source = section.settings.blog
+  unless source.articles
+    assign source = blogs[section.settings.blog]
+  endunless
+  unless source.articles
+    assign source = blogs['journal']
+  endunless
+
   assign posts = source.articles
 -%}
 
@@ -54,7 +66,7 @@
   "settings": [
     { "type": "text", "id": "index", "label": "Index", "default": "Editorial" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "NØVA Journal" },
-    { "type": "blog", "id": "blog", "label": "Blog", "default": "journal" },
+    { "type": "blog", "id": "blog", "label": "Blog" },
     { "type": "range", "id": "count", "label": "Stories", "min": 2, "max": 6, "step": 1, "default": 3 },
     { "type": "checkbox", "id": "lead", "label": "Make the first story a lead spread", "default": false }
   ],

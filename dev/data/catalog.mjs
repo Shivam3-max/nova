@@ -542,6 +542,19 @@ export const articlesByHandle = Object.fromEntries(articles.map((a) => [a.handle
 const link = (title, url, links = []) => ({ title, url, links, active: false, child_active: false });
 
 export const linklists = {
+  /* Every Shopify store ships with `main-menu` and `footer`. They are the only
+     two handles a link_list schema setting may declare as a default, so the
+     footer blocks fall back to them until the merchant creates their own. */
+  footer: {
+    title: 'Footer menu',
+    handle: 'footer',
+    links: [
+      link('Search', '/search'),
+      link('Shipping', '/pages/shipping'),
+      link('Returns', '/pages/returns'),
+      link('Privacy', '/policies/privacy-policy'),
+    ],
+  },
   'main-menu': {
     title: 'Main menu',
     handle: 'main-menu',

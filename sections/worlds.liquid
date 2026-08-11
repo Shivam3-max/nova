@@ -14,9 +14,18 @@
   <div class="worlds" data-component="worlds">
     {%- for block in section.blocks -%}
       {%- liquid
+        comment
+          Same three-step resolution as the act sections. The last fallback
+          derives the handle from the card's title (Street -> street), so a
+          freshly imported theme still resolves before anyone opens the editor.
+        endcomment
         assign col = block.settings.collection
         unless col.products
           assign col = collections[block.settings.collection]
+        endunless
+        assign world_handle = block.settings.title | downcase | handleize
+        unless col.products
+          assign col = collections[world_handle]
         endunless
 
         comment

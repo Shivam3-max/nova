@@ -1,9 +1,18 @@
 {%- comment -%} SHOP ALL — editorial two-column grid. {%- endcomment -%}
 
 {%- liquid
+  comment
+    Resolve in three steps. On Shopify a `collection` setting is already a
+    collection object; in the local harness it is a handle string; and the
+    schema is not allowed to declare a default for this setting type, so the
+    demo fallback handle lives here rather than in the schema.
+  endcomment
   assign collection = section.settings.collection
   unless collection.products
     assign collection = collections[section.settings.collection]
+  endunless
+  unless collection.products
+    assign collection = collections['all']
   endunless
 
   assign grid_class = 'pgrid'
@@ -44,7 +53,7 @@
     { "type": "text", "id": "index", "label": "Index", "default": "The archive" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Shop all" },
     { "type": "text", "id": "cta_label", "label": "Link label", "default": "View everything" },
-    { "type": "collection", "id": "collection", "label": "Collection", "default": "all" },
+    { "type": "collection", "id": "collection", "label": "Collection" },
     { "type": "range", "id": "count", "label": "Products", "min": 2, "max": 16, "step": 2, "default": 8 }
   ],
   "presets": [{ "name": "Product grid" }]
