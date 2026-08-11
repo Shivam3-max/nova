@@ -20,7 +20,35 @@
     },
     "act-active": {
       "type": "act-active",
-      "settings": {}
+      "settings": {},
+      "blocks": {
+        "act-active-1": {
+          "type": "mode",
+          "settings": {
+            "label": "Train",
+            "body": "Compression where it counts, room where it does not."
+          }
+        },
+        "act-active-2": {
+          "type": "mode",
+          "settings": {
+            "label": "Run",
+            "body": "Twenty-eight grams. Nothing to think about."
+          }
+        },
+        "act-active-3": {
+          "type": "mode",
+          "settings": {
+            "label": "Recover",
+            "body": "Brushed inside. For the hours after."
+          }
+        }
+      },
+      "block_order": [
+        "act-active-1",
+        "act-active-2",
+        "act-active-3"
+      ]
     },
     "act-limited": {
       "type": "act-limited",
@@ -28,7 +56,43 @@
     },
     "worlds": {
       "type": "worlds",
-      "settings": {}
+      "settings": {},
+      "blocks": {
+        "worlds-1": {
+          "type": "world",
+          "settings": {
+            "title": "Street",
+            "body": "Volume, weight, and finishes that age."
+          }
+        },
+        "worlds-2": {
+          "type": "world",
+          "settings": {
+            "title": "Minimal",
+            "body": "The pieces everything else is built around."
+          }
+        },
+        "worlds-3": {
+          "type": "world",
+          "settings": {
+            "title": "Active",
+            "body": "Engineered knits. Train, run, recover."
+          }
+        },
+        "worlds-4": {
+          "type": "world",
+          "settings": {
+            "title": "Luxury",
+            "body": "Half-canvas construction and longer lines."
+          }
+        }
+      },
+      "block_order": [
+        "worlds-1",
+        "worlds-2",
+        "worlds-3",
+        "worlds-4"
+      ]
     },
     "product-grid": {
       "type": "product-grid",
@@ -38,7 +102,47 @@
     },
     "story": {
       "type": "story",
-      "settings": {}
+      "settings": {},
+      "blocks": {
+        "story-1": {
+          "type": "step",
+          "settings": {
+            "title": "Fabric",
+            "body": "Loopback cotton milled in Tiruppur, taken to 480 GSM over four attempts. Heavy enough to hold a shoulder line, soft enough to wear on the first day.",
+            "spec": "480 GSM — combed, ring-spun"
+          }
+        },
+        "story-2": {
+          "type": "step",
+          "settings": {
+            "title": "Cut",
+            "body": "The shoulder is dropped four centimetres past the natural line and the armhole lowered to match. Scale a standard block instead and the garment hangs wrong at the neck.",
+            "spec": "Drop shoulder — redrafted block"
+          }
+        },
+        "story-3": {
+          "type": "step",
+          "settings": {
+            "title": "Construction",
+            "body": "Bar-tacked at every stress point, flatlock through the body. The seams are the part nobody photographs and the first part to fail.",
+            "spec": "Flatlock — bar-tacked stress points"
+          }
+        },
+        "story-4": {
+          "type": "step",
+          "settings": {
+            "title": "Finish",
+            "body": "Garment dyed in small batches and washed twice before it ships, so the length you buy is the length you keep.",
+            "spec": "Garment dyed — pre-shrunk twice"
+          }
+        }
+      },
+      "block_order": [
+        "story-1",
+        "story-2",
+        "story-3",
+        "story-4"
+      ]
     },
     "journal": {
       "type": "journal",
@@ -48,7 +152,67 @@
     },
     "social": {
       "type": "social",
-      "settings": {}
+      "settings": {},
+      "blocks": {
+        "social-1": {
+          "type": "tile",
+          "settings": {
+            "caption": "Drop 01"
+          }
+        },
+        "social-2": {
+          "type": "tile",
+          "settings": {
+            "caption": "Street"
+          }
+        },
+        "social-3": {
+          "type": "tile",
+          "settings": {
+            "caption": "Studio"
+          }
+        },
+        "social-4": {
+          "type": "tile",
+          "settings": {
+            "caption": "Process"
+          }
+        },
+        "social-5": {
+          "type": "tile",
+          "settings": {
+            "caption": "Active"
+          }
+        },
+        "social-6": {
+          "type": "tile",
+          "settings": {
+            "caption": "Archive"
+          }
+        },
+        "social-7": {
+          "type": "tile",
+          "settings": {
+            "caption": "Fabric"
+          }
+        },
+        "social-8": {
+          "type": "tile",
+          "settings": {
+            "caption": "Campaign"
+          }
+        }
+      },
+      "block_order": [
+        "social-1",
+        "social-2",
+        "social-3",
+        "social-4",
+        "social-5",
+        "social-6",
+        "social-7",
+        "social-8"
+      ]
     },
     "newsletter": {
       "type": "newsletter",

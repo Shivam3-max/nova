@@ -434,11 +434,20 @@ async function renderSection(name, config, globals) {
   }
 
   const schema = sectionSchema(name);
+
+  /* Two different sources of defaults, and Shopify treats them differently:
+     `presets` seed a section added through the editor (JSON templates only),
+     while `default` seeds a section rendered statically with {% section %}.
+     The footer relies on `default`; the homepage sections declare their blocks
+     in templates/index.json. */
   const preset = (schema.presets && schema.presets[0]) || {};
+  const staticDefault = schema.default || {};
+  const seed = config ? preset : { ...preset, ...staticDefault };
 
   const settings = {
     ...defaultsFrom(schema.settings),
     ...(preset.settings || {}),
+    ...(staticDefault.settings || {}),
     ...((config && config.settings) || {}),
   };
 
@@ -453,8 +462,8 @@ async function renderSection(name, config, globals) {
       settings: { ...blockDefaults(config.blocks[id].type), ...(config.blocks[id].settings || {}) },
       shopify_attributes: `data-shopify-editor-block='{"id":"${id}"}'`,
     }));
-  } else if (preset.blocks) {
-    blocks = preset.blocks.map((b, i) => ({
+  } else if (seed.blocks) {
+    blocks = seed.blocks.map((b, i) => ({
       id: `${name}-${i}`,
       type: b.type,
       settings: { ...blockDefaults(b.type), ...(b.settings || {}) },
