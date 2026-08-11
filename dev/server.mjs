@@ -13,7 +13,7 @@
  */
 import express from 'express';
 import { Liquid } from 'liquidjs';
-import { readFileSync, existsSync, readdirSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
@@ -66,7 +66,26 @@ engine.registerFilter('money_with_currency', (v) => `₹${inr2.format(toMajor(v)
 engine.registerFilter('money_without_currency', (v) => inr2.format(toMajor(v)));
 engine.registerFilter('money_without_trailing_zeros', (v) => `₹${inr.format(toMajor(v))}`);
 
-const assetUrl = (name) => `/assets/${String(name || '').replace(/^.*\//, '')}`;
+/**
+ * Shopify's asset_url returns a CDN URL carrying a `?v=` fingerprint, so a
+ * rebuilt stylesheet is always a new URL to the browser. Without the same
+ * behaviour here, Safari happily serves a cached nova.css against freshly
+ * rendered markup and the page looks broken for reasons that have nothing to
+ * do with the code. Fingerprint on mtime to match.
+ */
+function assetVersion(file) {
+  try {
+    return Math.floor(statSync(path.join(THEME, 'assets', file)).mtimeMs).toString(36);
+  } catch {
+    return '0';
+  }
+}
+
+const assetUrl = (name) => {
+  const file = String(name || '').replace(/^.*\//, '');
+  if (!file) return '';
+  return `/assets/${file}?v=${assetVersion(file)}`;
+};
 engine.registerFilter('asset_url', assetUrl);
 engine.registerFilter('asset_img_url', assetUrl);
 engine.registerFilter('file_url', assetUrl);
@@ -649,7 +668,17 @@ async function renderPage(res, { template, globals, pageTitle, pageDescription, 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/assets', express.static(path.join(THEME, 'assets'), { maxAge: 0 }));
+app.use(
+  '/assets',
+  express.static(path.join(THEME, 'assets'), {
+    etag: true,
+    lastModified: true,
+    // Dev only. Code-split JS chunks are requested without a ?v= (the browser
+    // resolves them relative to the entry), so revalidation has to be forced
+    // here or a rebuilt chunk can be served stale.
+    setHeaders: (res) => res.setHeader('Cache-Control', 'no-cache, must-revalidate'),
+  })
+);
 
 const wrap = (fn) => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next);
 
