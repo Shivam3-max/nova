@@ -80,6 +80,21 @@
   --z-overlay: 750;
 
   --header-h: 4.75rem;
+
+  /* Height of the announcement bar, subtracted from full-viewport sections so
+     the hero's bottom rail is not pushed below the fold. Zero by default and
+     raised only when the bar is actually rendered. */
+  --announce-h: 0rem;
+}
+
+body:has(.announce) {
+  --announce-h: 2.25rem;
+}
+
+@media (max-width: 44rem) {
+  body:has(.announce) {
+    --announce-h: 2rem;
+  }
 }
 
 /* Locally inverted regions — full-bleed campaign blocks, the limited drop,

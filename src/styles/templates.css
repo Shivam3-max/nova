@@ -30,8 +30,16 @@
 .pdp__shot img {
   width: 100%;
   height: 100%;
+}
+
+.pdp__shot-img--contain {
   object-fit: contain;
   padding: 7%;
+}
+
+.pdp__shot-img--cover {
+  object-fit: cover;
+  padding: 0;
 }
 
 /* First shot runs full width, the rest pair up. */

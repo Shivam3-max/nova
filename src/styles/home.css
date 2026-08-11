@@ -9,26 +9,62 @@
    first act arrives.
    -------------------------------------------------------------------------- */
 
-/* Composition: type occupies the upper band, the garment is bottom-aligned
-   beneath it, and the scroll rail closes the frame. Overlapping the two was the
-   first instinct but a black garment behind black type is unreadable — the
-   stacked arrangement keeps both at full contrast and reads more editorial. */
+/* Type-as-texture composition.
+   Explicit grid rows give the headline and the garment separate territory, so
+   the product can never sit on top of the words — which is what went wrong when
+   the stage was absolutely positioned across the whole hero. */
 .hero {
   position: relative;
-  height: 100svh;
-  min-height: 38rem;
+  height: calc(100svh - var(--announce-h));
+  min-height: 40rem;
   margin-top: calc(var(--header-h) * -1);
   padding-top: var(--header-h);
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto minmax(0, 1fr) auto auto;
   overflow: clip;
   isolation: isolate;
 }
 
-.hero__stage {
+/* --- Layer 0: ghost type -------------------------------------------------- */
+/* Two enormous rows that run wider than the viewport and are clipped by it.
+   They are the "texture" — deliberately unreadable at the edges. */
+.hero__ghost {
   position: absolute;
   inset: 0;
   z-index: 0;
+  display: grid;
+  align-content: center;
+  gap: 0.02em;
+  pointer-events: none;
+  user-select: none;
+  overflow: clip;
+}
+
+.hero__ghost-row {
+  display: flex;
+  gap: 0.28em;
+  white-space: nowrap;
+  font-size: clamp(4rem, 15vw, 16rem);
+  font-weight: 600;
+  line-height: 0.82;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--ink) var(--ghost-strength, 6%), transparent);
+  will-change: transform;
+}
+
+/* Opposing offsets so the two rows never stack into a readable block. */
+.hero__ghost-row--1 { transform: translate3d(-14%, 0, 0); }
+.hero__ghost-row--2 { transform: translate3d(-38%, 0, 0); }
+
+/* --- Layer 1: garment stage ----------------------------------------------- */
+/* Grid row 2 only. This is the guarantee that the garment stays clear of the
+   headline at every viewport size. */
+.hero__stage {
+  position: relative;
+  grid-row: 2;
+  z-index: 1;
+  min-height: 0;
 }
 
 .hero__canvas {
@@ -50,16 +86,15 @@
   position: absolute;
   inset: 0;
   display: grid;
-  place-items: end center;
-  padding-bottom: clamp(3rem, 7vh, 5.5rem);
+  place-items: center;
   z-index: 0;
 }
 
 .hero__fallback img {
-  width: min(34vw, 26rem);
-  max-height: 54svh;
+  width: min(30vw, 24rem);
+  max-height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 2.5rem 3.5rem rgba(13, 13, 15, 0.16));
+  filter: drop-shadow(0 2.5rem 3.5rem rgba(13, 13, 15, 0.18));
 }
 
 .hero.is-webgl .hero__fallback {
@@ -68,30 +103,33 @@
   transition: opacity 0.8s var(--ease-out);
 }
 
+/* --- Layer 3: headline band ----------------------------------------------- */
 .hero__content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   grid-row: 1;
-  padding: clamp(1.5rem, 4vh, 3rem) var(--gutter) 0;
+  padding: clamp(1.25rem, 3.5vh, 2.5rem) var(--gutter) clamp(0.5rem, 1.5vh, 1rem);
   text-align: center;
 }
 
 .hero__eyebrow {
-  margin-bottom: clamp(0.85rem, 2vw, 1.4rem);
+  margin-bottom: clamp(0.7rem, 1.8vw, 1.2rem);
 }
 
+/* Sized to run nearly the full gutter-to-gutter width on one line, so it reads
+   as cropped-by-the-viewport without ever losing a word. */
 .hero__title {
-  font-size: clamp(2.6rem, 8.4vw, 8.5rem);
+  font-size: clamp(2.2rem, 9vw, 9.5rem);
   font-weight: 600;
   line-height: 0.84;
-  letter-spacing: var(--track-mega);
+  letter-spacing: -0.05em;
   text-transform: uppercase;
   color: var(--ink);
-  text-wrap: balance;
+  white-space: nowrap;
 }
 
 .hero__sub {
-  margin: clamp(1rem, 2.4vw, 1.6rem) auto 0;
+  margin: clamp(0.9rem, 2vw, 1.4rem) auto 0;
   max-width: 26rem;
   font-size: var(--t-meta);
   letter-spacing: var(--track-meta);
@@ -100,25 +138,42 @@
 }
 
 .hero__cta {
-  margin-top: clamp(1.2rem, 2.6vw, 2rem);
-  display: inline-flex;
-}
-
-.hero__foot {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   grid-row: 3;
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  justify-content: center;
+  padding: clamp(0.5rem, 1.5vh, 1.25rem) var(--gutter) clamp(1rem, 2.5vh, 1.75rem);
+}
+
+/* --- Closing rail: ticker + scroll hint ----------------------------------- */
+.hero__rail {
+  position: relative;
+  z-index: 3;
+  grid-row: 4;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
   gap: var(--s-5);
-  padding: 0 var(--gutter) clamp(1.25rem, 3vw, 2.25rem);
+  border-top: 1px solid var(--line);
+  background: color-mix(in srgb, var(--paper) 82%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.hero__ticker {
+  border: 0;
+  padding-block: 0.95rem;
+  min-width: 0;
 }
 
 .hero__scroll {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  padding-inline: var(--gutter);
+  border-left: 1px solid var(--line);
+  height: 100%;
 }
 
 .hero__scroll-line {
@@ -146,18 +201,22 @@
   100% { transform: scaleX(0); transform-origin: right; }
 }
 
-/* Floating product labels anchored to the garment in the scene. */
+/* --- Layer 2: product pins flanking the garment --------------------------- */
+/* Positioned inside .hero__stage, so they track the garment's band rather than
+   the whole hero. A leader line runs from the dot toward the product. */
 .hero__pin {
   position: absolute;
-  z-index: 3;
+  top: 50%;
+  z-index: 2;
   display: flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.6rem;
   font-size: var(--t-meta);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ink);
   opacity: 0;
+  transition: gap var(--dur) var(--ease-out);
 }
 
 .hero__pin::before {
@@ -166,37 +225,74 @@
   height: 5px;
   border-radius: 50%;
   background: var(--ink);
+  flex: none;
 }
 
-.hero__pin--a { bottom: 42%; left: 22%; }
-.hero__pin--b { bottom: 26%; right: 22%; }
+.hero__pin::after {
+  content: "";
+  height: 1px;
+  width: clamp(1.5rem, 4vw, 4rem);
+  background: var(--line-strong);
+  transition: width var(--dur) var(--ease-out);
+}
 
-/* Mobile hero is recomposed rather than scaled: the floating product pins and
-   the footnote are dropped, the garment takes more width, and the scroll rail
-   is the only thing left at the bottom edge. */
+.hero__pin:hover::after {
+  width: clamp(2.5rem, 6vw, 6rem);
+}
+
+.hero__pin--a {
+  left: clamp(1rem, 8vw, 9rem);
+  transform: translateY(-50%);
+}
+
+/* Mirrored: label, then leader, then dot. */
+.hero__pin--b {
+  right: clamp(1rem, 8vw, 9rem);
+  transform: translateY(-50%);
+  flex-direction: row-reverse;
+}
+
+/* Mobile hero is recomposed, not scaled: the pins go (no room to flank), the
+   headline is allowed to wrap onto two lines instead of staying nowrap, the
+   ghost type drops to one row, and the scroll hint gives way to the ticker. */
 @media (max-width: 48rem) {
-  .hero__pin { display: none; }
+  .hero {
+    min-height: 34rem;
+  }
 
-  .hero__fallback {
-    padding-bottom: clamp(2rem, 5vh, 3rem);
+  .hero__pin {
+    display: none;
+  }
+
+  .hero__title {
+    white-space: normal;
+    font-size: clamp(2.1rem, 12vw, 4rem);
+    text-wrap: balance;
+  }
+
+  .hero__ghost-row--2 {
+    display: none;
+  }
+
+  .hero__ghost-row {
+    font-size: 26vw;
   }
 
   .hero__fallback img {
-    width: 68vw;
-    max-height: 44svh;
-  }
-
-  .hero__foot {
-    justify-content: center;
-  }
-
-  .hero__foot > p {
-    display: none;
+    width: 60vw;
   }
 
   .hero__sub {
     max-width: 20rem;
     font-size: 0.625rem;
+  }
+
+  .hero__scroll {
+    display: none;
+  }
+
+  .hero__rail {
+    grid-template-columns: 1fr;
   }
 }
 

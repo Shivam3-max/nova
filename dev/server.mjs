@@ -354,11 +354,15 @@ function ambientGlobals(globals) {
   const {
     shop, settings, routes, linklists, collections, all_products, cart, blogs,
     customer, request, localization, canonical_url, free_shipping_threshold,
+    // `collection` is ambient on collection pages in Shopify, and snippets read
+    // it (product-card checks its image_fit metafield), so it belongs here too.
+    collection, product, article, blog, page, search,
   } = globals;
 
   return {
     shop, settings, routes, linklists, collections, all_products, cart, blogs,
     customer, request, localization, canonical_url, free_shipping_threshold,
+    collection, product, article, blog, page, search,
   };
 }
 

@@ -34,10 +34,25 @@
 -%}
 
 <div class="pdp section--tight" style="padding-block:clamp(1.5rem,4vw,3rem)">
+  {%- comment -%}
+    Same photography rule as the cards: with `mixed`, the first shot is the
+    cut-out and everything after it is model photography that should fill.
+  {%- endcomment -%}
+  {%- assign image_style = settings.product_image_style | default: 'mixed' -%}
+
   <div class="pdp__gallery">
     {%- for image in product.images limit: 6 -%}
+      {%- liquid
+        assign shot_fit = 'pdp__shot-img--contain'
+        if image_style == 'model'
+          assign shot_fit = 'pdp__shot-img--cover'
+        elsif image_style == 'mixed' and forloop.first == false
+          assign shot_fit = 'pdp__shot-img--cover'
+        endif
+      -%}
       <div class="pdp__shot">
-        <img src="{{ image | image_url: width: 1200 }}"
+        <img class="{{ shot_fit }}"
+             src="{{ image | image_url: width: 1200 }}"
              srcset="{{ image | image_url: width: 600 }} 600w,
                      {{ image | image_url: width: 1200 }} 1200w"
              sizes="(max-width: 60rem) 78vw, 44vw"

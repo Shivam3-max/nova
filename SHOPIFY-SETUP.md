@@ -124,6 +124,31 @@ Inventory tracking should be on — the size buttons are disabled from real
 availability, and the LIMITED section's scarcity counter reads
 `variant.inventory_quantity`.
 
+### Photography style (cut-out vs model shots)
+
+**Theme settings → Commerce → Product photography style.** Three options:
+
+| Option | Image 1 | Image 2 (hover) |
+| --- | --- | --- |
+| Cut-outs only | contained on the plate | contained |
+| **Mixed** (default) | contained cut-out | **cropped model shot** |
+| Model shots only | cropped | cropped |
+
+The default is **Mixed**: upload the cut-out as the product's first image and the
+model shot as the second. The card shows the cut-out, and the model shot fills
+the frame on hover. The product page follows the same rule — first shot
+contained, the rest cropped.
+
+**Per-collection override:** create a Collection metafield
+`custom.image_fit` (single line text) with the value `cutout`, `mixed` or
+`model`. Useful when, say, Accessories are all cut-outs but Street is all
+lifestyle.
+
+> The WebGL hero maps the hero product's **first** image onto a cloth surface.
+> That only reads correctly with a cut-out on a transparent background. If the
+> hero product has a rectangular photo as image 1, turn off the WebGL hero in
+> Theme settings → Motion, and the static plate is used instead.
+
 ### Reviews
 
 The PDP star rating reads `product.metafields.reviews.rating` and

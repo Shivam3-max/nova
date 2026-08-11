@@ -24,6 +24,28 @@
   assign first_image = product.featured_image
   assign second_image = product.images[1]
 
+  comment
+    Image fit. Cut-outs need `contain` on a plate; model shots need `cover` so
+    they fill the frame. `mixed` is the common case: image 1 is the cut-out,
+    image 2 is the model shot revealed on hover.
+
+    Resolution order — collection metafield, then theme setting, then mixed.
+  endcomment
+  assign image_style = collection.metafields.custom.image_fit.value
+  if image_style == blank
+    assign image_style = settings.product_image_style | default: 'mixed'
+  endif
+
+  assign main_fit = 'pcard__img--contain'
+  assign alt_fit = 'pcard__img--contain'
+  case image_style
+    when 'model'
+      assign main_fit = 'pcard__img--cover'
+      assign alt_fit = 'pcard__img--cover'
+    when 'mixed'
+      assign alt_fit = 'pcard__img--cover'
+  endcase
+
   assign on_sale = false
   if product.compare_at_price > product.price
     assign on_sale = true
@@ -46,7 +68,7 @@
   <div class="pcard__media" data-cursor="view">
     <a href="{{ product.url }}" tabindex="-1" aria-hidden="true">
       <img
-        class="pcard__img pcard__img--main"
+        class="pcard__img pcard__img--main {{ main_fit }}"
         src="{{ first_image | image_url: width: 800 }}"
         srcset="{{ first_image | image_url: width: 400 }} 400w,
                 {{ first_image | image_url: width: 800 }} 800w,
@@ -60,7 +82,7 @@
 
       {%- if second_image -%}
         <img
-          class="pcard__img pcard__img--alt"
+          class="pcard__img pcard__img--alt {{ alt_fit }}"
           src="{{ second_image | image_url: width: 800 }}"
           srcset="{{ second_image | image_url: width: 400 }} 400w,
                   {{ second_image | image_url: width: 800 }} 800w"

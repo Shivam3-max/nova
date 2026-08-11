@@ -10,6 +10,7 @@
     "show_card_sizes": true,
     "show_wishlist": true,
     "grid_density": "editorial",
+    "product_image_style": "mixed",
     "enable_webgl": true,
     "enable_smooth_scroll": true,
     "enable_cursor": true,

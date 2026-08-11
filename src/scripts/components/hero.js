@@ -16,6 +16,7 @@ export function hero(root) {
   const fallback = $('[data-hero-fallback]', root);
   const title = $('[data-hero-title]', root);
   const pins = $$('.hero__pin', root);
+  const ghostRows = $$('[data-hero-ghost]', root);
   const cleanups = [];
 
   let scene = null;
@@ -86,6 +87,17 @@ export function hero(root) {
         scrollTrigger: { trigger: root, start: 'top top', end: 'bottom top', scrub: 0.6 },
       });
     }
+
+    // Ghost rows drift in opposite directions as the hero scrolls. Transform
+    // only, so this stays on the compositor and costs nothing to paint.
+    ghostRows.forEach((row, index) => {
+      const direction = index % 2 === 0 ? 1 : -1;
+      gsap.to(row, {
+        xPercent: `+=${direction * 9}`,
+        ease: 'none',
+        scrollTrigger: { trigger: root, start: 'top top', end: 'bottom top', scrub: 1.1 },
+      });
+    });
   });
 
   /* --------------------------- WebGL ---------------------------- */

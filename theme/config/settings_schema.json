@@ -78,6 +78,18 @@
           { "value": "dense", "label": "Dense (3 columns)" }
         ],
         "default": "editorial"
+      },
+      {
+        "type": "select",
+        "id": "product_image_style",
+        "label": "Product photography style",
+        "info": "Cut-outs sit inside the plate with padding; model shots fill the frame. Override per collection with the custom.image_fit metafield.",
+        "options": [
+          { "value": "cutout", "label": "Cut-outs only" },
+          { "value": "mixed", "label": "Mixed — cut-out, model on hover" },
+          { "value": "model", "label": "Model shots only" }
+        ],
+        "default": "mixed"
       }
     ]
   },
