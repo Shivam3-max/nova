@@ -14,6 +14,14 @@
   unless collection.products
     assign collection = collections['all']
   endunless
+  comment
+    Last resort: `collections.all` is Shopify's built-in virtual collection of
+    every product. It always exists, so a store that has imported products but
+    not yet built its collections still renders a populated homepage.
+  endcomment
+  unless collection.products
+    assign collection = collections.all
+  endunless
 
   assign grid_class = 'pgrid'
   if settings.grid_density == 'dense'

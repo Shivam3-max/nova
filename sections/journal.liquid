@@ -13,9 +13,22 @@
   unless source.articles
     assign source = blogs['journal']
   endunless
+  comment
+    Every Shopify store starts with a blog whose handle is news, so the section
+    still has somewhere to point before a NOVA Journal blog is created.
+  endcomment
+  unless source.articles
+    assign source = blogs['news']
+  endunless
 
   assign posts = source.articles
 -%}
+
+{%- comment -%}
+  With no blog yet there is nothing to show, and an editorial header over an
+  empty grid looks broken. Render nothing instead.
+{%- endcomment -%}
+{%- if posts.size > 0 -%}
 
 <section class="section" aria-labelledby="journal-title">
   <div class="shell">
@@ -59,6 +72,7 @@
     {%- endfor -%}
   </div>
 </section>
+{%- endif -%}
 
 {% schema %}
 {

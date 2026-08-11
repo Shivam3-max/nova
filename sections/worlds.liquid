@@ -27,6 +27,9 @@
         unless col.products
           assign col = collections[world_handle]
         endunless
+        unless col.products
+          assign col = collections.all
+        endunless
 
         comment
           These cards are tall and narrow. A landscape collection image cropped
