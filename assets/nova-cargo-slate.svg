@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1250" width="1000" height="1250" role="img" aria-label="cargo in slate">
+  <defs>
+  <linearGradient id="cargoslate-fill" x1="0.15" y1="0" x2="0.85" y2="1">
+    <stop offset="0%" stop-color="#646c78"/>
+    <stop offset="42%" stop-color="#464d57"/>
+    <stop offset="100%" stop-color="#2f353d"/>
+  </linearGradient>
+  <linearGradient id="cargoslate-sleeve" x1="0" y1="0" x2="1" y2="0.6">
+    <stop offset="0%" stop-color="#464d57"/>
+    <stop offset="100%" stop-color="#2f353d"/>
+  </linearGradient>
+  <linearGradient id="cargoslate-rib" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#2f353d"/>
+    <stop offset="100%" stop-color="#464d57"/>
+  </linearGradient>
+  <filter id="cargoslate-grain" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="3" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/>
+  </filter>
+  <filter id="cargoslate-shadow" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur stdDeviation="26"/>
+  </filter>
+  </defs>
+  <ellipse cx="500" cy="1105" rx="250" ry="34" fill="#000" opacity="0.16" filter="url(#cargoslate-shadow)"/>
+  <g filter="none">
+      <path d="M320 250 L 680 250 C 692 250 700 258 700 270 L 704 400
+               L 736 1090 C 738 1108 728 1118 710 1118 L 592 1118
+               C 576 1118 566 1110 564 1094 L 520 640 L 480 640 L 436 1094
+               C 434 1110 424 1118 408 1118 L 290 1118 C 272 1118 262 1108 264 1090
+               L 296 400 L 300 270 C 300 258 308 250 320 250 Z" fill="url(#cargoslate-fill)"/>
+  </g>
+  <g stroke="none">
+      <path d="M300 250 L 700 250 L 702 336 L 298 336 Z" fill="url(#cargoslate-rib)" fill-opacity="0.9"/>
+      <path d="M500 336 L 500 640" fill="none" stroke="#2f353d" stroke-opacity="0.45" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M298 336 L 702 336" fill="none" stroke="#2f353d" stroke-opacity="0.45" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M310 560 L 428 560 C 436 560 440 566 440 574 L 434 728
+               C 434 738 428 744 418 744 L 314 744 C 306 744 300 738 300 728 Z"
+            fill="#2f353d" fill-opacity="0.34"/>
+      <path d="M690 560 L 572 560 C 564 560 560 566 560 574 L 566 728
+               C 566 738 572 744 582 744 L 686 744 C 694 744 700 738 700 728 Z"
+            fill="#2f353d" fill-opacity="0.34"/>
+      <path d="M304 604 L 436 604" fill="none" stroke="#646c78" stroke-opacity="0.35" stroke-width="1.6" stroke-dasharray="7 7" stroke-linecap="round"/>
+      <path d="M564 604 L 696 604" fill="none" stroke="#646c78" stroke-opacity="0.35" stroke-width="1.6" stroke-dasharray="7 7" stroke-linecap="round"/>
+      <path d="M452 268 C 456 292 456 306 452 322" fill="none" stroke="#646c78" stroke-opacity="0.6" stroke-width="6" stroke-linecap="round"/>
+      <path d="M548 268 C 544 292 544 306 548 322" fill="none" stroke="#646c78" stroke-opacity="0.6" stroke-width="6" stroke-linecap="round"/>
+      <path d="M268 1040 L 434 1040" fill="none" stroke="#2f353d" stroke-opacity="0.3" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M566 1040 L 734 1040" fill="none" stroke="#2f353d" stroke-opacity="0.3" stroke-width="2.5" stroke-linecap="round"/></g>
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.12" stroke-width="2">
+      <path d="M320 250 L 680 250 C 692 250 700 258 700 270 L 704 400
+               L 736 1090 C 738 1108 728 1118 710 1118 L 592 1118
+               C 576 1118 566 1110 564 1094 L 520 640 L 480 640 L 436 1094
+               C 434 1110 424 1118 408 1118 L 290 1118 C 272 1118 262 1108 264 1090
+               L 296 400 L 300 270 C 300 258 308 250 320 250 Z" fill="none"/>
+  </g>
+</svg>

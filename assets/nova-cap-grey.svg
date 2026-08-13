@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1250" width="1000" height="1250" role="img" aria-label="cap in grey">
+  <defs>
+  <linearGradient id="capgrey-fill" x1="0.15" y1="0" x2="0.85" y2="1">
+    <stop offset="0%" stop-color="#a8aab0"/>
+    <stop offset="42%" stop-color="#8a8c92"/>
+    <stop offset="100%" stop-color="#6a6c72"/>
+  </linearGradient>
+  <linearGradient id="capgrey-sleeve" x1="0" y1="0" x2="1" y2="0.6">
+    <stop offset="0%" stop-color="#8a8c92"/>
+    <stop offset="100%" stop-color="#6a6c72"/>
+  </linearGradient>
+  <linearGradient id="capgrey-rib" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#6a6c72"/>
+    <stop offset="100%" stop-color="#8a8c92"/>
+  </linearGradient>
+  <filter id="capgrey-grain" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="3" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/>
+  </filter>
+  <filter id="capgrey-shadow" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur stdDeviation="26"/>
+  </filter>
+  </defs>
+  <ellipse cx="500" cy="1105" rx="250" ry="34" fill="#000" opacity="0.18" filter="url(#capgrey-shadow)"/>
+  <g filter="none">
+      <path d="M500 372 C 340 372 250 476 244 610 C 243 632 254 644 276 644
+               L 724 644 C 746 644 757 632 756 610 C 750 476 660 372 500 372 Z"
+            fill="url(#capgrey-fill)"/>
+      <path d="M276 644 C 236 656 176 688 152 726 C 140 746 148 762 172 764
+               L 690 780 C 726 782 742 762 730 738 C 706 690 640 656 724 644 Z"
+            fill="url(#capgrey-sleeve)"/>
+  </g>
+  <g stroke="none">
+      <path d="M500 372 L 500 644" fill="none" stroke="#6a6c72" stroke-opacity="0.4" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M392 386 C 372 476 366 560 368 644" fill="none" stroke="#6a6c72" stroke-opacity="0.25" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M608 386 C 628 476 634 560 632 644" fill="none" stroke="#6a6c72" stroke-opacity="0.25" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="500" cy="386" r="14" fill="#a8aab0" fill-opacity="0.4"/>
+      <path d="M280 656 C 400 690 600 690 716 656" fill="none" stroke="#a8aab0" stroke-opacity="0.35" stroke-width="1.6" stroke-dasharray="7 7" stroke-linecap="round"/></g>
+  <g fill="none" stroke="#3a3c42" stroke-opacity="0.16" stroke-width="2">
+      <path d="M500 372 C 340 372 250 476 244 610 C 243 632 254 644 276 644
+               L 724 644 C 746 644 757 632 756 610 C 750 476 660 372 500 372 Z"
+            fill="none"/>
+      <path d="M276 644 C 236 656 176 688 152 726 C 140 746 148 762 172 764
+               L 690 780 C 726 782 742 762 730 738 C 706 690 640 656 724 644 Z"
+            fill="none"/>
+  </g>
+</svg>

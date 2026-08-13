@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="250 400 500 625" width="1000" height="1250" role="img" aria-label="sunglasses in offwhite">
+  <defs>
+  <linearGradient id="sunglassesoffwhiteb-fill" x1="0.15" y1="0" x2="0.85" y2="1">
+    <stop offset="0%" stop-color="#fbfaf8"/>
+    <stop offset="42%" stop-color="#f0eeea"/>
+    <stop offset="100%" stop-color="#d6d3cc"/>
+  </linearGradient>
+  <linearGradient id="sunglassesoffwhiteb-sleeve" x1="0" y1="0" x2="1" y2="0.6">
+    <stop offset="0%" stop-color="#f0eeea"/>
+    <stop offset="100%" stop-color="#d6d3cc"/>
+  </linearGradient>
+  <linearGradient id="sunglassesoffwhiteb-rib" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#d6d3cc"/>
+    <stop offset="100%" stop-color="#f0eeea"/>
+  </linearGradient>
+  <filter id="sunglassesoffwhiteb-grain" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="3" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/>
+  </filter>
+  <filter id="sunglassesoffwhiteb-shadow" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur stdDeviation="26"/>
+  </filter>
+  </defs>
+  <ellipse cx="500" cy="1105" rx="250" ry="34" fill="#000" opacity="0.26" filter="url(#sunglassesoffwhiteb-shadow)"/>
+  <g filter="none">
+      <path d="M170 520 C 250 486 400 480 470 500 C 490 506 510 506 530 500
+               C 600 480 750 486 830 520 C 848 528 852 546 844 566
+               C 820 626 780 686 726 704 C 646 730 570 686 552 606
+               C 546 574 542 556 500 556 C 458 556 454 574 448 606
+               C 430 686 354 730 274 704 C 220 686 180 626 156 566
+               C 148 546 152 528 170 520 Z" fill="url(#sunglassesoffwhiteb-fill)"/>
+  </g>
+  <g stroke="none">
+      <path d="M196 540 C 264 516 390 514 442 534 C 452 578 428 660 352 674
+               C 288 686 236 626 208 570 C 200 554 190 544 196 540 Z" fill="#d6d3cc" fill-opacity="0.55"/>
+      <path d="M804 540 C 736 516 610 514 558 534 C 548 578 572 660 648 674
+               C 712 686 764 626 792 570 C 800 554 810 544 804 540 Z" fill="#d6d3cc" fill-opacity="0.55"/>
+      <path d="M240 556 C 270 540 320 532 360 536" stroke="#fbfaf8" stroke-opacity="0.5" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <path d="M760 556 C 730 540 680 532 640 536" stroke="#fbfaf8" stroke-opacity="0.5" stroke-width="7" fill="none" stroke-linecap="round"/></g>
+  <g fill="none" stroke="#45423b" stroke-opacity="0.28" stroke-width="2">
+      <path d="M170 520 C 250 486 400 480 470 500 C 490 506 510 506 530 500
+               C 600 480 750 486 830 520 C 848 528 852 546 844 566
+               C 820 626 780 686 726 704 C 646 730 570 686 552 606
+               C 546 574 542 556 500 556 C 458 556 454 574 448 606
+               C 430 686 354 730 274 704 C 220 686 180 626 156 566
+               C 148 546 152 528 170 520 Z" fill="none"/>
+  </g>
+</svg>

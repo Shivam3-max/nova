@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1250" width="1000" height="1250" role="img" aria-label="hoodie in slate">
+  <defs>
+  <linearGradient id="hoodieslate-fill" x1="0.15" y1="0" x2="0.85" y2="1">
+    <stop offset="0%" stop-color="#646c78"/>
+    <stop offset="42%" stop-color="#464d57"/>
+    <stop offset="100%" stop-color="#2f353d"/>
+  </linearGradient>
+  <linearGradient id="hoodieslate-sleeve" x1="0" y1="0" x2="1" y2="0.6">
+    <stop offset="0%" stop-color="#464d57"/>
+    <stop offset="100%" stop-color="#2f353d"/>
+  </linearGradient>
+  <linearGradient id="hoodieslate-rib" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#2f353d"/>
+    <stop offset="100%" stop-color="#464d57"/>
+  </linearGradient>
+  <filter id="hoodieslate-grain" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="3" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/>
+  </filter>
+  <filter id="hoodieslate-shadow" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur stdDeviation="26"/>
+  </filter>
+  </defs>
+  <ellipse cx="500" cy="1105" rx="250" ry="34" fill="#000" opacity="0.16" filter="url(#hoodieslate-shadow)"/>
+  <g filter="none">
+      <path d="M366 300 C 348 168 652 168 634 300 C 600 244 400 244 366 300 Z" fill="url(#hoodieslate-sleeve)"/>
+      <path d="M500 252 C 432 252 388 270 372 302 L 252 352 C 202 374 172 402 160 442
+               L 94 702 C 88 728 102 746 130 752 L 216 772 C 242 778 260 766 264 742
+               L 294 562 L 294 982 C 294 1002 302 1012 322 1012 L 678 1012
+               C 698 1012 706 1002 706 982 L 706 562 L 736 742 C 740 766 758 778 784 772
+               L 870 752 C 898 746 912 728 906 702 L 840 442 C 828 402 798 374 748 352
+               L 628 302 C 612 270 568 252 500 252 Z" fill="url(#hoodieslate-fill)"/>
+  </g>
+  <g stroke="none">
+      <path d="M332 762 C 332 754 338 748 346 748 L 654 748 C 662 748 668 754 668 762
+               L 652 902 C 650 912 642 918 632 918 L 368 918 C 358 918 350 912 348 902 Z"
+            fill="#2f353d" fill-opacity="0.32"/>
+      <path d="M332 762 L 668 762" fill="none" stroke="#2f353d" stroke-opacity="0.4" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M294 562 L 294 982" fill="none" stroke="#2f353d" stroke-opacity="0.28" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M706 562 L 706 982" fill="none" stroke="#2f353d" stroke-opacity="0.28" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M294 950 L 706 950 L 706 982 C 706 1002 698 1012 678 1012 L 322 1012
+               C 302 1012 294 1002 294 982 Z" fill="url(#hoodieslate-rib)" fill-opacity="0.75"/>
+      <path d="M100 716 L 268 756 L 262 742 L 96 700 Z" fill="#2f353d" fill-opacity="0.4"/>
+      <path d="M900 716 L 732 756 L 738 742 L 904 700 Z" fill="#2f353d" fill-opacity="0.4"/>
+      <path d="M452 292 C 456 340 452 384 446 420" fill="none" stroke="#646c78" stroke-opacity="0.65" stroke-width="7" stroke-linecap="round"/>
+      <path d="M548 292 C 544 340 548 384 554 420" fill="none" stroke="#646c78" stroke-opacity="0.65" stroke-width="7" stroke-linecap="round"/>
+      <path d="M372 302 C 430 330 570 330 628 302" fill="none" stroke="#646c78" stroke-opacity="0.35" stroke-width="1.6" stroke-dasharray="7 7" stroke-linecap="round"/></g>
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.12" stroke-width="2">
+      <path d="M366 300 C 348 168 652 168 634 300 C 600 244 400 244 366 300 Z" fill="none"/>
+      <path d="M500 252 C 432 252 388 270 372 302 L 252 352 C 202 374 172 402 160 442
+               L 94 702 C 88 728 102 746 130 752 L 216 772 C 242 778 260 766 264 742
+               L 294 562 L 294 982 C 294 1002 302 1012 322 1012 L 678 1012
+               C 698 1012 706 1002 706 982 L 706 562 L 736 742 C 740 766 758 778 784 772
+               L 870 752 C 898 746 912 728 906 702 L 840 442 C 828 402 798 374 748 352
+               L 628 302 C 612 270 568 252 500 252 Z" fill="none"/>
+  </g>
+</svg>

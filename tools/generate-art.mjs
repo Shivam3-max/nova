@@ -598,20 +598,19 @@ const write = (name, svg) => {
 };
 
 /* Garment renders: primary + hover/alternate for every product colorway. */
+/**
+ * Every silhouette in every colourway.
+ *
+ * A 100-product catalogue draws colourways freely across garments, so rather
+ * than curating pairs we render the full matrix — 12 shapes x 9 colourways.
+ * These are small vector files; only the ones a product actually references get
+ * rasterised into PNGs for the Shopify import.
+ */
+const ALL_COLORWAYS = Object.keys(COLORWAYS);
 const GARMENT_SET = [
-  ['hoodie', ['black', 'bone', 'grey']],
-  ['cargo', ['olive', 'black', 'sand']],
-  ['tee', ['offwhite', 'black', 'sand']],
-  ['bomber', ['ink', 'charcoal']],
-  ['shirt', ['bone', 'slate']],
-  ['trouser', ['charcoal', 'sand']],
-  ['jacket', ['black', 'slate']],
-  ['activeset', ['charcoal', 'black']],
-  ['dress', ['black', 'bone']],
-  ['cap', ['black', 'bone']],
-  ['tote', ['sand', 'black']],
-  ['sunglasses', ['ink']],
-];
+  'hoodie', 'cargo', 'tee', 'bomber', 'shirt', 'trouser',
+  'jacket', 'activeset', 'dress', 'cap', 'tote', 'sunglasses',
+].map((kind) => [kind, ALL_COLORWAYS]);
 
 for (const [kind, ways] of GARMENT_SET) {
   for (const way of ways) {

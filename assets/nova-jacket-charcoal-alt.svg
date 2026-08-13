@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="250 400 500 625" width="1000" height="1250" role="img" aria-label="jacket in charcoal">
+  <defs>
+  <linearGradient id="jacketcharcoalb-fill" x1="0.15" y1="0" x2="0.85" y2="1">
+    <stop offset="0%" stop-color="#4a4b52"/>
+    <stop offset="42%" stop-color="#2c2d32"/>
+    <stop offset="100%" stop-color="#1b1c20"/>
+  </linearGradient>
+  <linearGradient id="jacketcharcoalb-sleeve" x1="0" y1="0" x2="1" y2="0.6">
+    <stop offset="0%" stop-color="#2c2d32"/>
+    <stop offset="100%" stop-color="#1b1c20"/>
+  </linearGradient>
+  <linearGradient id="jacketcharcoalb-rib" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#1b1c20"/>
+    <stop offset="100%" stop-color="#2c2d32"/>
+  </linearGradient>
+  <filter id="jacketcharcoalb-grain" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="3" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/>
+  </filter>
+  <filter id="jacketcharcoalb-shadow" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur stdDeviation="26"/>
+  </filter>
+  </defs>
+  <ellipse cx="500" cy="1105" rx="250" ry="34" fill="#000" opacity="0.16" filter="url(#jacketcharcoalb-shadow)"/>
+  <g filter="none">
+      <path d="M500 258 C 446 258 408 272 392 300 L 254 348 C 206 368 178 398 170 438
+               L 128 700 C 122 728 138 746 166 750 L 252 764 C 278 768 294 756 298 732
+               L 318 596 L 306 1050 C 305 1068 314 1078 332 1078 L 668 1078
+               C 686 1078 695 1068 694 1050 L 682 596 L 702 732 C 706 756 722 768 748 764
+               L 834 750 C 862 746 878 728 872 700 L 830 438 C 822 398 794 368 746 348
+               L 608 300 C 592 272 554 258 500 258 Z" fill="url(#jacketcharcoalb-fill)"/>
+  </g>
+  <g stroke="none">
+      <path d="M392 300 L 500 470 L 470 288 Z" fill="#4a4b52" fill-opacity="0.22"/>
+      <path d="M608 300 L 500 470 L 530 288 Z" fill="#4a4b52" fill-opacity="0.22"/>
+      <path d="M470 288 L 500 470 L 530 288 C 520 274 480 274 470 288 Z" fill="#1b1c20" fill-opacity="0.35"/>
+      <path d="M500 470 L 500 1078" fill="none" stroke="#1b1c20" stroke-opacity="0.45" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M380 470 C 372 700 366 900 372 1070" fill="none" stroke="#1b1c20" stroke-opacity="0.2" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M620 470 C 628 700 634 900 628 1070" fill="none" stroke="#1b1c20" stroke-opacity="0.2" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M356 800 L 462 800 L 462 828 L 356 828 Z" fill="#1b1c20" fill-opacity="0.3"/>
+      <path d="M644 800 L 538 800 L 538 828 L 644 828 Z" fill="#1b1c20" fill-opacity="0.3"/>
+      <circle cx="470" cy="560" r="9" fill="#1b1c20" fill-opacity="0.65"/><circle cx="470" cy="660" r="9" fill="#1b1c20" fill-opacity="0.65"/></g>
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.14" stroke-width="2">
+      <path d="M500 258 C 446 258 408 272 392 300 L 254 348 C 206 368 178 398 170 438
+               L 128 700 C 122 728 138 746 166 750 L 252 764 C 278 768 294 756 298 732
+               L 318 596 L 306 1050 C 305 1068 314 1078 332 1078 L 668 1078
+               C 686 1078 695 1068 694 1050 L 682 596 L 702 732 C 706 756 722 768 748 764
+               L 834 750 C 862 746 878 728 872 700 L 830 438 C 822 398 794 368 746 348
+               L 608 300 C 592 272 554 258 500 258 Z" fill="none"/>
+  </g>
+</svg>

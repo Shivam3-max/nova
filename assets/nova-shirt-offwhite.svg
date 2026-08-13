@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1250" width="1000" height="1250" role="img" aria-label="shirt in offwhite">
+  <defs>
+  <linearGradient id="shirtoffwhite-fill" x1="0.15" y1="0" x2="0.85" y2="1">
+    <stop offset="0%" stop-color="#fbfaf8"/>
+    <stop offset="42%" stop-color="#f0eeea"/>
+    <stop offset="100%" stop-color="#d6d3cc"/>
+  </linearGradient>
+  <linearGradient id="shirtoffwhite-sleeve" x1="0" y1="0" x2="1" y2="0.6">
+    <stop offset="0%" stop-color="#f0eeea"/>
+    <stop offset="100%" stop-color="#d6d3cc"/>
+  </linearGradient>
+  <linearGradient id="shirtoffwhite-rib" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#d6d3cc"/>
+    <stop offset="100%" stop-color="#f0eeea"/>
+  </linearGradient>
+  <filter id="shirtoffwhite-grain" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="3" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/>
+  </filter>
+  <filter id="shirtoffwhite-shadow" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur stdDeviation="26"/>
+  </filter>
+  </defs>
+  <ellipse cx="500" cy="1105" rx="250" ry="34" fill="#000" opacity="0.26" filter="url(#shirtoffwhite-shadow)"/>
+  <g filter="none">
+      <path d="M500 282 C 452 282 418 294 404 316 L 288 358 C 250 374 228 396 220 428
+               L 178 618 C 172 642 186 658 212 662 L 288 674 C 312 678 328 666 332 644
+               L 348 566 L 348 962 C 348 980 356 990 374 990 L 626 990
+               C 644 990 652 980 652 962 L 652 566 L 668 644 C 672 666 688 678 712 674
+               L 788 662 C 814 658 828 642 822 618 L 780 428 C 772 396 750 374 712 358
+               L 596 316 C 582 294 548 282 500 282 Z" fill="url(#shirtoffwhite-fill)"/>
+  </g>
+  <g stroke="none">
+      <path d="M404 316 L 500 400 L 596 316 L 566 292 L 500 344 L 434 292 Z"
+            fill="#fbfaf8" fill-opacity="0.28"/>
+      <path d="M404 316 L 500 400 L 460 302 Z" fill="#d6d3cc" fill-opacity="0.3"/>
+      <path d="M596 316 L 500 400 L 540 302 Z" fill="#d6d3cc" fill-opacity="0.3"/>
+      <rect x="484" y="396" width="32" height="594" fill="#fbfaf8" fill-opacity="0.16"/>
+      <path d="M484 396 L 484 990" fill="none" stroke="#d6d3cc" stroke-opacity="0.4" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M516 396 L 516 990" fill="none" stroke="#d6d3cc" stroke-opacity="0.4" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="500" cy="470" r="8" fill="#d6d3cc" fill-opacity="0.6"/><circle cx="500" cy="560" r="8" fill="#d6d3cc" fill-opacity="0.6"/><circle cx="500" cy="650" r="8" fill="#d6d3cc" fill-opacity="0.6"/><circle cx="500" cy="740" r="8" fill="#d6d3cc" fill-opacity="0.6"/><circle cx="500" cy="830" r="8" fill="#d6d3cc" fill-opacity="0.6"/><circle cx="500" cy="920" r="8" fill="#d6d3cc" fill-opacity="0.6"/>
+      <path d="M366 470 L 452 470 L 452 566 L 366 566 Z" fill="#d6d3cc" fill-opacity="0.22"/>
+      <path d="M366 470 L 452 470" fill="none" stroke="#fbfaf8" stroke-opacity="0.35" stroke-width="1.6" stroke-dasharray="7 7" stroke-linecap="round"/></g>
+  <g fill="none" stroke="#45423b" stroke-opacity="0.28" stroke-width="2">
+      <path d="M500 282 C 452 282 418 294 404 316 L 288 358 C 250 374 228 396 220 428
+               L 178 618 C 172 642 186 658 212 662 L 288 674 C 312 678 328 666 332 644
+               L 348 566 L 348 962 C 348 980 356 990 374 990 L 626 990
+               C 644 990 652 980 652 962 L 652 566 L 668 644 C 672 666 688 678 712 674
+               L 788 662 C 814 658 828 642 822 618 L 780 428 C 772 396 750 374 712 358
+               L 596 316 C 582 294 548 282 500 282 Z" fill="none"/>
+  </g>
+</svg>
