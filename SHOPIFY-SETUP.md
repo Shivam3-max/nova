@@ -15,9 +15,23 @@ npm install -g @shopify/cli@latest
 npm run build
 ```
 
+In this repository the Shopify theme lives at the project root, so use:
+
 ```bash
-shopify theme push --path theme --unpublished
+shopify theme push --path . --unpublished
 ```
+
+Preview it from **Online Store → Themes**, and publish when the client signs off.
+
+If this is your first Shopify deployment, the full flow is:
+
+1. Create or access a Shopify store.
+2. Make sure you can log into that store in the browser.
+3. Run `shopify login` and complete the browser sign-in.
+4. Run `shopify theme push --path . --unpublished`.
+5. In Shopify admin, open **Online Store → Themes** and preview the uploaded theme.
+6. Use the theme editor to connect menus, homepage collections, and branding.
+7. Publish only after reviewing products, cart, and mobile layouts.
 
 That uploads it as an unpublished theme so the live store is untouched. Preview
 it from **Online Store → Themes**, and publish when the client signs off.
@@ -25,11 +39,11 @@ it from **Online Store → Themes**, and publish when the client signs off.
 For day-to-day work against the real store:
 
 ```bash
-shopify theme dev --path theme --store your-store.myshopify.com
+shopify theme dev --path . --store your-store.myshopify.com
 ```
 
 > Run `npm run dev:watch` alongside it so `src/` changes recompile into
-> `theme/assets/` and the CLI syncs them.
+> `assets/` and the CLI syncs them.
 
 ---
 

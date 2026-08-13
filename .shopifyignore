@@ -1,1 +1,15 @@
-# Nothing here yet — every file in theme/ is intended for the store.
+# Ignore local-only project files when working from the repo root.
+node_modules/*
+dev/*
+src/*
+tools/*
+import/*
+.git/*
+.codex/*
+.agents/*
+README.md
+SHOPIFY-SETUP.md
+package.json
+package-lock.json
+.gitignore
+.shopifyignore

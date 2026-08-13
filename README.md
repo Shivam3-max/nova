@@ -6,7 +6,8 @@ A production-shaped custom Shopify theme built to demonstrate that a Shopify
 store can carry an immersive, heavily animated commerce experience without
 giving up real Shopify commerce.
 
-Everything in `theme/` is a real Shopify theme. `dev/` is a local harness that
+Everything at the project root (`assets/`, `config/`, `layout/`, `sections/`,
+`snippets/`, `templates/`, `locales/`) is the real Shopify theme. `dev/` is a local harness that
 renders the same Liquid without a store attached, so the theme can be built and
 reviewed before anyone connects a Shopify account.
 
@@ -24,7 +25,7 @@ npm run dev
 
 Then open **http://localhost:3610**.
 
-`npm run dev` builds `src/` into `theme/assets/` and starts the local Liquid
+`npm run dev` builds `src/` into `assets/` and starts the local Liquid
 harness with a mock catalogue of 12 products across 9 collections.
 
 | Command | What it does |
@@ -34,7 +35,7 @@ harness with a mock catalogue of 12 products across 9 collections.
 | `npm run build` | Regenerate placeholder art + build assets |
 | `npm run art` | Regenerate the SVG placeholder art only |
 | `npm run shopify:dev` | `shopify theme dev` against a real store |
-| `npm run shopify:push` | Push `theme/` to a store |
+| `npm run shopify:push` | Push this repo root theme to a store |
 
 ### Debug flags
 
@@ -51,7 +52,7 @@ Append to any URL:
 ## Architecture
 
 ```
-theme/                    ← the actual Shopify theme (this is what ships)
+project root/             ← the actual Shopify theme (this is what ships)
   assets/                 built CSS/JS + generated SVG art (flat, as Shopify requires)
   config/                 settings_schema.json, settings_data.json
   layout/theme.liquid
@@ -60,7 +61,7 @@ theme/                    ← the actual Shopify theme (this is what ships)
   snippets/               product-card, overlays, icons, accordion-item
   templates/              JSON templates + customer templates
 
-src/                      ← compiled into theme/assets
+src/                      ← compiled into assets/
   styles/                 8 CSS modules -> nova.css
   scripts/
     core/                 env detection, DOM helpers, smooth scroll, registry
@@ -77,6 +78,18 @@ tools/
   build.mjs               esbuild pipeline
   generate-art.mjs        SVG placeholder generator
 ```
+
+## Deploying to Shopify
+
+This repo is a Shopify theme, not a Shopify app. That means deployment is:
+
+1. Build the theme assets with `npm run build`
+2. Push the theme into a Shopify store as an unpublished theme
+3. Preview it in Shopify admin
+4. Connect products, collections, menus, and metafields
+5. Publish it when everything looks right
+
+Use [SHOPIFY-SETUP.md](SHOPIFY-SETUP.md) for the store-side setup details.
 
 ### What Shopify owns vs what the frontend owns
 
