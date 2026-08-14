@@ -1,0 +1,2045 @@
+[
+ {
+  "n": 1,
+  "handle": "nova-oversized-hoodie",
+  "title": "NOVA Oversized Hoodie",
+  "type": "Hoodie",
+  "garment": "hoodie",
+  "sizeSet": "top",
+  "price": 4399,
+  "colours": [
+   "Grey",
+   "Charcoal",
+   "Black"
+  ],
+  "badge": "LIMITED",
+  "section": "Street / Drop 01",
+  "collection": "street",
+  "tags": [
+   "street",
+   "unisex",
+   "limited"
+  ]
+ },
+ {
+  "n": 2,
+  "handle": "nova-atlas-hoodie",
+  "title": "NOVA Atlas Hoodie",
+  "type": "Hoodie",
+  "garment": "hoodie",
+  "sizeSet": "top",
+  "price": 3599,
+  "colours": [
+   "Grey",
+   "Charcoal"
+  ],
+  "badge": null,
+  "section": "Street / Drop 01",
+  "collection": "street",
+  "tags": [
+   "street",
+   "unisex"
+  ]
+ },
+ {
+  "n": 3,
+  "handle": "nova-terrain-hoodie",
+  "title": "NOVA Terrain Hoodie",
+  "type": "Hoodie",
+  "garment": "hoodie",
+  "sizeSet": "top",
+  "price": 3699,
+  "colours": [
+   "Charcoal",
+   "Black",
+   "Bone"
+  ],
+  "badge": null,
+  "section": "Street / Drop 01",
+  "collection": "street",
+  "tags": [
+   "street",
+   "unisex"
+  ]
+ },
+ {
+  "n": 4,
+  "handle": "nova-vector-hoodie",
+  "title": "NOVA Vector Hoodie",
+  "type": "Hoodie",
+  "garment": "hoodie",
+  "sizeSet": "top",
+  "price": 4099,
+  "colours": [
+   "Grey",
+   "Charcoal",
+   "Black"
+  ],
+  "badge": null,
+  "section": "Street / Drop 01",
+  "collection": "street",
+  "tags": [
+   "street",
+   "unisex"
+  ]
+ },
+ {
+  "n": 5,
+  "handle": "nova-halo-hoodie",
+  "title": "NOVA Halo Hoodie",
+  "type": "Hoodie",
+  "garment": "hoodie",
+  "sizeSet": "top",
+  "price": 3299,
+  "colours": [
+   "Black",
+   "Bone",
+   "Grey"
+  ],
+  "badge": null,
+  "section": "Street / Drop 01",
+  "collection": "street",
+  "tags": [
+   "street",
+   "unisex"
+  ]
+ },
+ {
+  "n": 6,
+  "handle": "nova-onyx-hoodie",
+  "title": "NOVA Onyx Hoodie",
+  "type": "Hoodie",
+  "garment": "hoodie",
+  "sizeSet": "top",
+  "price": 3699,
+  "colours": [
+   "Charcoal",
+   "Black",
+   "Bone"
+  ],
+  "badge": null,
+  "section": "Street / Drop 01",
+  "collection": "street",
+  "tags": [
+   "street",
+   "unisex"
+  ]
+ },
+ {
+  "n": 7,
+  "handle": "nova-drift-hoodie",
+  "title": "NOVA Drift Hoodie",
+  "type": "Hoodie",
+  "garment": "hoodie",
+  "sizeSet": "top",
+  "price": 4499,
+  "colours": [
+   "Grey",
+   "Charcoal"
+  ],
+  "badge": null,
+  "section": "Street / Drop 01",
+  "collection": "street",
+  "tags": [
+   "street",
+   "unisex"
+  ]
+ },
+ {
+  "n": 8,
+  "handle": "nova-signature-tee",
+  "title": "NOVA Signature Tee",
+  "type": "T-Shirt",
+  "garment": "tee",
+  "sizeSet": "top",
+  "price": 1599,
+  "colours": [
+   "Black",
+   "Sand"
+  ],
+  "badge": "NEW",
+  "section": "Street / Drop 01",
+  "collection": "street",
+  "tags": [
+   "street",
+   "unisex"
+  ]
+ },
+ {
+  "n": 9,
+  "handle": "nova-prism-tee",
+  "title": "NOVA Prism Tee",
+  "type": "T-Shirt",
+  "garment": "tee",
+  "sizeSet": "top",
+  "price": 2299,
+  "colours": [
+   "Off White",
+   "Black",
+   "Sand"
+  ],
+  "badge": null,
+  "section": "Street / Drop 01",
+  "collection": "street",
+  "tags": [
+   "street",
+   "unisex"
+  ]
+ },
+ {
+  "n": 10,
+  "handle": "nova-nomad-tee",
+  "title": "NOVA Nomad Tee",
+  "type": "T-Shirt",
+  "garment": "tee",
+  "sizeSet": "top",
+  "price": 1999,
+  "colours": [
+   "Off White",
+   "Black",
+   "Sand"
+  ],
+  "badge": "DROP 01",
+  "section": "Street / Drop 01",
+  "collection": "street",
+  "tags": [
+   "street",
+   "unisex",
+   "drop"
+  ]
+ },
+ {
+  "n": 11,
+  "handle": "nova-vertex-tee",
+  "title": "NOVA Vertex Tee",
+  "type": "T-Shirt",
+  "garment": "tee",
+  "sizeSet": "top",
+  "price": 1599,
+  "colours": [
+   "Off White",
+   "Black",
+   "Sand"
+  ],
+  "badge": null,
+  "section": "Street / Drop 01",
+  "collection": "street",
+  "tags": [
+   "street",
+   "unisex"
+  ]
+ },
+ {
+  "n": 12,
+  "handle": "nova-ridge-tee",
+  "title": "NOVA Ridge Tee",
+  "type": "T-Shirt",
+  "garment": "tee",
+  "sizeSet": "top",
+  "price": 1999,
+  "colours": [
+   "Sand",
+   "Off White",
+   "Black"
+  ],
+  "badge": null,
+  "section": "Street / Drop 01",
+  "collection": "street",
+  "tags": [
+   "street",
+   "unisex"
+  ]
+ },
+ {
+  "n": 13,
+  "handle": "nova-ember-tee",
+  "title": "NOVA Ember Tee",
+  "type": "T-Shirt",
+  "garment": "tee",
+  "sizeSet": "top",
+  "price": 1999,
+  "colours": [
+   "Black",
+   "Sand"
+  ],
+  "badge": null,
+  "section": "Street / Drop 01",
+  "collection": "street",
+  "tags": [
+   "street",
+   "unisex"
+  ]
+ },
+ {
+  "n": 14,
+  "handle": "nova-slate-tee",
+  "title": "NOVA Slate Tee",
+  "type": "T-Shirt",
+  "garment": "tee",
+  "sizeSet": "top",
+  "price": 2399,
+  "colours": [
+   "Off White",
+   "Black"
+  ],
+  "badge": "LIMITED",
+  "section": "Street / Drop 01",
+  "collection": "street",
+  "tags": [
+   "street",
+   "unisex",
+   "limited"
+  ]
+ },
+ {
+  "n": 15,
+  "handle": "nova-utility-cargo",
+  "title": "NOVA Utility Cargo",
+  "type": "Trouser",
+  "garment": "cargo",
+  "sizeSet": "bottom",
+  "price": 3799,
+  "colours": [
+   "Black",
+   "Sand",
+   "Charcoal"
+  ],
+  "badge": null,
+  "section": "Street / Drop 01",
+  "collection": "street",
+  "tags": [
+   "street",
+   "unisex"
+  ]
+ },
+ {
+  "n": 16,
+  "handle": "nova-kinetic-cargo",
+  "title": "NOVA Kinetic Cargo",
+  "type": "Trouser",
+  "garment": "cargo",
+  "sizeSet": "bottom",
+  "price": 4699,
+  "colours": [
+   "Black",
+   "Sand",
+   "Charcoal"
+  ],
+  "badge": null,
+  "section": "Street / Drop 01",
+  "collection": "street",
+  "tags": [
+   "street",
+   "unisex"
+  ]
+ },
+ {
+  "n": 17,
+  "handle": "nova-cipher-cargo",
+  "title": "NOVA Cipher Cargo",
+  "type": "Trouser",
+  "garment": "cargo",
+  "sizeSet": "bottom",
+  "price": 4399,
+  "colours": [
+   "Olive",
+   "Black",
+   "Sand"
+  ],
+  "badge": null,
+  "section": "Street / Drop 01",
+  "collection": "street",
+  "tags": [
+   "street",
+   "unisex"
+  ]
+ },
+ {
+  "n": 18,
+  "handle": "nova-meridian-cargo",
+  "title": "NOVA Meridian Cargo",
+  "type": "Trouser",
+  "garment": "cargo",
+  "sizeSet": "bottom",
+  "price": 4599,
+  "colours": [
+   "Sand",
+   "Charcoal"
+  ],
+  "badge": null,
+  "section": "Street / Drop 01",
+  "collection": "street",
+  "tags": [
+   "street",
+   "unisex"
+  ]
+ },
+ {
+  "n": 19,
+  "handle": "nova-aurora-cargo",
+  "title": "NOVA Aurora Cargo",
+  "type": "Trouser",
+  "garment": "cargo",
+  "sizeSet": "bottom",
+  "price": 5199,
+  "colours": [
+   "Olive",
+   "Black",
+   "Sand"
+  ],
+  "badge": "DROP 01",
+  "section": "Street / Drop 01",
+  "collection": "street",
+  "tags": [
+   "street",
+   "unisex",
+   "drop"
+  ]
+ },
+ {
+  "n": 20,
+  "handle": "nova-solace-cargo",
+  "title": "NOVA Solace Cargo",
+  "type": "Trouser",
+  "garment": "cargo",
+  "sizeSet": "bottom",
+  "price": 3999,
+  "colours": [
+   "Charcoal",
+   "Olive"
+  ],
+  "badge": null,
+  "section": "Street / Drop 01",
+  "collection": "street",
+  "tags": [
+   "street",
+   "unisex"
+  ]
+ },
+ {
+  "n": 21,
+  "handle": "nova-tech-bomber",
+  "title": "NOVA Tech Bomber",
+  "type": "Jacket",
+  "garment": "bomber",
+  "sizeSet": "top",
+  "price": 8899,
+  "colours": [
+   "Olive",
+   "Ink",
+   "Charcoal"
+  ],
+  "badge": null,
+  "section": "Street / Drop 01",
+  "collection": "street",
+  "tags": [
+   "street",
+   "unisex"
+  ]
+ },
+ {
+  "n": 22,
+  "handle": "nova-quarry-bomber",
+  "title": "NOVA Quarry Bomber",
+  "type": "Jacket",
+  "garment": "bomber",
+  "sizeSet": "top",
+  "price": 6499,
+  "colours": [
+   "Charcoal",
+   "Olive",
+   "Ink"
+  ],
+  "badge": "NEW",
+  "section": "Street / Drop 01",
+  "collection": "street",
+  "tags": [
+   "street",
+   "unisex"
+  ]
+ },
+ {
+  "n": 23,
+  "handle": "nova-lumen-bomber",
+  "title": "NOVA Lumen Bomber",
+  "type": "Jacket",
+  "garment": "bomber",
+  "sizeSet": "top",
+  "price": 6099,
+  "colours": [
+   "Ink",
+   "Charcoal"
+  ],
+  "badge": null,
+  "section": "Street / Drop 01",
+  "collection": "street",
+  "tags": [
+   "street",
+   "unisex"
+  ]
+ },
+ {
+  "n": 24,
+  "handle": "nova-pivot-bomber",
+  "title": "NOVA Pivot Bomber",
+  "type": "Jacket",
+  "garment": "bomber",
+  "sizeSet": "top",
+  "price": 7499,
+  "colours": [
+   "Ink",
+   "Charcoal",
+   "Olive"
+  ],
+  "badge": null,
+  "section": "Street / Drop 01",
+  "collection": "street",
+  "tags": [
+   "street",
+   "unisex"
+  ]
+ },
+ {
+  "n": 25,
+  "handle": "nova-anchor-tee",
+  "title": "NOVA Anchor Tee",
+  "type": "T-Shirt",
+  "garment": "tee",
+  "sizeSet": "top",
+  "price": 1999,
+  "colours": [
+   "Off White",
+   "Bone",
+   "Grey"
+  ],
+  "badge": null,
+  "section": "Minimal Essentials",
+  "collection": "minimal",
+  "tags": [
+   "minimal",
+   "essential"
+  ]
+ },
+ {
+  "n": 26,
+  "handle": "nova-basin-tee",
+  "title": "NOVA Basin Tee",
+  "type": "T-Shirt",
+  "garment": "tee",
+  "sizeSet": "top",
+  "price": 2599,
+  "colours": [
+   "Off White",
+   "Bone"
+  ],
+  "badge": null,
+  "section": "Minimal Essentials",
+  "collection": "minimal",
+  "tags": [
+   "minimal",
+   "essential"
+  ]
+ },
+ {
+  "n": 27,
+  "handle": "nova-cadence-tee",
+  "title": "NOVA Cadence Tee",
+  "type": "T-Shirt",
+  "garment": "tee",
+  "sizeSet": "top",
+  "price": 2499,
+  "colours": [
+   "Off White",
+   "Bone",
+   "Grey"
+  ],
+  "badge": "LIMITED",
+  "section": "Minimal Essentials",
+  "collection": "minimal",
+  "tags": [
+   "minimal",
+   "essential",
+   "limited"
+  ]
+ },
+ {
+  "n": 28,
+  "handle": "nova-delta-tee",
+  "title": "NOVA Delta Tee",
+  "type": "T-Shirt",
+  "garment": "tee",
+  "sizeSet": "top",
+  "price": 2499,
+  "colours": [
+   "Off White",
+   "Bone",
+   "Grey"
+  ],
+  "badge": "DROP 01",
+  "section": "Minimal Essentials",
+  "collection": "minimal",
+  "tags": [
+   "minimal",
+   "essential",
+   "drop"
+  ]
+ },
+ {
+  "n": 29,
+  "handle": "nova-echo-tee",
+  "title": "NOVA Echo Tee",
+  "type": "T-Shirt",
+  "garment": "tee",
+  "sizeSet": "top",
+  "price": 1899,
+  "colours": [
+   "Grey",
+   "Off White"
+  ],
+  "badge": "NEW",
+  "section": "Minimal Essentials",
+  "collection": "minimal",
+  "tags": [
+   "minimal",
+   "essential"
+  ]
+ },
+ {
+  "n": 30,
+  "handle": "nova-forge-tee",
+  "title": "NOVA Forge Tee",
+  "type": "T-Shirt",
+  "garment": "tee",
+  "sizeSet": "top",
+  "price": 2299,
+  "colours": [
+   "Off White",
+   "Bone",
+   "Grey"
+  ],
+  "badge": null,
+  "section": "Minimal Essentials",
+  "collection": "minimal",
+  "tags": [
+   "minimal",
+   "essential"
+  ]
+ },
+ {
+  "n": 31,
+  "handle": "nova-essential-shirt",
+  "title": "NOVA Essential Shirt",
+  "type": "Shirt",
+  "garment": "shirt",
+  "sizeSet": "top",
+  "price": 3299,
+  "colours": [
+   "Bone",
+   "Slate",
+   "Off White"
+  ],
+  "badge": null,
+  "section": "Minimal Essentials",
+  "collection": "minimal",
+  "tags": [
+   "minimal",
+   "essential"
+  ]
+ },
+ {
+  "n": 32,
+  "handle": "nova-grain-shirt",
+  "title": "NOVA Grain Shirt",
+  "type": "Shirt",
+  "garment": "shirt",
+  "sizeSet": "top",
+  "price": 4499,
+  "colours": [
+   "Slate",
+   "Off White",
+   "Bone"
+  ],
+  "badge": null,
+  "section": "Minimal Essentials",
+  "collection": "minimal",
+  "tags": [
+   "minimal",
+   "essential"
+  ]
+ },
+ {
+  "n": 33,
+  "handle": "nova-harbour-shirt",
+  "title": "NOVA Harbour Shirt",
+  "type": "Shirt",
+  "garment": "shirt",
+  "sizeSet": "top",
+  "price": 4099,
+  "colours": [
+   "Off White",
+   "Bone"
+  ],
+  "badge": null,
+  "section": "Minimal Essentials",
+  "collection": "minimal",
+  "tags": [
+   "minimal",
+   "essential"
+  ]
+ },
+ {
+  "n": 34,
+  "handle": "nova-index-shirt",
+  "title": "NOVA Index Shirt",
+  "type": "Shirt",
+  "garment": "shirt",
+  "sizeSet": "top",
+  "price": 3399,
+  "colours": [
+   "Slate",
+   "Off White"
+  ],
+  "badge": null,
+  "section": "Minimal Essentials",
+  "collection": "minimal",
+  "tags": [
+   "minimal",
+   "essential"
+  ]
+ },
+ {
+  "n": 35,
+  "handle": "nova-junction-shirt",
+  "title": "NOVA Junction Shirt",
+  "type": "Shirt",
+  "garment": "shirt",
+  "sizeSet": "top",
+  "price": 3699,
+  "colours": [
+   "Bone",
+   "Slate"
+  ],
+  "badge": null,
+  "section": "Minimal Essentials",
+  "collection": "minimal",
+  "tags": [
+   "minimal",
+   "essential"
+  ]
+ },
+ {
+  "n": 36,
+  "handle": "nova-kestrel-shirt",
+  "title": "NOVA Kestrel Shirt",
+  "type": "Shirt",
+  "garment": "shirt",
+  "sizeSet": "top",
+  "price": 4099,
+  "colours": [
+   "Off White",
+   "Bone",
+   "Slate"
+  ],
+  "badge": "NEW",
+  "section": "Minimal Essentials",
+  "collection": "minimal",
+  "tags": [
+   "minimal",
+   "essential"
+  ]
+ },
+ {
+  "n": 37,
+  "handle": "nova-everyday-trouser",
+  "title": "NOVA Everyday Trouser",
+  "type": "Trouser",
+  "garment": "trouser",
+  "sizeSet": "bottom",
+  "price": 3599,
+  "colours": [
+   "Sand",
+   "Black"
+  ],
+  "badge": "DROP 01",
+  "section": "Minimal Essentials",
+  "collection": "minimal",
+  "tags": [
+   "minimal",
+   "essential",
+   "drop"
+  ]
+ },
+ {
+  "n": 38,
+  "handle": "nova-lattice-trouser",
+  "title": "NOVA Lattice Trouser",
+  "type": "Trouser",
+  "garment": "trouser",
+  "sizeSet": "bottom",
+  "price": 4599,
+  "colours": [
+   "Black",
+   "Charcoal",
+   "Sand"
+  ],
+  "badge": null,
+  "section": "Minimal Essentials",
+  "collection": "minimal",
+  "tags": [
+   "minimal",
+   "essential"
+  ]
+ },
+ {
+  "n": 39,
+  "handle": "nova-mantle-trouser",
+  "title": "NOVA Mantle Trouser",
+  "type": "Trouser",
+  "garment": "trouser",
+  "sizeSet": "bottom",
+  "price": 3899,
+  "colours": [
+   "Sand",
+   "Black"
+  ],
+  "badge": null,
+  "section": "Minimal Essentials",
+  "collection": "minimal",
+  "tags": [
+   "minimal",
+   "essential"
+  ]
+ },
+ {
+  "n": 40,
+  "handle": "nova-nadir-trouser",
+  "title": "NOVA Nadir Trouser",
+  "type": "Trouser",
+  "garment": "trouser",
+  "sizeSet": "bottom",
+  "price": 4399,
+  "colours": [
+   "Sand",
+   "Black",
+   "Charcoal"
+  ],
+  "badge": "LIMITED",
+  "section": "Minimal Essentials",
+  "collection": "minimal",
+  "tags": [
+   "minimal",
+   "essential",
+   "limited"
+  ]
+ },
+ {
+  "n": 41,
+  "handle": "nova-orbit-trouser",
+  "title": "NOVA Orbit Trouser",
+  "type": "Trouser",
+  "garment": "trouser",
+  "sizeSet": "bottom",
+  "price": 3599,
+  "colours": [
+   "Black",
+   "Charcoal"
+  ],
+  "badge": null,
+  "section": "Minimal Essentials",
+  "collection": "minimal",
+  "tags": [
+   "minimal",
+   "essential"
+  ]
+ },
+ {
+  "n": 42,
+  "handle": "nova-parallel-trouser",
+  "title": "NOVA Parallel Trouser",
+  "type": "Trouser",
+  "garment": "trouser",
+  "sizeSet": "bottom",
+  "price": 4399,
+  "colours": [
+   "Charcoal",
+   "Sand",
+   "Black"
+  ],
+  "badge": null,
+  "section": "Minimal Essentials",
+  "collection": "minimal",
+  "tags": [
+   "minimal",
+   "essential"
+  ]
+ },
+ {
+  "n": 43,
+  "handle": "nova-quartz-hoodie",
+  "title": "NOVA Quartz Hoodie",
+  "type": "Hoodie",
+  "garment": "hoodie",
+  "sizeSet": "top",
+  "price": 3499,
+  "colours": [
+   "Bone",
+   "Grey"
+  ],
+  "badge": null,
+  "section": "Minimal Essentials",
+  "collection": "minimal",
+  "tags": [
+   "minimal",
+   "essential"
+  ]
+ },
+ {
+  "n": 44,
+  "handle": "nova-relay-hoodie",
+  "title": "NOVA Relay Hoodie",
+  "type": "Hoodie",
+  "garment": "hoodie",
+  "sizeSet": "top",
+  "price": 3599,
+  "colours": [
+   "Bone",
+   "Grey"
+  ],
+  "badge": null,
+  "section": "Minimal Essentials",
+  "collection": "minimal",
+  "tags": [
+   "minimal",
+   "essential"
+  ]
+ },
+ {
+  "n": 45,
+  "handle": "nova-summit-hoodie",
+  "title": "NOVA Summit Hoodie",
+  "type": "Hoodie",
+  "garment": "hoodie",
+  "sizeSet": "top",
+  "price": 4099,
+  "colours": [
+   "Bone",
+   "Grey"
+  ],
+  "badge": null,
+  "section": "Minimal Essentials",
+  "collection": "minimal",
+  "tags": [
+   "minimal",
+   "essential"
+  ]
+ },
+ {
+  "n": 46,
+  "handle": "nova-performance-set",
+  "title": "NOVA Performance Set",
+  "type": "Activewear",
+  "garment": "activeset",
+  "sizeSet": "top",
+  "price": 5099,
+  "colours": [
+   "Slate",
+   "Charcoal",
+   "Black"
+  ],
+  "badge": "DROP 01",
+  "section": "Active / Train",
+  "collection": "active",
+  "tags": [
+   "active",
+   "train",
+   "drop"
+  ]
+ },
+ {
+  "n": 47,
+  "handle": "nova-tessellate-performance-set",
+  "title": "NOVA Tessellate Performance Set",
+  "type": "Activewear",
+  "garment": "activeset",
+  "sizeSet": "top",
+  "price": 5899,
+  "colours": [
+   "Black",
+   "Slate",
+   "Charcoal"
+  ],
+  "badge": null,
+  "section": "Active / Train",
+  "collection": "active",
+  "tags": [
+   "active",
+   "train"
+  ]
+ },
+ {
+  "n": 48,
+  "handle": "nova-umbra-performance-set",
+  "title": "NOVA Umbra Performance Set",
+  "type": "Activewear",
+  "garment": "activeset",
+  "sizeSet": "top",
+  "price": 4799,
+  "colours": [
+   "Charcoal",
+   "Black"
+  ],
+  "badge": null,
+  "section": "Active / Train",
+  "collection": "active",
+  "tags": [
+   "active",
+   "train"
+  ]
+ },
+ {
+  "n": 49,
+  "handle": "nova-vantage-performance-set",
+  "title": "NOVA Vantage Performance Set",
+  "type": "Activewear",
+  "garment": "activeset",
+  "sizeSet": "top",
+  "price": 5099,
+  "colours": [
+   "Slate",
+   "Charcoal",
+   "Black"
+  ],
+  "badge": null,
+  "section": "Active / Train",
+  "collection": "active",
+  "tags": [
+   "active",
+   "train"
+  ]
+ },
+ {
+  "n": 50,
+  "handle": "nova-warden-performance-set",
+  "title": "NOVA Warden Performance Set",
+  "type": "Activewear",
+  "garment": "activeset",
+  "sizeSet": "top",
+  "price": 5399,
+  "colours": [
+   "Slate",
+   "Charcoal"
+  ],
+  "badge": "NEW",
+  "section": "Active / Train",
+  "collection": "active",
+  "tags": [
+   "active",
+   "train"
+  ]
+ },
+ {
+  "n": 51,
+  "handle": "nova-axis-performance-set",
+  "title": "NOVA Axis Performance Set",
+  "type": "Activewear",
+  "garment": "activeset",
+  "sizeSet": "top",
+  "price": 4199,
+  "colours": [
+   "Charcoal",
+   "Black"
+  ],
+  "badge": null,
+  "section": "Active / Train",
+  "collection": "active",
+  "tags": [
+   "active",
+   "train"
+  ]
+ },
+ {
+  "n": 52,
+  "handle": "nova-beacon-performance-set",
+  "title": "NOVA Beacon Performance Set",
+  "type": "Activewear",
+  "garment": "activeset",
+  "sizeSet": "top",
+  "price": 5899,
+  "colours": [
+   "Slate",
+   "Charcoal",
+   "Black"
+  ],
+  "badge": null,
+  "section": "Active / Train",
+  "collection": "active",
+  "tags": [
+   "active",
+   "train"
+  ]
+ },
+ {
+  "n": 53,
+  "handle": "nova-contour-tee",
+  "title": "NOVA Contour Tee",
+  "type": "T-Shirt",
+  "garment": "tee",
+  "sizeSet": "top",
+  "price": 2299,
+  "colours": [
+   "Black",
+   "Slate",
+   "Grey"
+  ],
+  "badge": "LIMITED",
+  "section": "Active / Train",
+  "collection": "active",
+  "tags": [
+   "active",
+   "train",
+   "limited"
+  ]
+ },
+ {
+  "n": 54,
+  "handle": "nova-datum-tee",
+  "title": "NOVA Datum Tee",
+  "type": "T-Shirt",
+  "garment": "tee",
+  "sizeSet": "top",
+  "price": 2299,
+  "colours": [
+   "Black",
+   "Slate"
+  ],
+  "badge": null,
+  "section": "Active / Train",
+  "collection": "active",
+  "tags": [
+   "active",
+   "train"
+  ]
+ },
+ {
+  "n": 55,
+  "handle": "nova-element-tee",
+  "title": "NOVA Element Tee",
+  "type": "T-Shirt",
+  "garment": "tee",
+  "sizeSet": "top",
+  "price": 1999,
+  "colours": [
+   "Grey",
+   "Black",
+   "Slate"
+  ],
+  "badge": "DROP 01",
+  "section": "Active / Train",
+  "collection": "active",
+  "tags": [
+   "active",
+   "train",
+   "drop"
+  ]
+ },
+ {
+  "n": 56,
+  "handle": "nova-fathom-tee",
+  "title": "NOVA Fathom Tee",
+  "type": "T-Shirt",
+  "garment": "tee",
+  "sizeSet": "top",
+  "price": 2399,
+  "colours": [
+   "Grey",
+   "Black"
+  ],
+  "badge": null,
+  "section": "Active / Train",
+  "collection": "active",
+  "tags": [
+   "active",
+   "train"
+  ]
+ },
+ {
+  "n": 57,
+  "handle": "nova-gradient-trouser",
+  "title": "NOVA Gradient Trouser",
+  "type": "Trouser",
+  "garment": "trouser",
+  "sizeSet": "bottom",
+  "price": 3699,
+  "colours": [
+   "Charcoal",
+   "Black"
+  ],
+  "badge": "NEW",
+  "section": "Active / Train",
+  "collection": "active",
+  "tags": [
+   "active",
+   "train"
+  ]
+ },
+ {
+  "n": 58,
+  "handle": "nova-horizon-trouser",
+  "title": "NOVA Horizon Trouser",
+  "type": "Trouser",
+  "garment": "trouser",
+  "sizeSet": "bottom",
+  "price": 3799,
+  "colours": [
+   "Charcoal",
+   "Black"
+  ],
+  "badge": null,
+  "section": "Active / Train",
+  "collection": "active",
+  "tags": [
+   "active",
+   "train"
+  ]
+ },
+ {
+  "n": 59,
+  "handle": "nova-inlet-trouser",
+  "title": "NOVA Inlet Trouser",
+  "type": "Trouser",
+  "garment": "trouser",
+  "sizeSet": "bottom",
+  "price": 4199,
+  "colours": [
+   "Charcoal",
+   "Black"
+  ],
+  "badge": null,
+  "section": "Active / Train",
+  "collection": "active",
+  "tags": [
+   "active",
+   "train"
+  ]
+ },
+ {
+  "n": 60,
+  "handle": "nova-structured-jacket",
+  "title": "NOVA Structured Jacket",
+  "type": "Jacket",
+  "garment": "jacket",
+  "sizeSet": "top",
+  "price": 13199,
+  "colours": [
+   "Black",
+   "Slate",
+   "Ink"
+  ],
+  "badge": null,
+  "section": "Luxury / Tailored",
+  "collection": "luxury",
+  "tags": [
+   "luxury",
+   "tailored"
+  ]
+ },
+ {
+  "n": 61,
+  "handle": "nova-juniper-jacket",
+  "title": "NOVA Juniper Jacket",
+  "type": "Jacket",
+  "garment": "jacket",
+  "sizeSet": "top",
+  "price": 13899,
+  "colours": [
+   "Ink",
+   "Black",
+   "Slate"
+  ],
+  "badge": null,
+  "section": "Luxury / Tailored",
+  "collection": "luxury",
+  "tags": [
+   "luxury",
+   "tailored"
+  ]
+ },
+ {
+  "n": 62,
+  "handle": "nova-keystone-jacket",
+  "title": "NOVA Keystone Jacket",
+  "type": "Jacket",
+  "garment": "jacket",
+  "sizeSet": "top",
+  "price": 14899,
+  "colours": [
+   "Ink",
+   "Black"
+  ],
+  "badge": null,
+  "section": "Luxury / Tailored",
+  "collection": "luxury",
+  "tags": [
+   "luxury",
+   "tailored"
+  ]
+ },
+ {
+  "n": 63,
+  "handle": "nova-ledger-jacket",
+  "title": "NOVA Ledger Jacket",
+  "type": "Jacket",
+  "garment": "jacket",
+  "sizeSet": "top",
+  "price": 9799,
+  "colours": [
+   "Black",
+   "Slate"
+  ],
+  "badge": null,
+  "section": "Luxury / Tailored",
+  "collection": "luxury",
+  "tags": [
+   "luxury",
+   "tailored"
+  ]
+ },
+ {
+  "n": 64,
+  "handle": "nova-marrow-jacket",
+  "title": "NOVA Marrow Jacket",
+  "type": "Jacket",
+  "garment": "jacket",
+  "sizeSet": "top",
+  "price": 12499,
+  "colours": [
+   "Black",
+   "Slate"
+  ],
+  "badge": "DROP 01",
+  "section": "Luxury / Tailored",
+  "collection": "luxury",
+  "tags": [
+   "luxury",
+   "tailored",
+   "drop"
+  ]
+ },
+ {
+  "n": 65,
+  "handle": "nova-nocturne-jacket",
+  "title": "NOVA Nocturne Jacket",
+  "type": "Jacket",
+  "garment": "jacket",
+  "sizeSet": "top",
+  "price": 9199,
+  "colours": [
+   "Slate",
+   "Ink",
+   "Black"
+  ],
+  "badge": null,
+  "section": "Luxury / Tailored",
+  "collection": "luxury",
+  "tags": [
+   "luxury",
+   "tailored"
+  ]
+ },
+ {
+  "n": 66,
+  "handle": "nova-obsidian-trouser",
+  "title": "NOVA Obsidian Trouser",
+  "type": "Trouser",
+  "garment": "trouser",
+  "sizeSet": "bottom",
+  "price": 6999,
+  "colours": [
+   "Black",
+   "Charcoal"
+  ],
+  "badge": "LIMITED",
+  "section": "Luxury / Tailored",
+  "collection": "luxury",
+  "tags": [
+   "luxury",
+   "tailored",
+   "limited"
+  ]
+ },
+ {
+  "n": 67,
+  "handle": "nova-plateau-trouser",
+  "title": "NOVA Plateau Trouser",
+  "type": "Trouser",
+  "garment": "trouser",
+  "sizeSet": "bottom",
+  "price": 6799,
+  "colours": [
+   "Black",
+   "Charcoal",
+   "Slate"
+  ],
+  "badge": null,
+  "section": "Luxury / Tailored",
+  "collection": "luxury",
+  "tags": [
+   "luxury",
+   "tailored"
+  ]
+ },
+ {
+  "n": 68,
+  "handle": "nova-quiet-trouser",
+  "title": "NOVA Quiet Trouser",
+  "type": "Trouser",
+  "garment": "trouser",
+  "sizeSet": "bottom",
+  "price": 4999,
+  "colours": [
+   "Slate",
+   "Black",
+   "Charcoal"
+  ],
+  "badge": null,
+  "section": "Luxury / Tailored",
+  "collection": "luxury",
+  "tags": [
+   "luxury",
+   "tailored"
+  ]
+ },
+ {
+  "n": 69,
+  "handle": "nova-rampart-trouser",
+  "title": "NOVA Rampart Trouser",
+  "type": "Trouser",
+  "garment": "trouser",
+  "sizeSet": "bottom",
+  "price": 7199,
+  "colours": [
+   "Slate",
+   "Black",
+   "Charcoal"
+  ],
+  "badge": null,
+  "section": "Luxury / Tailored",
+  "collection": "luxury",
+  "tags": [
+   "luxury",
+   "tailored"
+  ]
+ },
+ {
+  "n": 70,
+  "handle": "nova-stratum-shirt",
+  "title": "NOVA Stratum Shirt",
+  "type": "Shirt",
+  "garment": "shirt",
+  "sizeSet": "top",
+  "price": 5799,
+  "colours": [
+   "Off White",
+   "Bone"
+  ],
+  "badge": null,
+  "section": "Luxury / Tailored",
+  "collection": "luxury",
+  "tags": [
+   "luxury",
+   "tailored"
+  ]
+ },
+ {
+  "n": 71,
+  "handle": "nova-threshold-shirt",
+  "title": "NOVA Threshold Shirt",
+  "type": "Shirt",
+  "garment": "shirt",
+  "sizeSet": "top",
+  "price": 6399,
+  "colours": [
+   "Bone",
+   "Off White"
+  ],
+  "badge": "NEW",
+  "section": "Luxury / Tailored",
+  "collection": "luxury",
+  "tags": [
+   "luxury",
+   "tailored"
+  ]
+ },
+ {
+  "n": 72,
+  "handle": "nova-underline-shirt",
+  "title": "NOVA Underline Shirt",
+  "type": "Shirt",
+  "garment": "shirt",
+  "sizeSet": "top",
+  "price": 5099,
+  "colours": [
+   "Bone",
+   "Off White"
+  ],
+  "badge": null,
+  "section": "Luxury / Tailored",
+  "collection": "luxury",
+  "tags": [
+   "luxury",
+   "tailored"
+  ]
+ },
+ {
+  "n": 73,
+  "handle": "nova-column-dress",
+  "title": "NOVA Column Dress",
+  "type": "Dress",
+  "garment": "dress",
+  "sizeSet": "top",
+  "price": 5799,
+  "colours": [
+   "Black",
+   "Bone",
+   "Ink"
+  ],
+  "badge": "DROP 01",
+  "section": "Women / Bias & Minimal",
+  "collection": "women",
+  "tags": [
+   "women",
+   "drop"
+  ]
+ },
+ {
+  "n": 74,
+  "handle": "nova-vellum-dress",
+  "title": "NOVA Vellum Dress",
+  "type": "Dress",
+  "garment": "dress",
+  "sizeSet": "top",
+  "price": 5699,
+  "colours": [
+   "Black",
+   "Bone"
+  ],
+  "badge": null,
+  "section": "Women / Bias & Minimal",
+  "collection": "women",
+  "tags": [
+   "women"
+  ]
+ },
+ {
+  "n": 75,
+  "handle": "nova-wick-dress",
+  "title": "NOVA Wick Dress",
+  "type": "Dress",
+  "garment": "dress",
+  "sizeSet": "top",
+  "price": 5399,
+  "colours": [
+   "Ink",
+   "Sand",
+   "Black"
+  ],
+  "badge": null,
+  "section": "Women / Bias & Minimal",
+  "collection": "women",
+  "tags": [
+   "women"
+  ]
+ },
+ {
+  "n": 76,
+  "handle": "nova-xenon-dress",
+  "title": "NOVA Xenon Dress",
+  "type": "Dress",
+  "garment": "dress",
+  "sizeSet": "top",
+  "price": 8499,
+  "colours": [
+   "Ink",
+   "Sand"
+  ],
+  "badge": null,
+  "section": "Women / Bias & Minimal",
+  "collection": "women",
+  "tags": [
+   "women"
+  ]
+ },
+ {
+  "n": 77,
+  "handle": "nova-yield-dress",
+  "title": "NOVA Yield Dress",
+  "type": "Dress",
+  "garment": "dress",
+  "sizeSet": "top",
+  "price": 5599,
+  "colours": [
+   "Black",
+   "Bone"
+  ],
+  "badge": null,
+  "section": "Women / Bias & Minimal",
+  "collection": "women",
+  "tags": [
+   "women"
+  ]
+ },
+ {
+  "n": 78,
+  "handle": "nova-zenith-dress",
+  "title": "NOVA Zenith Dress",
+  "type": "Dress",
+  "garment": "dress",
+  "sizeSet": "top",
+  "price": 8799,
+  "colours": [
+   "Sand",
+   "Black",
+   "Bone"
+  ],
+  "badge": null,
+  "section": "Women / Bias & Minimal",
+  "collection": "women",
+  "tags": [
+   "women"
+  ]
+ },
+ {
+  "n": 79,
+  "handle": "nova-alloy-dress",
+  "title": "NOVA Alloy Dress",
+  "type": "Dress",
+  "garment": "dress",
+  "sizeSet": "top",
+  "price": 5499,
+  "colours": [
+   "Bone",
+   "Ink"
+  ],
+  "badge": "LIMITED",
+  "section": "Women / Bias & Minimal",
+  "collection": "women",
+  "tags": [
+   "women",
+   "limited"
+  ]
+ },
+ {
+  "n": 80,
+  "handle": "nova-bramble-shirt",
+  "title": "NOVA Bramble Shirt",
+  "type": "Shirt",
+  "garment": "shirt",
+  "sizeSet": "top",
+  "price": 3299,
+  "colours": [
+   "Bone",
+   "Off White",
+   "Slate"
+  ],
+  "badge": null,
+  "section": "Women / Bias & Minimal",
+  "collection": "women",
+  "tags": [
+   "women"
+  ]
+ },
+ {
+  "n": 81,
+  "handle": "nova-compass-shirt",
+  "title": "NOVA Compass Shirt",
+  "type": "Shirt",
+  "garment": "shirt",
+  "sizeSet": "top",
+  "price": 4599,
+  "colours": [
+   "Off White",
+   "Slate"
+  ],
+  "badge": null,
+  "section": "Women / Bias & Minimal",
+  "collection": "women",
+  "tags": [
+   "women"
+  ]
+ },
+ {
+  "n": 82,
+  "handle": "nova-dune-shirt",
+  "title": "NOVA Dune Shirt",
+  "type": "Shirt",
+  "garment": "shirt",
+  "sizeSet": "top",
+  "price": 3499,
+  "colours": [
+   "Slate",
+   "Bone",
+   "Off White"
+  ],
+  "badge": "DROP 01",
+  "section": "Women / Bias & Minimal",
+  "collection": "women",
+  "tags": [
+   "women",
+   "drop"
+  ]
+ },
+ {
+  "n": 83,
+  "handle": "nova-etch-trouser",
+  "title": "NOVA Etch Trouser",
+  "type": "Trouser",
+  "garment": "trouser",
+  "sizeSet": "bottom",
+  "price": 3899,
+  "colours": [
+   "Sand",
+   "Charcoal"
+  ],
+  "badge": null,
+  "section": "Women / Bias & Minimal",
+  "collection": "women",
+  "tags": [
+   "women"
+  ]
+ },
+ {
+  "n": 84,
+  "handle": "nova-flint-trouser",
+  "title": "NOVA Flint Trouser",
+  "type": "Trouser",
+  "garment": "trouser",
+  "sizeSet": "bottom",
+  "price": 4399,
+  "colours": [
+   "Charcoal",
+   "Sand"
+  ],
+  "badge": null,
+  "section": "Women / Bias & Minimal",
+  "collection": "women",
+  "tags": [
+   "women"
+  ]
+ },
+ {
+  "n": 85,
+  "handle": "nova-girder-trouser",
+  "title": "NOVA Girder Trouser",
+  "type": "Trouser",
+  "garment": "trouser",
+  "sizeSet": "bottom",
+  "price": 4099,
+  "colours": [
+   "Sand",
+   "Charcoal"
+  ],
+  "badge": "NEW",
+  "section": "Women / Bias & Minimal",
+  "collection": "women",
+  "tags": [
+   "women"
+  ]
+ },
+ {
+  "n": 86,
+  "handle": "nova-arc-cap",
+  "title": "NOVA Arc Cap",
+  "type": "Accessory",
+  "garment": "cap",
+  "sizeSet": "one",
+  "price": 1799,
+  "colours": [
+   "Olive",
+   "Charcoal",
+   "Black"
+  ],
+  "badge": null,
+  "section": "Accessories",
+  "collection": "accessories",
+  "tags": [
+   "accessories"
+  ]
+ },
+ {
+  "n": 87,
+  "handle": "nova-haven-cap",
+  "title": "NOVA Haven Cap",
+  "type": "Accessory",
+  "garment": "cap",
+  "sizeSet": "one",
+  "price": 1899,
+  "colours": [
+   "Bone",
+   "Olive",
+   "Charcoal"
+  ],
+  "badge": null,
+  "section": "Accessories",
+  "collection": "accessories",
+  "tags": [
+   "accessories"
+  ]
+ },
+ {
+  "n": 88,
+  "handle": "nova-ivory-cap",
+  "title": "NOVA Ivory Cap",
+  "type": "Accessory",
+  "garment": "cap",
+  "sizeSet": "one",
+  "price": 1899,
+  "colours": [
+   "Bone",
+   "Olive"
+  ],
+  "badge": null,
+  "section": "Accessories",
+  "collection": "accessories",
+  "tags": [
+   "accessories"
+  ]
+ },
+ {
+  "n": 89,
+  "handle": "nova-jetty-cap",
+  "title": "NOVA Jetty Cap",
+  "type": "Accessory",
+  "garment": "cap",
+  "sizeSet": "one",
+  "price": 1399,
+  "colours": [
+   "Charcoal",
+   "Black",
+   "Bone"
+  ],
+  "badge": null,
+  "section": "Accessories",
+  "collection": "accessories",
+  "tags": [
+   "accessories"
+  ]
+ },
+ {
+  "n": 90,
+  "handle": "nova-kiln-cap",
+  "title": "NOVA Kiln Cap",
+  "type": "Accessory",
+  "garment": "cap",
+  "sizeSet": "one",
+  "price": 1399,
+  "colours": [
+   "Charcoal",
+   "Black",
+   "Bone"
+  ],
+  "badge": null,
+  "section": "Accessories",
+  "collection": "accessories",
+  "tags": [
+   "accessories"
+  ]
+ },
+ {
+  "n": 91,
+  "handle": "nova-carry-tote",
+  "title": "NOVA Carry Tote",
+  "type": "Accessory",
+  "garment": "tote",
+  "sizeSet": "one",
+  "price": 3399,
+  "colours": [
+   "Sand",
+   "Black"
+  ],
+  "badge": "DROP 01",
+  "section": "Accessories",
+  "collection": "accessories",
+  "tags": [
+   "accessories",
+   "drop"
+  ]
+ },
+ {
+  "n": 92,
+  "handle": "nova-loam-tote",
+  "title": "NOVA Loam Tote",
+  "type": "Accessory",
+  "garment": "tote",
+  "sizeSet": "one",
+  "price": 2999,
+  "colours": [
+   "Sand",
+   "Black",
+   "Bone"
+  ],
+  "badge": "LIMITED",
+  "section": "Accessories",
+  "collection": "accessories",
+  "tags": [
+   "accessories",
+   "limited"
+  ]
+ },
+ {
+  "n": 93,
+  "handle": "nova-mesa-tote",
+  "title": "NOVA Mesa Tote",
+  "type": "Accessory",
+  "garment": "tote",
+  "sizeSet": "one",
+  "price": 3399,
+  "colours": [
+   "Sand",
+   "Black",
+   "Bone"
+  ],
+  "badge": null,
+  "section": "Accessories",
+  "collection": "accessories",
+  "tags": [
+   "accessories"
+  ]
+ },
+ {
+  "n": 94,
+  "handle": "nova-notch-tote",
+  "title": "NOVA Notch Tote",
+  "type": "Accessory",
+  "garment": "tote",
+  "sizeSet": "one",
+  "price": 2399,
+  "colours": [
+   "Bone",
+   "Sand",
+   "Black"
+  ],
+  "badge": null,
+  "section": "Accessories",
+  "collection": "accessories",
+  "tags": [
+   "accessories"
+  ]
+ },
+ {
+  "n": 95,
+  "handle": "nova-ochre-tote",
+  "title": "NOVA Ochre Tote",
+  "type": "Accessory",
+  "garment": "tote",
+  "sizeSet": "one",
+  "price": 2699,
+  "colours": [
+   "Sand",
+   "Black"
+  ],
+  "badge": null,
+  "section": "Accessories",
+  "collection": "accessories",
+  "tags": [
+   "accessories"
+  ]
+ },
+ {
+  "n": 96,
+  "handle": "nova-shield-sunglasses",
+  "title": "NOVA Shield Sunglasses",
+  "type": "Accessory",
+  "garment": "sunglasses",
+  "sizeSet": "one",
+  "price": 3099,
+  "colours": [
+   "Black",
+   "Slate"
+  ],
+  "badge": null,
+  "section": "Accessories",
+  "collection": "accessories",
+  "tags": [
+   "accessories"
+  ]
+ },
+ {
+  "n": 97,
+  "handle": "nova-pier-sunglasses",
+  "title": "NOVA Pier Sunglasses",
+  "type": "Accessory",
+  "garment": "sunglasses",
+  "sizeSet": "one",
+  "price": 3799,
+  "colours": [
+   "Slate",
+   "Ink",
+   "Black"
+  ],
+  "badge": null,
+  "section": "Accessories",
+  "collection": "accessories",
+  "tags": [
+   "accessories"
+  ]
+ },
+ {
+  "n": 98,
+  "handle": "nova-quill-sunglasses",
+  "title": "NOVA Quill Sunglasses",
+  "type": "Accessory",
+  "garment": "sunglasses",
+  "sizeSet": "one",
+  "price": 2899,
+  "colours": [
+   "Slate",
+   "Ink"
+  ],
+  "badge": null,
+  "section": "Accessories",
+  "collection": "accessories",
+  "tags": [
+   "accessories"
+  ]
+ },
+ {
+  "n": 99,
+  "handle": "nova-rill-sunglasses",
+  "title": "NOVA Rill Sunglasses",
+  "type": "Accessory",
+  "garment": "sunglasses",
+  "sizeSet": "one",
+  "price": 2499,
+  "colours": [
+   "Slate",
+   "Ink",
+   "Black"
+  ],
+  "badge": "NEW",
+  "section": "Accessories",
+  "collection": "accessories",
+  "tags": [
+   "accessories"
+  ]
+ },
+ {
+  "n": 100,
+  "handle": "nova-shale-sunglasses",
+  "title": "NOVA Shale Sunglasses",
+  "type": "Accessory",
+  "garment": "sunglasses",
+  "sizeSet": "one",
+  "price": 3399,
+  "colours": [
+   "Black",
+   "Slate"
+  ],
+  "badge": "DROP 01",
+  "section": "Accessories",
+  "collection": "accessories",
+  "tags": [
+   "accessories",
+   "drop"
+  ]
+ }
+]
