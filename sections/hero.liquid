@@ -17,10 +17,19 @@
 {%- liquid
   assign featured = section.settings.product
   if featured == blank
+    assign featured = all_products['nova-halo-hoodie']
+  endif
+  if featured == blank
+    assign featured = all_products['nova-oversized-hoodie']
+  endif
+  if featured == blank
+    assign featured = all_products['nova-onyx-hoodie']
+  endif
+  if featured == blank
     assign featured = collections['the-new-drop'].products.first
   endif
 
-  assign plate = featured.featured_image | default: section.settings.image
+  assign plate = section.settings.image | default: featured.featured_image
   assign ghost = section.settings.ghost_text | default: section.settings.heading
 -%}
 
@@ -149,8 +158,8 @@
     {
       "type": "image_picker",
       "id": "image",
-      "label": "Fallback image",
-      "info": "Used only if no hero product is set."
+      "label": "Image override",
+      "info": "If set, this image overrides the selected product's default thumbnail."
     }
   ],
   "presets": [{ "name": "Hero" }]

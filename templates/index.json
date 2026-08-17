@@ -2,25 +2,35 @@
   "sections": {
     "hero": {
       "type": "hero",
-      "settings": {}
+      "settings": {
+        "product": "nova-halo-hoodie"
+      }
     },
     "act-drop": {
       "type": "act-drop",
-      "settings": {}
+      "settings": {
+        "product": "nova-atlas-hoodie"
+      }
     },
     "act-street": {
       "type": "act-street",
       "settings": {
+        "collection": "street",
         "count": 6
       }
     },
     "act-minimal": {
       "type": "act-minimal",
-      "settings": {}
+      "settings": {
+        "collection": "minimal",
+        "product": "nova-anchor-tee"
+      }
     },
     "act-active": {
       "type": "act-active",
-      "settings": {},
+      "settings": {
+        "collection": "active"
+      },
       "blocks": {
         "act-active-1": {
           "type": "mode",
@@ -52,7 +62,10 @@
     },
     "act-limited": {
       "type": "act-limited",
-      "settings": {}
+      "settings": {
+        "collection": "limited-edition",
+        "product": "nova-alloy-dress"
+      }
     },
     "worlds": {
       "type": "worlds",
@@ -61,6 +74,7 @@
         "worlds-1": {
           "type": "world",
           "settings": {
+            "collection": "street",
             "title": "Street",
             "body": "Volume, weight, and finishes that age."
           }
@@ -68,6 +82,7 @@
         "worlds-2": {
           "type": "world",
           "settings": {
+            "collection": "minimal",
             "title": "Minimal",
             "body": "The pieces everything else is built around."
           }
@@ -75,6 +90,7 @@
         "worlds-3": {
           "type": "world",
           "settings": {
+            "collection": "active",
             "title": "Active",
             "body": "Engineered knits. Train, run, recover."
           }
@@ -82,6 +98,7 @@
         "worlds-4": {
           "type": "world",
           "settings": {
+            "collection": "luxury",
             "title": "Luxury",
             "body": "Half-canvas construction and longer lines."
           }
@@ -97,6 +114,7 @@
     "product-grid": {
       "type": "product-grid",
       "settings": {
+        "collection": "the-new-drop",
         "count": 8
       }
     },

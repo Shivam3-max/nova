@@ -38,9 +38,16 @@
           collection's theme.
         endcomment
         assign theme = col.metafields.custom.collection_theme.value | default: col.handle
+        if theme == blank
+          assign theme = world_handle
+        endif
         assign art_url = ''
         if block.settings.image != blank
           assign art_url = block.settings.image | image_url: width: 900
+        elsif col.featured_image != blank
+          assign art_url = col.featured_image | image_url: width: 900
+        elsif col.products.first.featured_image != blank
+          assign art_url = col.products.first.featured_image | image_url: width: 900
         else
           assign art_url = theme | prepend: 'nova-world-' | append: '.svg' | asset_url
         endif

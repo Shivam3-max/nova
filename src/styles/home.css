@@ -344,10 +344,11 @@
 /* Product info card that sits over the garment. */
 .act-drop__panel {
   position: absolute;
-  left: -2.5rem;
-  bottom: 2.5rem;
+  left: clamp(1rem, 2.2vw, 2rem);
+  right: clamp(1rem, 2.2vw, 2rem);
+  bottom: clamp(1rem, 2.2vw, 2rem);
   z-index: 3;
-  min-width: 15rem;
+  width: min(22rem, calc(100% - 2rem));
   background: var(--paper);
   border: 1px solid var(--line);
   padding: 1.1rem 1.25rem;
@@ -380,7 +381,7 @@
   .act-drop__panel {
     position: static;
     margin-top: -3rem;
-    width: fit-content;
+    width: min(100%, 22rem);
   }
 }
 

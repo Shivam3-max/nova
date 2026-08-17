@@ -34,6 +34,14 @@
     assign product = collection.products.first
   endif
 
+  assign campaign_image = section.settings.image
+  if campaign_image == blank and collection.featured_image != blank
+    assign campaign_image = collection.featured_image
+  endif
+  if campaign_image == blank and product.featured_image != blank
+    assign campaign_image = product.featured_image
+  endif
+
   assign variant = product.selected_or_first_available_variant
   assign stock = variant.inventory_quantity
   if stock == nil or stock <= 0
@@ -45,8 +53,8 @@
 -%}
 
 <section class="act-limited campaign grain" data-inv data-component="parallax" aria-labelledby="act-limited-title">
-  {%- if section.settings.image -%}
-    <img class="campaign__bg" src="{{ section.settings.image | image_url: width: 1800 }}" alt=""
+  {%- if campaign_image -%}
+    <img class="campaign__bg" src="{{ campaign_image | image_url: width: 1800 }}" alt=""
          width="1600" height="1000" loading="lazy" decoding="async" data-parallax="0.12">
   {%- endif -%}
   <span class="campaign__veil"></span>

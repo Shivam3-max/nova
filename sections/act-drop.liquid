@@ -3,6 +3,15 @@
 {%- liquid
   assign product = section.settings.product
   if product == blank
+    assign product = all_products['nova-halo-hoodie']
+  endif
+  if product == blank
+    assign product = all_products['nova-anchor-tee']
+  endif
+  if product == blank
+    assign product = all_products['nova-alloy-dress']
+  endif
+  if product == blank
     assign product = collections['the-new-drop'].products.first
   endif
 -%}
